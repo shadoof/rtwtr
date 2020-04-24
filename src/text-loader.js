@@ -1,18 +1,8 @@
 var TEXTS = [{
-  title: 'Misspelt Landings',
-  file: 'data/misspeltLandings.txt',
-  trigrams: 'data/misspeltLandings-trigrams.js',
-  mesostic: 'reaching out falling through circling over landing on turning within spelling as'
-}, {
-  title: 'Poetic Caption',
-  file: 'data/poeticCaption.txt',
-  trigrams: 'data/poeticCaption-trigrams.js',
-  mesostic: 'reading as writing through'
-}, {
-  title: 'The Image',
-  file: 'data/image.txt',
-  trigrams: 'data/theImage-trigrams.js',
-  mesostic: 'comes in is over goes out is done lolls in stays there is had no more'
+  title: 'rtwtr',
+  file: 'data/futureOfLanguage.txt',
+  trigrams: 'data/futureOfLanguage-trigrams.js', // TODO: using Poetic Caption's
+  mesostic: 'reading through writing through'
 }];
 
 var notify, timerStart = Date.now(),

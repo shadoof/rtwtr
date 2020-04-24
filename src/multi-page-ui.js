@@ -10,8 +10,8 @@ var SPEED = {
 };
 
 var STYLE = {
-  Grey: 70,
-  Faint: 40,
+  Grey: 100,
+  Faint: 50,
   Invisible: 0
 };
 
