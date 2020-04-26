@@ -1,7 +1,7 @@
 var TEXTS = [{
   title: 'rtwtr',
-  file: 'data/futureOfLanguage.txt',
-  trigrams: 'data/futureOfLanguage-trigrams.js', // TODO: using Poetic Caption's
+  file: 'data/a_file.txt',
+  trigrams: 'data/rtwtr-trigrams.js', // TODO: placeholder! just using Poetic Caption's
   mesostic: 'reading through writing through'
 }];
 
