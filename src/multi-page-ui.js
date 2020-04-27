@@ -91,7 +91,7 @@ function createInterface() {
     ];
 
   // set initial class
-  styleSelect.value("Faint");
+  styleSelect.value("Grey");
   var focused = pManager.focus();
 
   if (focused) {
