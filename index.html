@@ -5,38 +5,45 @@
   <meta charset="UTF-8">
   <title>rtwtr</title>
   <script src="node_modules/jquery/dist/jquery.min.js"></script>
-  <script src="data/all-bigrams.js"></script>
-  <script src="src/text-loader.js"></script>
-  <link rel="stylesheet" href="fonts/webfont/font.css">
+  <script src="fade-test.js"></script>
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <!-- Top Text Section -->
-  <p id="instructions">Use left/right arrow-keys to change pages</p>
-  <div id="options">Readers <span>Options</span></div>
-  <div class="tag">Under Construction</div>
-
-  <!-- Overlay -->
-  <div id="overlay">
-    <div id="loader"></div>
-    <p>Loading</p>
-  </div>
-
-  <!-- Interface -->
-  <div id="interface"></div>
-
-  <!-- Focused Reader Display -->
-  <div id="focusDisplayWrapper">
-    <div id="focusDisplayTag"><span id="status"> + </span>Focused Reader</div>
-    <div id="focusDisplay"></div>
-  </div>
+    <div class="adiv">
+      <span id="s0" class="text a" onmouseover="toggleAll('#s0');" onmouseout="toggleAll('#s0');">
+        This “writing through” of Vilém Flusser’s ‘The Future of Writing’ – reconfiguring it so as to become John Cayley’s ‘The Future of Language’ – will not consider problems concerning any possible future for the teaching or philosophizing of an art of language in the face of the growing importance of non- or anti-linguistic messages in our surroundings, although those problems have already become significant in the so-called developed countries.
+      </span>
+      <span id="s1" class="text a" onmouseover="toggleAll('#s1');" onmouseout="toggleAll('#s1');">
+        It proposes to consider a tendency that underlies those problems: namely a tendency to deny or distrust the fundamental linearity of language (as perceptible phenomenon) in favor of multi-dimensional codes such as photographs, film, television, screen-based graphic design in the service of social and socialized media, and, generally, a conception of art and aesthetics that is dominated by visuality, by so-called “fine” as “visual” or “plastic” art even as and when this world of art embraces the conceptualism or “post-medium condition” which could, in principle if not in practice, be extended to the arts of language.
+      This distrust and denial may be observed everywhere if one glances even superficially at the codified world that surrounds us.
+      Literature is $50bn behind art.
+      The MoMAs in every province and metropolis are stuffed to their gills with hipsters, gleeful families and young “artists” while fewer and fewer deserted book malls provide desultory subterranean spaces for retiree reading groups.
+      </span>
+      <span id="s2" class="text a" onmouseover="toggleAll('#s2');" onmouseout="toggleAll('#s2');">
+        The “future” of language – or rather of those gestures which align symbols to produce our shared, collective, readable utterances – must be seen against the background of a long-standing tendency to distrust their alignment.
+      </span>
+    </div>
+  
+    <div id='b0' class="bdiv">
+      <span id="s0" class="text b">
+        This essay will not consider the problems concerning the future of teaching the art of writing in the face of the growing importance of nonliterate messages in our surroundings, although those problems will become ever more important both in the so-called developed countries and in societies where illiteracy is still widespread.</span>
+    </div>
+    <div id='b1' class="bdiv">
+      <span id="s1" class="text b">
+        Instead, it proposes to consider a tendency that underlies those problems: namely, the tendency away from linear codes such as writing and toward two-dimensional codes such as photographs, films, and TV, a tendency that may be observed if one glances even superficially at the codified world that surrounds us.</span>
+    </div>
+    <div id='b2' class="bdiv">
+      <span id="s2" class="text b">
+        The future of writing, of that gesture which aligns symbols to produce texts, must be seen against the background of that tendency.</span>
+    </div>
 
 </body>
 
 <!--script src="node_modules/p5/lib/p5.js"></script-->
-<script src="lib/p5.js"></script> <!-- different than node version? -->
+<!--
+<script src="lib/p5.js"></script>
 <script src="node_modules/p5/lib/addons/p5.dom.js"></script>
 <script src="node_modules/rita/lib/rita-tiny.js"></script>
 
@@ -52,7 +59,7 @@
 
 <script src="src/multi-page.js"></script>
 <script src="src/multi-page-ui.js"></script>
-
+ -->
 <!-- note: trigrams are loaded dynamically -->
 
 </html>

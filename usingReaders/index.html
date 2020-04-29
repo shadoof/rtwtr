@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>rtwtr</title>
+  <script src="node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="data/all-bigrams.js"></script>
+  <script src="src/text-loader.js"></script>
+  <link rel="stylesheet" href="fonts/webfont/font.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- Top Text Section -->
+  <p id="instructions">Use left/right arrow-keys to change pages</p>
+  <div id="options">Readers <span>Options</span></div>
+  <div class="tag">Under Construction</div>
+
+  <!-- Overlay -->
+  <div id="overlay">
+    <div id="loader"></div>
+    <p>Loading</p>
+  </div>
+
+  <!-- Interface -->
+  <div id="interface"></div>
+
+  <!-- Focused Reader Display -->
+  <div id="focusDisplayWrapper">
+    <div id="focusDisplayTag"><span id="status"> + </span>Focused Reader</div>
+    <div id="focusDisplay"></div>
+  </div>
+
+</body>
+
+<!--script src="node_modules/p5/lib/p5.js"></script-->
+<script src="lib/p5.js"></script> <!-- different than node version? -->
+<script src="node_modules/p5/lib/addons/p5.dom.js"></script>
+<script src="node_modules/rita/lib/rita-tiny.js"></script>
+
+<script src="src/rt.js"></script>
+<script src="src/readers-app.js"></script>
+<script src="src/mesostic-reader.js"></script>
+<script src="src/mesostic-jumper.js"></script>
+<script src="src/perigram-reader.js"></script>
+<script src="src/oblique-perigram-reader.js"></script>
+<script src="src/spawning-simple-reader.js"></script>
+<script src="src/spawning-perigram-reader.js"></script>
+<script src="src/oneway-perigram-reader.js"></script>
+
+<script src="src/multi-page.js"></script>
+<script src="src/multi-page-ui.js"></script>
+
+<!-- note: trigrams are loaded dynamically -->
+
+</html>
