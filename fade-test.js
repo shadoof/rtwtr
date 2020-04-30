@@ -4,13 +4,13 @@ window.onload = function() {
 //  init();
   bOffsets = getBOffets();
   console.log("bOffsets: " + bOffsets);
-//  repositonB(bOffsets);
+  repositonB(bOffsets);
 }
 
 function getBOffets() {
   aSpans = document.querySelectorAll('.text.a');
   bSpans = document.querySelectorAll('.text.b');
-  console.log('num of spans: ' + aSpans.length);
+  //console.log('num of spans: ' + aSpans.length);
 //  spans.forEach(getBOffet);
   bOffsets = [];
   for (var i = 0; i < aSpans.length; i++) {
@@ -22,10 +22,9 @@ function getBOffets() {
 function getBOffet(aSpan,bSpan) {
   aRect = aSpan.getBoundingClientRect();
   bRect = bSpan.getBoundingClientRect();
-//  console.log("height: " + rect.height);
   aCenter = aRect.top + window.pageYOffset + aRect.height/2;
-  //bOffset = aCenter - (bRect.top + window.pageYOffset + ((bRect.bottom - bRect.top)/2));
-  bOffset = aCenter;
+  // console.log(aRect.top, bRect.top, aRect.height, window.pageYOffset)
+  bOffset = aCenter - (bRect.top + window.pageYOffset + ((bRect.bottom - bRect.top)/2));
   return bOffset;
 //  var position = {
 //    top: rect.top + window.pageYOffset,
@@ -35,17 +34,16 @@ function getBOffet(aSpan,bSpan) {
 
 function repositonB(bOffsets) {
   divs = document.querySelectorAll('.bdiv');
-  console.log('num of bdivs: ' + divs.length);
+  //console.log('num of bdivs: ' + divs.length);
 //  spans.forEach(getBOffet);
   for (var i = 0; i < divs.length; i++) {
     console.log(window.pageYOffset + ", " + bOffsets[i]);
-    divs[i].style.top = 500;
-//    window.pageYOffset + bOffsets[i];
+    divs[i].style.top =  bOffsets[i] + "px";
   }
 }
 
 function toggleAll(id) {
-  console.log("id: " + id);
+  //console.log("id: " + id);
   if (id == null) {
     texts = document.querySelectorAll('.text');
   } else {
