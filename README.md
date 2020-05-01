@@ -2,6 +2,60 @@
 
 # Notes: 
 
+# git word-diff using "_" delimiter:
+
+`git diff --no-index --word-diff-regex=[^_]+ --word-diff=porcelain a_file_delimited.txt b_file_delimited.txt > abworddiff_delimited.txt`
+
+**(looks like we might be working with this one)** produces:
+
+```javascript {.line-numbers}
+diff --git a/a_file_delimited.txt b/b_file_delimited.txt
+index f9a6583..4e84f4c 100644
+--- a/a_file_delimited.txt
++++ b/b_file_delimited.txt
+@@ -1,7 +1,4 @@
+ _
+-This “writing through”_of Vilém Flusser’s ‘The Future of Writing’_– reconfiguring_it_so as to become_John Cayley’s ‘The Future of Language’ –
++This essay
+ _will not consider_
+-problems_concerning any possible future_for the teaching or philosophizing_of an art_of language
++the problems_concerning the future_of teaching_the art of writing
+ _in the face_of the growing importance_
+-of non- or anti-linguistic messages
++of nonliterate messages
+ _in our surroundings,_
+-although_those problems_have already become_significant_in the so-called developed countries.
++although those problems_will become_ever more important_both_in the so-called developed countries_and_in societies_where illiteracy_is still_widespread.
+ _<sb/>_
+~
+ _Instead,_it_proposes_to consider_a tendency_that_underlies_those problems:_namely,_
++the tendency_away from linear codes_such as writing_and_toward_two-dimensional codes_such as photographs, films, and TV,
+ _a tendency
+-to deny or distrust_the fundamental linearity_of language_(as perceptible phenomenon)_in favor_of multi-dimensional codes_such as photographs, film, television, screen-based graphic design in the service of social and socialized media,_and,_generally,_a conception_of art and aesthetics
+ _that
+-is dominated_by visuality,_by so-called “fine” as “visual” or “plastic” art_even_as and when_this world_of art_embraces_the conceptualism or “post-medium condition”_which_could,_in principle if not in practice,_be extended_to the arts_of language._<sb/>_
+~
+-_This distrust and denial
+ _may be observed
+-everywhere
+ _if_one_glances_even superficially_at the codified world_that_surrounds_us._<sb/>_
+~
+ _
+-Literature_is_$50bn_behind art._<sb/>_
+~
+-_The MoMAs_in every province and metropolis_are stuffed_to their gills_with hipsters, gleeful families and young “artists”_while_fewer and fewer deserted book malls_provide_desultory subterranean spaces_for retiree reading groups._<sb/>_
+~
+-_The “future”_of language_– or rather_of those gestures_which align symbols_to produce_our shared, collective, readable utterances –
++The future_of writing,_of that gesture_which_aligns_symbols_to produce texts,
+ _must be seen_against the background_
+-of a long-standing tendency_to distrust_their alignment.
++of that tendency.
+ _<sb/>_
+~
+ _<pb/>_
+~
+
+```
 `git diff --no-index --word-diff=porcelain a_file.txt b_file.txt`
 
 produces the kind of output we will work with.
@@ -90,60 +144,6 @@ index 16005d6..efdef91 100644
   must be seen against the background of 
 -a long-standing tendency to distrust their alignment.
 +that tendency.
-~
- <pb/>
-~
-
-```
-
-# Or, with a special delimiter:
-
-`git diff --no-index --word-diff-regex=[^_]+ --word-diff=porcelain a_file_delimited.txt b_file_delimited.txt > abworddiff_delimited.txt`
-
-**(looks like we might be working with this one)** produces:
-
-```
-diff --git a/a_file_delimited.txt b/b_file_delimited.txt
-index 2466f8d..0becf71 100644
---- a/a_file_delimited.txt
-+++ b/b_file_delimited.txt
-@@ -1,7 +1,4 @@
--This “writing through”_of Vilém Flusser’s ‘The Future of Writing’_– reconfiguring_it_so as to become_John Cayley’s ‘The Future of Language’ –
-+This essay
- _will not consider_
--problems_concerning any possible future_for the teaching or philosophizing_of an art_of language
-+the problems_concerning the future_of teaching_the art of writing
- _in the face_of the growing importance_
--of non- or anti-linguistic messages
-+of nonliterate messages
- _in our surroundings,_
--although_those problems_have already become_significant_in the so-called developed countries.
-~
--It
-+although those problems_will become_ever more important_both_in the so-called developed countries_and_in societies_where illiteracy_is still_widespread.
-~
-+Instead,_it
- _proposes_to consider_a tendency_that_underlies_those problems:_namely,_
-+the tendency_away from linear codes_such as writing_and_toward_two-dimensional codes_such as photographs, films, and TV,
- _a tendency
--to deny or distrust_the fundamental linearity_of language_(as perceptible phenomenon)_in favor_of multi-dimensional codes_such as photographs, film, television, screen-based graphic design in the service of social and socialized media,_and,_generally,_a conception_of art and aesthetics
- _that
--is dominated_by visuality,_by so-called “fine” as “visual” or “plastic” art_even_as and when_this world_of art_embraces_the conceptualism or “post-medium condition”_which_could,_in principle if not in practice,_be extended_to the arts_of language.
-~
--This distrust and denial
- _may be observed
--everywhere
- _if_one_glances_even superficially_at the codified world_that_surrounds_us.
-~
--Literature_is_$50bn_behind art.
-~
--The MoMAs_in every province and metropolis_are stuffed_to their gills_with hipsters, gleeful families and young “artists”_while_fewer and fewer deserted book malls_provide_desultory subterranean spaces_for retiree reading groups.
-~
--The “future”_of language_– or rather_of those gestures_which align symbols_to produce_our shared, collective, readable utterances –
-+The future_of writing,_of that gesture_which_aligns_symbols_to produce texts,
- _must be seen_against the background_
--of a long-standing tendency_to distrust_their alignment.
-+of that tendency.
 ~
  <pb/>
 ~
