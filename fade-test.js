@@ -2,29 +2,32 @@ var runs = 0, fades = 0; htmltext = 0, texts = [];
 
 window.onload = function() {
 //  init();
-  bOffsets = getBOffets();
+  bOffsets = getBOffsets();
   console.log("bOffsets: " + bOffsets);
   repositonB(bOffsets);
 }
 
-function getBOffets() {
+function getBOffsets() {
   aSpans = document.querySelectorAll('.text.a');
   bSpans = document.querySelectorAll('.text.b');
   //console.log('num of spans: ' + aSpans.length);
-//  spans.forEach(getBOffet);
+//  spans.forEach(getBOffset);
   bOffsets = [];
   for (var i = 0; i < aSpans.length; i++) {
-    bOffsets[i] = getBOffet(aSpans[i],bSpans[i]);
+    bOffsets[i] = getBOffset(aSpans[i],bSpans[i],(aSpans[i-1] ? aSpans[i-1] : null));
   }
   return bOffsets;
 }
 
-function getBOffet(aSpan,bSpan) {
+function getBOffset(aSpan,bSpan,prevASpan) {
   aRect = aSpan.getBoundingClientRect();
   bRect = bSpan.getBoundingClientRect();
   aCenter = aRect.top + window.pageYOffset + aRect.height/2;
   // console.log(aRect.top, bRect.top, aRect.height, window.pageYOffset)
   bOffset = aCenter - (bRect.top + window.pageYOffset + ((bRect.bottom - bRect.top)/2));
+  // TODO: sample hack for possible sentence-level overlap:
+  aBottom = (prevASpan ? prevASpan.getBoundingClientRect().bottom + window.pageYOffset : 0);
+  if (bOffset < aBottom) return aBottom + 30; // TODO: this is line height hard-coded !
   return bOffset;
 //  var position = {
 //    top: rect.top + window.pageYOffset,
@@ -35,7 +38,7 @@ function getBOffet(aSpan,bSpan) {
 function repositonB(bOffsets) {
   divs = document.querySelectorAll('.bdiv');
   //console.log('num of bdivs: ' + divs.length);
-//  spans.forEach(getBOffet);
+//  spans.forEach(getBOffset);
   for (var i = 0; i < divs.length; i++) {
     console.log(window.pageYOffset + ", " + bOffsets[i]);
     divs[i].style.top =  bOffsets[i] + "px";

@@ -21,22 +21,6 @@ div {
   z-index: 1;
 }
 
-#b0 {
-  top: 175;
-}
-
-#b1 {
-  top: 385;
-}
-
-#b2 {
-  top: 565;
-}
-
-/*p {
-  font: 20px/30px Georgia, "Times New Roman", Times, serif;
-}
-*/
 h1 {
   font: 30px/40px Georgia, "Times New Roman", Times, serif;
 }
