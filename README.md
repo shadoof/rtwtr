@@ -4,18 +4,18 @@
 
 **git word-diff using "_" delimiter:**
 
-`git diff --no-index --word-diff-regex=[^_]+ --word-diff=porcelain a_file_delimited.txt b_file_delimited.txt > abworddiff_delimited.txt`
+`git diff --no-index --word-diff-regex=[^_]+ --word-diff=porcelain a_file.txt b_file.txt > ab_worddiff.txt`
 
 **Output from run on page 1 for parsing:**
 
 ```
- 1 diff --git a/a_file_delimited.txt b/b_file_delimited.txt
- 2 index f9a6583..4e84f4c 100644
- 3 --- a/a_file_delimited.txt
- 4 +++ b/b_file_delimited.txt
+ 1 diff --git a/a_file.txt b/b_file.txt
+ 2 index 8e4e45b..4e84f4c 100644
+ 3 --- a/a_file.txt
+ 4 +++ b/b_file.txt
  5 @@ -1,7 +1,4 @@
  6  _
- 7 -This “writing through”_of Vilém Flusser’s ‘The Future of Writing’_– reconfiguring_it_so as to become_John Cayley’s ‘The Future of Language’ –
+ 7 -This “writing through”_of Vilém Flusser’s ‘The Future of Writing,’_reconfiguring_it_so as to become_John Cayley’s ‘The Future of Language,’
  8 +This essay
  9  _will not consider_
 10 -problems_concerning any possible future_for the teaching or philosophizing_of an art_of language
@@ -45,7 +45,7 @@
 34 ~
 35 -_The MoMAs_in every province and metropolis_are stuffed_to their gills_with hipsters, gleeful families and young “artists”_while_fewer and fewer deserted book malls_provide_desultory subterranean spaces_for retiree reading groups._<sb/>_
 36 ~
-37 -_The “future”_of language_– or rather_of those gestures_which align symbols_to produce_our shared, collective, readable utterances –
+37 -_The “future”_of language,_or rather,_of those gestures_which align symbols_to produce_our shared, collective, readable utterances,
 38 +The future_of writing,_of that gesture_which_aligns_symbols_to produce texts,
 39  _must be seen_against the background_
 40 -of a long-standing tendency_to distrust_their alignment.
@@ -54,7 +54,6 @@
 43 ~
 44  _<pb/>_
 45 ~
-
 ```
 
 <br>

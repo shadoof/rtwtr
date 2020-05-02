@@ -83,4 +83,4 @@ function parseText(data) {
   }
 }
 
-readTextFile("../data/abworddiff_delimited.txt", parseText);
+readTextFile("../data/ab_worddiff.txt", parseText);
