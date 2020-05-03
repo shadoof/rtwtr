@@ -39,8 +39,8 @@ function parseText(data) {
     let content = line,
         newSpan =  document.createElement("span");
     // remove syntags
-    content = content.replace(/(^-|^\+|_)/g,"");
-    content = content.replace(/(<ub>|<\/ub>|<sb\/>|<pb\/>)/g,"");
+    content = content.replace(/(^-|^\+)/g,"");
+    content = content.replace(/(_|<sb\/>|<pb\/>)/g," ");
 
     newSpan.innerText = content;
 
