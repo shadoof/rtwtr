@@ -2,6 +2,26 @@
 
 # Notes: 
 
+#break-marking tags
+
+**some definitions:**
+
+**shared span** = a run of one or more 'words' (as defined by worddiff) that is shared in the a\_file and b\_file. The rendered positions of shared spans in the a\_file become potential **anchors** or registration points for the units from the b\_file when they are faded in. **units** are sequences of spans that are either marked as equivalent in different **sections** of the files ***(there must be an equal number of units in each a\_file and b\_file section)*** or defined by `<tb/>` level tags or punctuatiion (see below). That is:
+
+If no units are marked explicitly, then units are defined by <tb/> tags.
+
+`_,_ or <cb/> = "comma" or "clause" break.` Allows for this to be matched by worddiff and thus to rebase the forward looking diff algorithm. This is removed on rendering with no effect on html. (Anything either side of this tag is in the same `<p></p>`.) Used 'inline' with "\_" either side: "\_<cb/>\_"
+
+`_. _ [space after the .] or <tb/> = "thought" break.` As above. On its own line if tag. Used for conventional sentences and can define units for sections which have an equal number of sentences/thoughts, which also define the section's units.
+
+`<pb/> = "paragraph" break.` As above, but on its own line in a source file with no delimiters. Renders a new `<p></p>` (or equivalent) in the html.
+
+`<ub></ub> A tag pair that defines the visualization "units" for a screen or section.` Needs to be a tag pair so as to be able to enclose (rarely) more than one <cb/> or <pb/> and or </tb> with their shared spans. Currently coded as `_<ub>_` and `_</ub>_`.
+
+`<sb/> = "screen" or "section" break.` On its own line in the source file. Marks generation and separate rendering of a new screen.
+
+#rtwtr git word diff
+
 **git word-diff using "_" delimiter:**
 
 `git diff --no-index --word-diff-regex=[^_]+ --word-diff=porcelain a_file.txt b_file.txt > ab_worddiff.txt`
