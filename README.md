@@ -10,50 +10,93 @@
 
 ```
  1 diff --git a/a_file.txt b/b_file.txt
- 2 index 8e4e45b..4e84f4c 100644
+ 2 index a6e7ea2..af02400 100644
  3 --- a/a_file.txt
  4 +++ b/b_file.txt
- 5 @@ -1,7 +1,4 @@
- 6  _
- 7 -This “writing through”_of Vilém Flusser’s ‘The Future of Writing,’_reconfiguring_it_so as to become_John Cayley’s ‘The Future of Language,’
- 8 +This essay
- 9  _will not consider_
-10 -problems_concerning any possible future_for the teaching or philosophizing_of an art_of language
-11 +the problems_concerning the future_of teaching_the art of writing
-12  _in the face_of the growing importance_
-13 -of non- or anti-linguistic messages
-14 +of nonliterate messages
-15  _in our surroundings,_
-16 -although_those problems_have already become_significant_in the so-called developed countries.
-17 +although those problems_will become_ever more important_both_in the so-called developed countries_and_in societies_where illiteracy_is still_widespread.
-18  _<sb/>_
-19 ~
-20  _Instead,_it_proposes_to consider_a tendency_that_underlies_those problems:_namely,_
-21 +the tendency_away from linear codes_such as writing_and_toward_two-dimensional codes_such as photographs, films, and TV,
-22  _a tendency
-23 -to deny or distrust_the fundamental linearity_of language_(as perceptible phenomenon)_in favor_of multi-dimensional codes_such as photographs, film, television, screen-based graphic design in the service of social and socialized media,_and,_generally,_a conception_of art and aesthetics
-24  _that
-25 -is dominated_by visuality,_by so-called “fine” as “visual” or “plastic” art_even_as and when_this world_of art_embraces_the conceptualism or “post-medium condition”_which_could,_in principle if not in practice,_be extended_to the arts_of language._<sb/>_
-26 ~
-27 -_This distrust and denial
-28  _may be observed
-29 -everywhere
-30  _if_one_glances_even superficially_at the codified world_that_surrounds_us._<sb/>_
-31 ~
-32  _
-33 -Literature_is_$50bn_behind art._<sb/>_
+ 5 @@ -1,10 +1,8 @@
+ 6  This _
+ 7 -“_writing _through_”_ _of _Vilém _Flusser_’_s __‘_The _Future _of _Writing,_’_ _reconfiguring _it _so _as _to _become _John _Cayley_’_s __‘_The _Future _of _Language,_’_ 
+ 8 +essay 
+ 9  _will _not _consider _
+10 +the 
+11  _problems _concerning 
+12 -any _possible _future _for 
+13  _the _
+14 -teaching _or _philosophizing 
+15 +future 
+16  _of _
+17 -an 
+18 +teaching _the 
+19  _art _of _
+20 -language 
+21 +writing 
+22  _in _the _face _of _the _growing _importance _of _non_
+23 --_ _or _anti_-_linguistic 
+24 +literate 
+25  _messages _in _our _surroundings, _although _those _problems _
+26 -have _already 
+27 +will 
+28  _become _
+29 -significant 
+30 +ever _more _important _both 
+31  _in _the _so_-_called _developed _
+32 -countries.
+33 +countries _and _in _societies _where _illiteracy _is _still _widespread.
 34 ~
-35 -_The MoMAs_in every province and metropolis_are stuffed_to their gills_with hipsters, gleeful families and young “artists”_while_fewer and fewer deserted book malls_provide_desultory subterranean spaces_for retiree reading groups._<sb/>_
+35  _<sb/>
 36 ~
-37 -_The “future”_of language,_or rather,_of those gestures_which align symbols_to produce_our shared, collective, readable utterances,
-38 +The future_of writing,_of that gesture_which_aligns_symbols_to produce texts,
-39  _must be seen_against the background_
-40 -of a long-standing tendency_to distrust_their alignment.
-41 +of that tendency.
-42  _<sb/>_
-43 ~
-44  _<pb/>_
-45 ~
+37  _Instead, _it _proposes _to _consider _a _tendency _that _underlies _those _problems: _namely, _the _tendency _
+38 -to _deny _or _distrust _the _fundamental _linearity _of _language _(as _perceptible _phenomenon) 
+39 +away _from _linear _codes _such _as _writing 
+40  _and _toward _
+41 -multi
+42 +two
+43  _-_dimensional _codes _such _as _photographs, _films, 
+44 -TV, _screen_-_based _graphic _design _in _the _service _of _social 
+45  _and _
+46 -socialized _media, _and, _generally, 
+47 +TV, 
+48  _a _
+49 -conception _of _art _and _aesthetics 
+50 +tendency 
+51  _that 
+52 -is _dominated _by _visuality, _by _so_-_called __“_fine_”_ _as __“_visual_”_ _or __“_plastic_”_ _art _even _as _and _when _this _world _of _art _embraces _the _conceptualism _or __“_post_-_medium _condition_”_ _which _could, _in _principle _if _not _in _practice, _be _extended _to _the _arts _of _language.
+53 ~
+54 -This _distrust _and _denial 
+55  _may _be _observed 
+56 -everywhere 
+57  _if _one _glances _even _superficially _at _the _codified _world _that _surrounds _us.
+58 -Literature _is _$50bn _behind _art.
+59 ~
+60 -The _MoMAs _in _every _province _and _metropolis _are _stuffed _to _their _gills _with _hipsters, _gleeful _families _and _young __“_artists_”_ _while _fewer _and _fewer _deserted _book _malls _provide _desultory _subterranean _spaces _for _retiree _reading _groups.
+61 ~
+62  _<sb/>
+63 ~
+64  _The _
+65 -“_future_”_ 
+66 +future 
+67  _of _
+68 -language, _or _rather, 
+69 +writing, 
+70  _of _
+71 -those _gestures 
+72 +that _gesture 
+73  _which _
+74 -align 
+75 +aligns 
+76  _symbols _to _produce _
+77 -our _shared, _collective, _readable _utterances, 
+78 +texts, 
+79  _must _be _seen _against _the _background _of _
+80 -a _long_-_standing _tendency _to _distrust _their _alignment.
+81 +that _tendency.
+82 ~
+83  _<sb/>
+84 ~
+85  _<pb/>
+86 ~
+87  _
+88 ~
 ```
 
 <br>
