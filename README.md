@@ -8,11 +8,13 @@ Text preparation workflow goes like this:
 2. The texts are pre-processed (I do this in BBEdit but this could quite easily be scripted or incorporated into webapp preprocessing, down the line) so that it is marked up with break-marking tags which target the results we want from a form of git's word-diff command. I run the following replace-all greps on the plain text files:
 	* `([\S]+\s) -> \1_`
 	* `([“‘”’\;,:\)\(\?\.\!]) -> _\1_` (there's surely a better formulation)
-3. The marked up texts are now in a\_file.text and b\_file.text, so we run this command on them (see below for sample output).
+3. I then _manually_ add optional `<cb/>, <tb/>, <pb/>` and, mandatory for multi-screen/section pieces, `<sb/>` tags.
+4. Finally, I _manually_ mark any sequences that cannot be automatically parsed into corresponding **units** with `<ub></ub>` tag pairs.
+5. The marked up texts are now in a\_file.text and b\_file.text, so we run this command on them (see below for sample output).
 	```
 	git diff --no-index --word-diff-regex=[^_]+ --word-diff=porcelain a_file.txt b_file.txt > ab_worddiff.txt
 	```
-4. The a and b files can now be laid out in spans by parsing this ab\_worddiff.txt output in the webapp.
+6. The a and b files can now be laid out in spans by parsing this ab\_worddiff.txt output in the webapp.
 	
 
 #break-marking tags
