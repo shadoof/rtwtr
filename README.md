@@ -2,21 +2,34 @@
 
 # Notes: 
 
+Text preparation workflow goes like this:
+
+1. Plain text a & b files (which may have some inline html) are prepared from a word-processed essay (in this case).
+2. The texts are pre-processed (I do this in BBEdit but this could quite easily be scripted or incorporated into webapp preprocessing, down the line) so that it is marked up with break-marking tags which target the results we want from a form of git's word-diff command. I run the following replace-all greps on the plain text files:
+	* `([\S]+\s) -> \1_`
+	* `([“‘”’\;,:\)\(\?\.\!]) -> _\1_` (there's surely a better formulation)
+3. The marked up texts are now in a\_file.text and b\_file.text, so we run this command on them (see below for sample output).
+	```
+	git diff --no-index --word-diff-regex=[^_]+ --word-diff=porcelain a_file.txt b_file.txt > ab_worddiff.txt
+	```
+4. The a and b files can now be laid out in spans by parsing this ab\_worddiff.txt output in the webapp.
+	
+
 #break-marking tags
 
 **some definitions:**
 
-**shared span** = a run of one or more 'words' (as defined by worddiff) that is shared in the a\_file and b\_file. The rendered positions of shared spans in the a\_file become potential **anchors** or registration points for the units from the b\_file when they are faded in. **units** are sequences of spans that are either marked as equivalent in different **sections** of the files ***(there must be an equal number of units in each a\_file and b\_file section)*** or defined by `<tb/>` level tags or punctuatiion (see below). That is:
+**shared span** = a run of one or more matching 'words' (as defined by word-diff) that is shared in the a\_file and b\_file. The rendered positions of shared spans in the a\_file become potential **anchors** or registration points for the units from the b\_file when they are faded in. **units** are sequences of spans that are either marked as equivalent in different **sections** of the files ***(there must be an equal number of units in each a\_file and b\_file section)*** or defined by `<tb/>` level tags or punctuatiion (see below). That is:
 
 If no units are marked explicitly, then units are defined by <tb/> tags.
 
-`_,_ or <cb/> = "comma" or "clause" break.` Allows for this to be matched by worddiff and thus to rebase the forward looking diff algorithm. This is removed on rendering with no effect on html. (Anything either side of this tag is in the same `<p></p>`.) Used 'inline' with "\_" either side: "\_<cb/>\_"
+`_,_ or _;_ or _:_ and/or <cb/> = "comma" or "clause" break.` Allows for this to be matched by word-diff and thus to rebase the forward looking diff algorithm. This is removed on rendering with no effect on html. (Anything either side of this tag is in the same `<p></p>`.) Used 'inline' with "\_" either side: "\_<cb/>\_"
 
-`_. _ [space after the .] or <tb/> = "thought" break.` As above. On its own line if tag. Used for conventional sentences and can define units for sections which have an equal number of sentences/thoughts, which also define the section's units.
+`_._ or _?_ or _!_ or <tb/> = "thought" break.` As above. It tag, then on its own line. Used for conventional sentences. By default, defines **units** for sections which have an equal number of sentences/thoughts.
 
-`<pb/> = "paragraph" break.` As above, but on its own line in a source file with no delimiters. Renders a new `<p></p>` (or equivalent) in the html.
+`<pb/> = "paragraph" break.` As above, but on its own line in a source file with no delimiters. Simply renders a new `<p></p>` (or equivalent) in the html.
 
-`<ub></ub> A tag pair that defines the visualization "units" for a screen or section.` Needs to be a tag pair so as to be able to enclose (rarely) more than one <cb/> or <pb/> and or </tb> with their shared spans. Currently coded as `_<ub>_` and `_</ub>_`.
+`<ub></ub> A tag pair that overrides unit definition` That is, the visualization "units" for a screen or section. Needs to be a tag pair so as to be able to enclose (exceptionally) more than one <cb/> or <pb/> and or </tb> and their shared spans. Currently coded as `_<ub>_` and `_</ub>_`.
 
 `<sb/> = "screen" or "section" break.` On its own line in the source file. Marks generation and separate rendering of a new screen.
 
