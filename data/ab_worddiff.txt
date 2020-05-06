@@ -1,8 +1,8 @@
 diff --git a/a_file.txt b/b_file.txt
-index 0087a19..bbeb041 100644
+index dff07a0..5e58a7c 100644
 --- a/a_file.txt
 +++ b/b_file.txt
-@@ -1,39 +1,28 @@
+@@ -1,41 +1,27 @@
  This _
 -“_writing _through_”_ _of _Vilém _Flusser_’_s __‘_The _Future _of _Writing_,__’_ _reconfiguring _it _so _as _to _become _John _Cayley_’_s __‘_The _Future _of _Language_,__’_ 
 +essay 
@@ -88,6 +88,7 @@ index 0087a19..bbeb041 100644
 ~
  <sb/>
 ~
+ 
 ~
  <ub>
 ~
@@ -175,6 +176,7 @@ index 0087a19..bbeb041 100644
 ~
  <sb/>
 ~
+ 
 ~
  If _one _examines _certain _Mesopotamian _tiles_,_ _one _can _see _that _the _
 +original 
@@ -218,7 +220,7 @@ index 0087a19..bbeb041 100644
 +text
  _,_ _even _a _very _abstract _one_,_ 
 -also 
- _means_,_ _in _the _last _analysis_,_ _an _image_._
-~
- <sb/>
+ _means_,_ _in _the _last _analysis_,_ _an _image_.
+-<sb/>
+ _
 ~
