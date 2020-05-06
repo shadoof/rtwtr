@@ -1,18 +1,27 @@
 This _essay _will _not _consider _the _problems _concerning _the _future _of _teaching _the _art _of _writing _in _the _face _of _the _growing _importance _of _non_literate _messages _in _our _surroundings_,_ _although _those _problems _will _become _ever _more _important _both _in _the _so_-_called _developed _countries _and _in _societies _where _illiteracy _is _still _widespread_._
-<ub>Instead_,_ _it _proposes _to _consider _a _tendency _that _underlies _those _problems_:_ _namely_,_ _the _tendency _away _from _linear _codes _such _as _writing _and _toward _two_-_dimensional _codes _such _as _photographs_,_ _films_,_ _and _TV_,_ _a _tendency _that _may _be _observed _if _one _glances _even _superficially _at _the _codified _world _that _surrounds _us_._</ub>
+<ub>
+Instead_,_ _it _proposes _to _consider _a _tendency _that _underlies _those _problems_:_ _namely_,_ _the _tendency _away _from _linear _codes _such _as _writing _and _toward _two_-_dimensional _codes _such _as _photographs_,_ _films_,_ _and _TV_,_ _a _tendency _that _may _be _observed _if _one _glances _even _superficially _at _the _codified _world _that _surrounds _us_._
+</ub>
 The _future _of _writing_,_ _of _that _gesture _which _aligns _symbols _to _produce _texts_,_ _must _be _seen _against _the _background _of _that _tendency_._
 <sb/>
+
 <ub>
-<pb/>
 </ub>
-<ub>Writing _is _an _important _gesture_,_ _because _it _both _articulates _and _produces _that _state _of _mind _which _is _called __“_historical _consciousness_,__”_ _History _began _with _the _invention _of _writing_,_ _not _for _the _banal _reason _often _advanced _that _written _texts _permit _us _to _reconstruct _the _past_,_ _but _for _the _more _pertinent _reason _that _the _world _is _not _perceived _as _a _process_,_ __“_historically_,__”_ _unless _one _signifies _it _by _successive _symbols_,_ _by _writing_.</ub>
-<ub>The _difference _between _prehistory _and _history _is _not _that _we _have _written _documents _that _permit _us _to _read _the _latter_,_ _but _that _during _history _there _are _literate _men _who _experience_,_ _understand_,_ _and _evaluate _the _world _as _a __“_becoming_,__”_ _whereas _in _prehistory _no _such _existential _attitude _is _possible_._</ub>
+<pb/>
+<ub>
+Writing _is _an _important _gesture_,_ _because _it _both _articulates _and _produces _that _state _of _mind _which _is _called __“_historical _consciousness_,__”_ _History _began _with _the _invention _of _writing_,_ _not _for _the _banal _reason _often _advanced _that _written _texts _permit _us _to _reconstruct _the _past_,_ _but _for _the _more _pertinent _reason _that _the _world _is _not _perceived _as _a _process_,_ __“_historically_,__”_ _unless _one _signifies _it _by _successive _symbols_,_ _by _writing_.
+</ub>
+<ub>
+The _difference _between _prehistory _and _history _is _not _that _we _have _written _documents _that _permit _us _to _read _the _latter_,_ _but _that _during _history _there _are _literate _men _who _experience_,_ _understand_,_ _and _evaluate _the _world _as _a __“_becoming_,__”_ _whereas _in _prehistory _no _such _existential _attitude _is _possible_._
+</ub>
 If _the _art _of _writing _were _to _fall _into _oblivion_,_ _or _if _it _were _to _become _subservient _to _picture _making _(as _in _the __“_scriptwriting_”_ _in _films)_,_ _history _in _the _strict _sense _of _that _term _would _be _over_._
 <sb/>
+
 If _one _examines _certain _Mesopotamian _tiles_,_ _one _can _see _that _the _original _purpose _of _writing _was _to _facilitate _the _deciphering _of _images_._
 Those _tiles _contain _images _impressed _upon _them _with _cylindrical _seals _and __“_cuneiform_”_ _symbols _scratched _into _them _with _a _stylus_._
-<ub>The __“_cuneiform_”_ _symbols _form _lines_,_ _and _they _obviously _mean _the _image _they _ac­ _company_._
-They __“_explain_,__”_ __“_recount_,__”_ __“_tell_”_ _it_._</ub>
+<ub>
+The __“_cuneiform_”_ _symbols _form _lines_,_ _and _they _obviously _mean _the _image _they _ac­ _company_._
+They __“_explain_,__”_ __“_recount_,__”_ __“_tell_”_ _it_._
+</ub>
 They _do _so _by _unrolling _the _surface _of _the _image _into _lines_,_ _by _unwinding _the _tissue _of _the _image _into _the _threads _of _a _text_,_ _by _rendering __“_explicit_”_ _what _was __“_implicit_”_ _within _the _image_._
 It _may _be _shown _through _text _analysis _that _the _original _purpose _of _writing_,_ _namely_,_ _the _transcoding _of _two-dimensional _codes _into _a _single _dimension_,_ _is _still _there_:_ _every _text_,_ _even _a _very _abstract _one_,_ _means_,_ _in _the _last _analysis_,_ _an _image_._
-<sb/>

@@ -1,8 +1,8 @@
 diff --git a/a_file.txt b/b_file.txt
-index 097501a..efd86d8 100644
+index dff07a0..5e58a7c 100644
 --- a/a_file.txt
 +++ b/b_file.txt
-@@ -1,30 +1,18 @@
+@@ -1,41 +1,27 @@
  This _
 -“_writing _through_”_ _of _Vilém _Flusser_’_s __‘_The _Future _of _Writing_,__’_ _reconfiguring _it _so _as _to _become _John _Cayley_’_s __‘_The _Future _of _Language_,__’_ 
 +essay 
@@ -33,7 +33,9 @@ index 097501a..efd86d8 100644
 +countries _and _in _societies _where _illiteracy _is _still _widespread
  _._
 ~
- <ub>Instead_,_ _it _proposes _to _consider _a _tendency _that _underlies _those _
+ <ub>
+~
+ Instead_,_ _it _proposes _to _consider _a _tendency _that _underlies _those _
 -problems: 
 +problems_:_ 
  _namely_,_ _the _tendency _
@@ -60,7 +62,9 @@ index 097501a..efd86d8 100644
 -Literature _is _$50bn _behind _art_._
 ~
 -The _MoMAs _in _every _province _and _metropolis _are _stuffed _to _their _gills _with _hipsters_,_ _gleeful _families _and _young __“_artists_”_ _while _fewer _and _fewer _deserted _book _malls _provide _desultory _subterranean _spaces _for _retiree _reading _groups_.
- _</ub>
+ _
+~
+ </ub>
 ~
  The _
 -“_future_”_ 
@@ -84,19 +88,24 @@ index 097501a..efd86d8 100644
 ~
  <sb/>
 ~
--<ub>All _those _gestures _that _we _make _with _the _prospect _that _others _of _us _might _read _and _understand _them _as _entering _and _helping _to _constitute _the _world _of _language_,_ _all _these _gestures_,_ _regardless _of _their _perceptible _support _media _are _archi-writing _in _Jacques _Derrida_’_s _sense_._
+ 
+~
+ <ub>
+~
+-All _those _gestures _that _we _make _with _the _prospect _that _others _of _us _might _read _and _understand _them _as _entering _and _helping _to _constitute _the _world _of _language_,_ _all _these _gestures_,_ _regardless _of _their _perceptible _support _media _are _archi-writing _in _Jacques _Derrida_’_s _sense_._
 ~
 -Iterable _traces _of _actual _language_,_ _all _words _are _writing_,_ _as _Derrida _showed _us_._
 ~
--There _is _always _and _only _the __“_logic _of _the _supplement_”_ _with _respect _to _the _perceptible _traces _of _language_,_ _typically _and _genetically _supported _by _aurality_;_ _by _cultural _predominance_,_ __“_historically_”_ _supported _by _calligraphic _and _now _typographic _visuality_.
-+<ub>
-~
- <pb/>
+-There _is _always _and _only _the __“_logic _of _the _supplement_”_ _with _respect _to _the _perceptible _traces _of _language_,_ _typically _and _genetically _supported _by _aurality_;_ _by _cultural _predominance_,_ __“_historically_”_ _supported _by _calligraphic _and _now _typographic _visuality_._
 ~
  </ub>
 ~
--<ub>The _configuration _of _practices _that _we _conventionally _call _writing 
-+<ub>Writing 
+ <pb/>
+~
+ <ub>
+~
+-The _configuration _of _practices _that _we _conventionally _call _writing 
++Writing 
  _is _an _important 
 -subsidiary _configuration _of _linguistic 
  _gesture_,_ _because _it _both _articulates _and _produces _that _state _of _mind _which _is _called __“_historical _consciousness_
@@ -123,15 +132,16 @@ index 097501a..efd86d8 100644
 -The _effects _of _a _certain _persistence _in _collective _memory _– _such _as _those _promoted 
  _by 
 -oral _cultures _– _are _every _bit _as __“_historical_”_ _as _the _effects _of _literal _or _letteral 
- _writing_
--._
-~
+ _writing_.
 -This _follows_,_ _clearly _and _simply_,_ _from _post-Derridean _thought_._
 ~
--_Historical _persistence _in _collective _memory _is _an _effect _of _what _was _archi-writing _in _aurality_._</ub>
-+.</ub>
+-_Historical _persistence _in _collective _memory _is _an _effect _of _what _was _archi-writing _in _aurality_.
 ~
- <ub>The _difference _between 
+ </ub>
+~
+ <ub>
+~
+ The _difference _between 
 -so-called 
  _prehistory _and _history _is _not _that _we _have _written _documents _that _permit _us _to _read _the _latter_,_ _but _that _during _history _there _are _literate _
 -persons 
@@ -148,7 +158,9 @@ index 097501a..efd86d8 100644
  _attitude _
 -has _a _different _extension _and _scale _with _respect _to _the _sum _of _human _culture
 +is _possible
- _._</ub>
+ _._
+~
+ </ub>
 ~
  If _the _art _of _writing 
 -(in _either _sense_,_ _post-Derridean _or _conventional) 
@@ -164,6 +176,8 @@ index 097501a..efd86d8 100644
 ~
  <sb/>
 ~
+ 
+~
  If _one _examines _certain _Mesopotamian _tiles_,_ _one _can _see _that _the _
 +original 
  _purpose _of 
@@ -175,14 +189,18 @@ index 097501a..efd86d8 100644
 ~
  Those _tiles _contain _images _impressed _upon _them _with _cylindrical _seals _and __“_cuneiform_”_ _symbols _scratched _into _them _with _a _stylus_._
 ~
- <ub>The __“_cuneiform_”_ _symbols _form _lines_,_ _and _they _obviously _mean _the _image _they _
+ <ub>
+~
+ The __“_cuneiform_”_ _symbols _form _lines_,_ _and _they _obviously _mean _the _image _they _
 -accompany
 +ac­ _company
  _._
 ~
- They __“_explain_,__”_ __“_recount_,__”_ __“_tell_”_ _it_.
--They _provide _it _with _an _evocalization_.
- _</ub>
+ They __“_explain_,__”_ __“_recount_,__”_ __“_tell_”_ _it_._
+~
+-They _provide _it _with _an _evocalization_._
+~
+ </ub>
 ~
  They _do _so _by _unrolling _the _surface _of _the _image _into _lines_,_ _by _unwinding _the _tissue _of _the _image _into _the _threads _of _a _text_,_ 
 -the _vocabulary _of _an _utterance_,_ 
@@ -202,7 +220,7 @@ index 097501a..efd86d8 100644
 +text
  _,_ _even _a _very _abstract _one_,_ 
 -also 
- _means_,_ _in _the _last _analysis_,_ _an _image_._
-~
- <sb/>
+ _means_,_ _in _the _last _analysis_,_ _an _image_.
+-<sb/>
+ _
 ~
