@@ -5,14 +5,13 @@
 Text preparation workflow goes like this:
 
 1. Plain text a & b files (which may have some inline html) are prepared from a word-processed essay (in this case).
-2. The texts are pre-processed (I do this in BBEdit but this could quite easily be scripted or incorporated into webapp preprocessing, down the line) so that it is marked up with break-marking tags which target the results we want from a form of git's word-diff command. I run the following replace-all greps on the plain text files:
-	* `([\S]+\s) -> \1_`
-	* `([“‘”’\;,:\)\(\?\.\!]) -> _\1_` (there's surely a better formulation)
-3. I then _manually_ add optional `<cb/>, <tb/>, <pb/>` and, mandatory for multi-screen/section pieces, `<sb/>` tags.
+2. The texts are pre-processed (I do this in BBEdit but this could quite easily be scripted or incorporated into webapp preprocessing, down the line) so that it is marked up with break-marking tags which target the results we want from a form of git's word-diff command. First, we run a replace-all grep that makes punctuation matchable:
+	* `([“‘”’\;,:\)\(\?\.\!-]) -> _\1_` (there's surely a better formulation)
+3. Then we _manually_ add optional `<cb/>, <tb/>, <pb/>` and, mandatory for multi-screen/section pieces, `<sb/>` tags.
 4. Finally, I _manually_ mark any sequences that cannot be automatically parsed into corresponding **units** with `<ub></ub>` tag pairs.
-5. The marked up texts are now in a\_file.text and b\_file.text, so we run this command on them (see below for sample output).
+5. The marked up texts are now in a\_file.text and b\_file.text, so we run this command on them (see below for sample output). Note that quotation marks around the regex are needed and it is a *space* charcter after the caret.
 	```
-	git diff --no-index --word-diff-regex=[^_]+ --word-diff=porcelain a_file.txt b_file.txt > ab_worddiff.txt
+	git diff --no-index --word-diff-regex="[^ _]+" --word-diff=porcelain a_file.txt b_file.txt > ab_worddiff.txt
 	```
 6. The a and b files can now be laid out in spans by parsing this ab\_worddiff.txt output in the webapp.
 	
@@ -39,99 +38,102 @@ If no units are marked explicitly, then units are defined by <tb/> tags.
 
 **git word-diff using "_" delimiter:**
 
-`git diff --no-index --word-diff-regex=[^_]+ --word-diff=porcelain a_file.txt b_file.txt > ab_worddiff.txt`
+`git diff --no-index --word-diff-regex="[^ _]+" --word-diff=porcelain a_file.txt b_file.txt > ab_worddiff.txt`
 
 **Output from run on page 1 for parsing:**
 
 ```
- 1 diff --git a/a_file.txt b/b_file.txt
- 2 index a6e7ea2..af02400 100644
- 3 --- a/a_file.txt
- 4 +++ b/b_file.txt
- 5 @@ -1,10 +1,8 @@
- 6  This _
- 7 -“_writing _through_”_ _of _Vilém _Flusser_’_s __‘_The _Future _of _Writing,_’_ _reconfiguring _it _so _as _to _become _John _Cayley_’_s __‘_The _Future _of _Language,_’_ 
- 8 +essay 
- 9  _will _not _consider _
-10 +the 
-11  _problems _concerning 
-12 -any _possible _future _for 
-13  _the _
-14 -teaching _or _philosophizing 
-15 +future 
-16  _of _
-17 -an 
-18 +teaching _the 
-19  _art _of _
-20 -language 
-21 +writing 
-22  _in _the _face _of _the _growing _importance _of _non_
-23 --_ _or _anti_-_linguistic 
-24 +literate 
-25  _messages _in _our _surroundings, _although _those _problems _
-26 -have _already 
-27 +will 
-28  _become _
-29 -significant 
-30 +ever _more _important _both 
-31  _in _the _so_-_called _developed _
-32 -countries.
-33 +countries _and _in _societies _where _illiteracy _is _still _widespread.
-34 ~
-35  _<sb/>
-36 ~
-37  _Instead, _it _proposes _to _consider _a _tendency _that _underlies _those _problems: _namely, _the _tendency _
-38 -to _deny _or _distrust _the _fundamental _linearity _of _language _(as _perceptible _phenomenon) 
-39 +away _from _linear _codes _such _as _writing 
-40  _and _toward _
-41 -multi
-42 +two
-43  _-_dimensional _codes _such _as _photographs, _films, 
-44 -TV, _screen_-_based _graphic _design _in _the _service _of _social 
-45  _and _
-46 -socialized _media, _and, _generally, 
-47 +TV, 
-48  _a _
-49 -conception _of _art _and _aesthetics 
-50 +tendency 
-51  _that 
-52 -is _dominated _by _visuality, _by _so_-_called __“_fine_”_ _as __“_visual_”_ _or __“_plastic_”_ _art _even _as _and _when _this _world _of _art _embraces _the _conceptualism _or __“_post_-_medium _condition_”_ _which _could, _in _principle _if _not _in _practice, _be _extended _to _the _arts _of _language.
-53 ~
-54 -This _distrust _and _denial 
-55  _may _be _observed 
-56 -everywhere 
-57  _if _one _glances _even _superficially _at _the _codified _world _that _surrounds _us.
-58 -Literature _is _$50bn _behind _art.
-59 ~
-60 -The _MoMAs _in _every _province _and _metropolis _are _stuffed _to _their _gills _with _hipsters, _gleeful _families _and _young __“_artists_”_ _while _fewer _and _fewer _deserted _book _malls _provide _desultory _subterranean _spaces _for _retiree _reading _groups.
-61 ~
-62  _<sb/>
-63 ~
-64  _The _
-65 -“_future_”_ 
-66 +future 
-67  _of _
-68 -language, _or _rather, 
-69 +writing, 
-70  _of _
-71 -those _gestures 
-72 +that _gesture 
-73  _which _
-74 -align 
-75 +aligns 
-76  _symbols _to _produce _
-77 -our _shared, _collective, _readable _utterances, 
-78 +texts, 
-79  _must _be _seen _against _the _background _of _
-80 -a _long_-_standing _tendency _to _distrust _their _alignment.
-81 +that _tendency.
-82 ~
-83  _<sb/>
-84 ~
-85  _<pb/>
-86 ~
-87  _
-88 ~
+diff --git a/a_file.txt b/b_file.txt
+index fad65cb..86cf44b 100644
+--- a/a_file.txt
++++ b/b_file.txt
+@@ -1,41 +1,27 @@
+ This 
+-“_writing through_”_ of Vilém Flusser_’_s _‘_The Future of Writing_,__’_ reconfiguring it so as to become John Cayley_’_s _‘_The Future of Language_,__’
++essay
+  will not consider 
++the
+  problems concerning
+-any possible future for
+  the 
+-teaching or philosophizing
++future
+  of 
+-an
++teaching the
+  art of 
+-language
++writing
+  in the face of the growing importance of 
+-non_-_ or anti_-_linguistic
++nonliterate
+  messages in our surroundings_,_ although those problems 
+-have already
++will
+  become 
+-significant
++ever more important both
+  in the so_-_called developed countries 
++and in societies where illiteracy is still widespread
+ _._
+~
+ <ub>
+~
+ Instead_,_ it proposes to consider a tendency that underlies those problems_:_ namely_,_ the tendency 
+-to deny or distrust the fundamental linearity of language _(
++away from linear codes such
+  as 
+-perceptible phenomenon_)
++writing
+  and toward 
+-multi
++two
+ _-_dimensional codes such as photographs_,_ films_,
+-TV_,_ screen_-_based graphic design in the service of social and socialized media_,
+ _ and 
+-,_ generally
++TV
+ _,_ a 
+-conception of art and aesthetics
++tendency
+  that
+-is dominated by visuality_,_ by so_-_called _“_fine_”_ as _“_visual_”_ or _“_plastic_”_ art even as and when this world of art embraces the conceptualism or _“_post_-_medium condition_”_ which could_,_ in principle if not in practice_,_ be extended to the arts of language_._
+~
+-This distrust and denial
+  may be observed
+-everywhere
+  if one glances even superficially at the codified world that surrounds us_.
+-Literature is $50bn behind art_._
+~
+-The MoMAs in every province and metropolis are stuffed to their gills with hipsters_,_ gleeful families and young _“_artists_”_ while fewer and fewer deserted book malls provide desultory subterranean spaces for retiree reading groups_.
+ _
+~
+ </ub>
+~
+ The
+-“
+  future
+-”
+  of 
+-language_,_ or rather
++writing
+ _,_ of 
+-those gestures
++that gesture
+  which 
+-align
++aligns
+  symbols to produce 
+-our shared_,_ collective_,_ readable utterances
++texts
+ _,_ must be seen against the background of 
+-a long_-_standing
++that
+  tendency
+-to distrust their alignment
+ _._
+~
+ <sb/>
 ```
 
 <br>

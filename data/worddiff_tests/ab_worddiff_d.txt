@@ -1,35 +1,34 @@
 diff --git a/a_file_d.txt b/b_file_d.txt
-index 9a8a3c8..04b82a9 100644
+index f0c9030..9ec0aab 100644
 --- a/a_file_d.txt
 +++ b/b_file_d.txt
 @@ -1 +1 @@
- This _
--“writing through” of Vilém Flusser’s ‘The Future of Writing,’ reconfiguring it so as to become John Cayley’s ‘The Future of Language,’ 
-+essay 
- _will not consider _
-+the 
- _problems concerning _
--any possible 
-+the 
- _future _
--for the 
-+of 
- _teaching _
--or philosophizing of an 
-+the 
- _art of _
--language 
-+writing 
- _in the face of the growing importance of non_
--- or anti-linguistic 
-+literate 
- _messages in our surroundings, although those problems _
--have already 
-+will 
- _become _
--significant 
-+ever more important both 
- _in the so-called developed countries_
--.
-+ and in societies where illiteracy is still widespread.
+ This 
+-“_writing through_”_ of Vilém Flusser_’_s _‘_The Future of Writing_,__’_ reconfiguring it so as to become John Cayley_’_s _‘_The Future of Language_,__’
++essay
+  will not consider 
++the
+  problems concerning
+-any possible future for
+  the 
+-teaching or philosophizing
++future
+  of 
+-an
++teaching the
+  art of 
+-language
++writing
+  in the face of the growing importance of 
+-non_-_ or anti_-_linguistic
++nonliterate
+  messages in our surroundings_,_ although those problems 
+-have already
++will
+  become 
+-significant
++ever more important both
+  in the so_-_called developed countries 
++and in societies where illiteracy is still widespread
+ _._
 ~
