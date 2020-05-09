@@ -5,14 +5,16 @@
 Text preparation workflow goes like this:
 
 1. Plain text a & b files (which may have some inline html) are prepared from a word-processed essay (in this case).
-2. The texts are pre-processed (I do this in BBEdit but this could quite easily be scripted or incorporated into webapp preprocessing, down the line) so that it is marked up with break-marking tags which target the results we want from a form of git's word-diff command. First, we run a replace-all grep that makes punctuation matchable:
-	* `([“‘”’\;,:\)\(\?\.\!-]) -> _\1_` (there's surely a better formulation)
-3. Then we _manually_ add optional `<cb/>, <tb/>, <pb/>` and, mandatory for multi-screen/section pieces, `<sb/>` tags.
-4. Finally, I _manually_ mark any sequences that cannot be automatically parsed into corresponding **units** with `<ub></ub>` tag pairs.
-5. The marked up texts are now in a\_file.text and b\_file.text, so we run this command on them (see below for sample output). Note that quotation marks around the regex are needed and it is a *space* charcter after the caret.
+2. We _manually_ add optional `<cb/>, <tb/>, <pb/>` and, mandatory for multi-screen/section pieces, `<sb/>` tags.
+3. Finally, I _manually_ mark any sequences that cannot be automatically parsed into corresponding **units** with `<ub></ub>` tag pairs.
+4. The marked up texts are now in a\_file.text and b\_file.text, so we run this command on them (see below for sample output). Note that quotation marks around the regex are needed and it is a *space* charcter after the caret.
 	```
-	git diff --no-index --word-diff-regex="[^ _]+" --word-diff=porcelain a_file.txt b_file.txt > ab_worddiff.txt
+	git diff --no-index --word-diff-regex="[^ ]+" --word-diff=porcelain a_file.txt b_file.txt > ab_worddiff.txt
 	```
+5. The ab\_worddiff.txt needs a little more preparation:
+	1. Lines beginning with two spaces only need one: `"^  "` &rarr; `" "`
+	2. All lines should end with a space: `"(\S)$"` &rarr; `"\1 "`
+	3. ... except lines that end in tags: `"> $"` &rarr; `">"`
 6. The a and b files can now be laid out in spans by parsing this ab\_worddiff.txt output in the webapp.
 	
 

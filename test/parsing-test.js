@@ -1,6 +1,6 @@
 // Definitions
-const CLAUSE_BREAKS = ["_,_", "_;_", "_:_", "</cb>"];
-const THOUGHT_BREAKS = ["_._", "_?_", "_!_", "</tb>"]; // Done
+const CLAUSE_BREAKS = [", ", "; ", ": ", "</cb> "];
+const THOUGHT_BREAKS = [".", "?", "!", "</tb>"]; // Done
 const PARAGRAPH_BREAK = "<pb/>"; // Done
 const SECTION_BREAK = "<sb/>"; // Done
 const UNIT_PAIRS = ["<ub>","</ub>"];// Done
@@ -49,11 +49,11 @@ function readTextFile(file, callback)
 
 // Parsing Section
 function removeGitDiffSyntags(content) {
-  return content.replace(/(^-|^\+|^[ \t]|_)/g,"");
+  return content.replace(/(^-|^\+|^[ \t])/g,""); // not needed: |_
 }
 
 function removeBreaks(content) {
-  return content.replace(/(<ub>|<\/ub>|<sb\/>|<pb\/>)/g,"");
+  return content.replace(/(<ub> |<\/ub> |<sb\/> |<pb\/> )/g,"");
 }
 
 function removeEmptyElements(selector) {
@@ -106,7 +106,7 @@ function parseText(data) {
     content = removeGitDiffSyntags(content);
     content = removeBreaks(content);
     // fix space after & before punctuatiion
-    content = content.replace(/([,;:.\?!])$/g,"$1 ");
+    // NOT NEEDED content = content.replace(/([,;:.\?!])$/g,"$1 "); 
     // content = content.replace(/^ ([,;:.\?!])/g,"$1");
     newSpan.innerText = content;
 
