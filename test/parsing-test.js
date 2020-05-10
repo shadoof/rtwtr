@@ -88,6 +88,10 @@ function parseText(data) {
   const lines = data.split("\n");
   // skip the top section
   lines.splice(0, 5);
+  // Cayley's preprocessing
+  for (var i = 0; i < lines.length; i++) {
+    lines[i] = lines[i].replace(/^  /," ").replace(/(\S)$/,"$1 ").replace(/> $/,">");
+  }  
   let contentToBeAppend = document.createElement('div');
   $(contentToBeAppend).attr("id", "content");
 
