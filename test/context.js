@@ -113,6 +113,7 @@ class contextReport {
     this[section][t].spans = getChildren(parent.find('span:not(.tb)'), t + idx);
     this[section][t].content = getAllContent(this[section][t].spans);
     this[section][t].length = calculateTextLength(this[section][t].content); // tmp
+  //  this[section][t].length = calculateTotalTextLength(this[section][t].spans);
     //console.log(section, t, this[section][t].spans);
   }
   getIdxFromId(id){
@@ -172,7 +173,7 @@ function calculateTextLength(text) {
 function calculateTotalTextLength(span) {
   let total = 0;
   // TODO: need to replace simple text length calculation
-  // with a better version one that includes text wrap
+  // with a better one that includes text wrap
   return total;
 }
 
