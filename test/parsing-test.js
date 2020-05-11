@@ -12,6 +12,7 @@ const TEXT_SIZE = 20, LINE_HEIGHT = 23;
 // Layout
 const CONTENT_WIDTH = 800, MARGIN_LEFT = 200;
 
+let myTimeout;
 // Tools
 
 function endsWithAny(str, array){
@@ -207,15 +208,22 @@ function parseText(data) {
 
     anime(bspan, $(this));
 
-    setTimeout(function(){
-      $('#overlay').animate({opacity:1}, {duration:1000,})
-    },1500)
+    myTimeout = setTimeout(function(){
+      $('#overlay').animate({opacity:1}, {
+      duration:10, // TODO: need to solve overlay issue if we want a duration for the css animation
+      complete:function() {
+        //console.log("complete")
+      }})
+    },1000)
 
   })
 
   $('.adiv > p > span').mouseleave(function() {
     $('.adiv span').removeClass("anchor");
+    // clear settimeout
+    clearTimeout(myTimeout);
     $('#overlay').css("opacity","0");
+    console.log("mouseout")
   })
 
 
@@ -270,7 +278,9 @@ function anime(bspan, aspan) {
   // !! Jquery offset() is different from native javascript offset values
   // clear overlay
   $('#overlay').css("opacity","0");
+  console.log("clear")
   $('#overlay span').text("");
+  clearTimeout(myTimeout);
 
   let context = basicAnalyze(aspan, bspan);
   if (context.sharedSpans == undefined) {

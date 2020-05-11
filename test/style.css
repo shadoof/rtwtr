@@ -73,9 +73,9 @@ span.anchor {
   display: inline-block;
 } */
 .adiv p > span.tb:hover, .adiv p > span.unit:hover{
-  opacity:0.2;
-  transition:opacity, 1s;
-  transition-delay: 1s;
+  opacity:0.1;
+  transition:opacity, 0.5s;
+  transition-delay: .5s;
 }
 
 .adiv p > span:hover .shared{
