@@ -1,6 +1,6 @@
 # rtwtr : reading through writing through reading ...
 
-# Notes: 
+# Notes:
 
 Text preparation workflow goes like this:
 
@@ -16,7 +16,7 @@ Text preparation workflow goes like this:
 	2. All lines should end with a space: `"(\S)$"` &rarr; `"\1 "`
 	3. ... except lines that end in tags: `"> $"` &rarr; `">"`
 6. The a and b files can now be laid out in spans by parsing this ab\_worddiff.txt output in the webapp.
-	
+
 
 #break-marking tags
 
@@ -50,52 +50,52 @@ index fad65cb..86cf44b 100644
 --- a/a_file.txt
 +++ b/b_file.txt
 @@ -1,41 +1,27 @@
- This 
+ This
 -“_writing through_”_ of Vilém Flusser_’_s _‘_The Future of Writing_,__’_ reconfiguring it so as to become John Cayley_’_s _‘_The Future of Language_,__’
 +essay
-  will not consider 
+  will not consider
 +the
   problems concerning
 -any possible future for
-  the 
+  the
 -teaching or philosophizing
 +future
-  of 
+  of
 -an
 +teaching the
-  art of 
+  art of
 -language
 +writing
-  in the face of the growing importance of 
+  in the face of the growing importance of
 -non_-_ or anti_-_linguistic
 +nonliterate
-  messages in our surroundings_,_ although those problems 
+  messages in our surroundings_,_ although those problems
 -have already
 +will
-  become 
+  become
 -significant
 +ever more important both
-  in the so_-_called developed countries 
+  in the so_-_called developed countries
 +and in societies where illiteracy is still widespread
  _._
 ~
  <ub>
 ~
- Instead_,_ it proposes to consider a tendency that underlies those problems_:_ namely_,_ the tendency 
+ Instead_,_ it proposes to consider a tendency that underlies those problems_:_ namely_,_ the tendency
 -to deny or distrust the fundamental linearity of language _(
 +away from linear codes such
-  as 
+  as
 -perceptible phenomenon_)
 +writing
-  and toward 
+  and toward
 -multi
 +two
  _-_dimensional codes such as photographs_,_ films_,
 -TV_,_ screen_-_based graphic design in the service of social and socialized media_,
- _ and 
+ _ and
 -,_ generally
 +TV
- _,_ a 
+ _,_ a
 -conception of art and aesthetics
 +tendency
   that
@@ -116,19 +116,19 @@ index fad65cb..86cf44b 100644
 -“
   future
 -”
-  of 
+  of
 -language_,_ or rather
 +writing
- _,_ of 
+ _,_ of
 -those gestures
 +that gesture
-  which 
+  which
 -align
 +aligns
-  symbols to produce 
+  symbols to produce
 -our shared_,_ collective_,_ readable utterances
 +texts
- _,_ must be seen against the background of 
+ _,_ must be seen against the background of
 -a long_-_standing
 +that
   tendency

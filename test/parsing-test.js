@@ -8,10 +8,11 @@ const UNIT_PAIRS = ["<ub>","</ub>"];// Done
 const DEFAULT_PATH = ".tb:last";
 
 // Typography
-const TEXT_SIZE = 22, LINE_HEIGHT = 30;
+const TEXT_SIZE = 20, LINE_HEIGHT = 23;
 // Layout
 const CONTENT_WIDTH = 800, MARGIN_LEFT = 200;
 
+let myTimeout;
 // Tools
 
 function endsWithAny(str, array){
@@ -49,7 +50,7 @@ function readTextFile(file, callback)
 
 // Parsing Section
 function removeGitDiffSyntags(content) {
-  return content.replace(/(^-|^\+|^[ \t])/g,""); // not needed: |_
+  return content.replace(/(^-|^\+|^[ \t]|_)/g,""); // not needed: |_
 }
 
 function removeBreaks(content) {
@@ -91,7 +92,7 @@ function parseText(data) {
   // Cayley's preprocessing
   for (var i = 0; i < lines.length; i++) {
     lines[i] = lines[i].replace(/^  /," ").replace(/(\S)$/,"$1 ").replace(/> $/,">");
-  }  
+  }
   let contentToBeAppend = document.createElement('div');
   $(contentToBeAppend).attr("id", "content");
 
@@ -110,7 +111,7 @@ function parseText(data) {
     content = removeGitDiffSyntags(content);
     content = removeBreaks(content);
     // fix space after & before punctuatiion
-    // NOT NEEDED content = content.replace(/([,;:.\?!])$/g,"$1 "); 
+    // NOT NEEDED content = content.replace(/([,;:.\?!])$/g,"$1 ");
     // content = content.replace(/^ ([,;:.\?!])/g,"$1");
     newSpan.innerText = content;
 
@@ -130,8 +131,11 @@ function parseText(data) {
           match = false;
           if (line == SECTION_BREAK) {
             // Handle section breaks
-            currentPage ++;
-            createNewPage(currentPage, contentToBeAppend);
+            if( i != lines.length -1) {
+              // ignore last section break
+              currentPage ++;
+              createNewPage(currentPage, contentToBeAppend);
+            }
           } else if (line == PARAGRAPH_BREAK) {
             // Handle paragraph breaks
             currentAdiv.append("<p></p>");
@@ -196,22 +200,30 @@ function parseText(data) {
 
   // user interaction
   $('.adiv > p > span').mouseenter(function() {
+
     const spanIdx = getCurrentIndexInDirectParent($(this));
     const pIdx = getCurrentIndexInDirectParent($(this).parent());
     const currentPage = $(this).parent().parent().parent();
-
     const bspan = currentPage.find('.bdiv').children().eq(pIdx).children().eq(spanIdx);
-    $('.bdiv p > span').css("opacity","0");
-    anime(bspan, $(this));
-    $('#overlay').css("opacity","1");
 
-  //  bspan.css("opacity","0.8");
+    anime(bspan, $(this));
+
+    myTimeout = setTimeout(function(){
+      $('#overlay').animate({opacity:1}, {
+      duration:10, // TODO: need to solve overlay issue if we want a duration for the css animation
+      complete:function() {
+        //console.log("complete")
+      }})
+    },1000)
 
   })
 
   $('.adiv > p > span').mouseleave(function() {
-    $('.bdiv p > span').css("opacity","0");
+    $('.adiv span').removeClass("anchor");
+    // clear settimeout
+    clearTimeout(myTimeout);
     $('#overlay').css("opacity","0");
+    console.log("mouseout")
   })
 
 
@@ -264,6 +276,11 @@ function basicAnalyze(aspan, bspan, mousePosition) {
 
 function anime(bspan, aspan) {
   // !! Jquery offset() is different from native javascript offset values
+  // clear overlay
+  $('#overlay').css("opacity","0");
+  console.log("clear")
+  $('#overlay span').text("");
+  clearTimeout(myTimeout);
 
   let context = basicAnalyze(aspan, bspan);
   if (context.sharedSpans == undefined) {
@@ -274,26 +291,61 @@ function anime(bspan, aspan) {
   $(context.anchor).addClass("anchor");
 
   const hoverAnchor = document.getElementById("anchor");
-
-  // TODO: space issue
+  $('#beforeAnchorA').text(context.before.a.content); // fake before a to get the right spacing
   $('#anchor').text(context.anchor.content);
-  $('#beforeAnchor').text(context.before.b.content);
   $('#afterAnchor').text(context.after.b.content);
 
-  const indent = getIndent(context.before.indent, CONTENT_WIDTH);
-  // ! 4px gap between p and span
-  document.getElementById("overlay").style.top = (aspan[0].offsetTop-4 + indent.lines*LINE_HEIGHT) + "px";
-  document.getElementById("overlay").style.textIndent = (indent.left + context.anchor.offsetLeft) + "px";
+  const overlay = document.getElementById("overlay");
+  overlay.style.top = (aspan[0].offsetTop) + "px";
+  overlay.style.textIndent = (aspan[0].offsetLeft) + "px";
+
+  layoutBeforeB(context.before.b.content, hoverAnchor);
 
 }
 
-function getIndent(total, unit) {
-  let lines = 0, left = 0;
-  while (total > unit) {
-    total -= unit;
+function layoutBeforeB(content, anchor) {
+  const words = content.split(" ");
+  words.reverse();
+  let cursor = {
+    x:$(anchor).offset().left,
+    y:$(anchor).offset().top
+  }
+  // clear previous layout
+  $('#beforeAnchorB').empty();
+
+  for (var i = 0; i < words.length; i++) {
+     const word = words[i];
+     if (word == "") continue; // skip empty ones
+     const newSpan = document.createElement('span');
+     newSpan.innerText = word + " ";
+     const textL = calculateTextLength(newSpan.innerText)
+     cursor.x -= textL;
+     if (cursor.x < MARGIN_LEFT) {
+       cursor.y -= LINE_HEIGHT
+       cursor.x += CONTENT_WIDTH
+       // right align
+       if (cursor.x + textL > CONTENT_WIDTH + MARGIN_LEFT) {
+         cursor.x = CONTENT_WIDTH + MARGIN_LEFT - textL;
+       }
+
+     }
+     //console.log(newSpan.innerText, cursor);
+     $('#beforeAnchorB').append(newSpan);
+     $(newSpan).offset({
+       left: cursor.x,
+       top: cursor.y
+     })
+
+  }
+
+}
+
+function getIndent(total, unit, anchor) {
+  let lines = 0, left = total + anchor.offsetLeft;
+  while (left > unit) {
+    left -= unit;
     lines ++;
   }
-  left = total;
   return {
     lines: lines,
     left:left

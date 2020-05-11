@@ -38,4 +38,3 @@ They provide it with an evocalization.
 </ub>
 They do so by unrolling the surface of the image into lines, by unwinding the tissue of the image into the threads of a text, the vocabulary of an utterance, by rendering “explicit” what was “implicit” within the image.
 It may be shown through text analysis, through reading, that the purpose of such writing, namely, the transcoding of two-dimensional codes into a single dimension, is still there: Every text, every utterance, even a very abstract one, also means, in the last analysis, an image.
-<sb/>

@@ -1,8 +1,8 @@
 diff --git a/a_file.txt b/b_file.txt
-index a2521e9..b35b1e0 100644
+index b7fa63d..b35b1e0 100644
 --- a/a_file.txt
 +++ b/b_file.txt
-@@ -1,41 +1,27 @@
+@@ -1,40 +1,27 @@
  This 
 -“writing through” of Vilém Flusser’s ‘The Future of Writing,’ reconfiguring it so as to become John Cayley’s ‘The Future of Language,’
 +essay
@@ -205,5 +205,4 @@ index a2521e9..b35b1e0 100644
   even a very abstract one,
 -also
   means, in the last analysis, an image.
--<sb/>
 ~
