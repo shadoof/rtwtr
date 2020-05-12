@@ -5,20 +5,20 @@
 Text preparation workflow goes like this:
 
 1. Plain text a & b files (which may have some inline html) are prepared from a word-processed essay (in this case).
-2. We _manually_ add optional `<cb/>, <tb/>, <pb/>` and, mandatory for multi-screen/section pieces, `<sb/>` tags.
-3. Finally, I _manually_ mark any sequences that cannot be automatically parsed into corresponding **units** with `<ub></ub>` tag pairs.
-4. The marked up texts are now in a\_file.text and b\_file.text, so we run this command on them (see below for sample output). Note that quotation marks around the regex are needed and it is a *space* charcter after the caret.
+2. We _manually_ add optional `<cb/>, <tb/>, <pb/>` and, *mandatory* for multi-screen/section pieces, `<sb/>` tags.
+3. Finally, we _manually_ mark any sequences that cannot be automatically parsed into corresponding **units** with `<ub></ub>` tag pairs.
+4. The marked up texts are now in a\_file.text and b\_file.text, so we run this command on them (see below for sample output).
 	```
-	git diff --no-index --word-diff-regex="[^ ]+" --word-diff=porcelain a_file.txt b_file.txt > ab_worddiff.txt
+	git diff --no-index --word-diff=porcelain a_file.txt b_file.txt > ab_worddiff.txt
 	```
-5. The ab\_worddiff.txt needs a little more preparation:
+5. The ab\_worddiff.txt needs a little more preparation (this is now down in the parser):
 	1. Lines beginning with two spaces only need one: `"^  "` &rarr; `" "`
 	2. All lines should end with a space: `"(\S)$"` &rarr; `"\1 "`
 	3. ... except lines that end in tags: `"> $"` &rarr; `">"`
 6. The a and b files can now be laid out in spans by parsing this ab\_worddiff.txt output in the webapp.
 
 
-#break-marking tags
+# break-marking tags
 
 **some definitions:**
 
@@ -26,21 +26,21 @@ Text preparation workflow goes like this:
 
 If no units are marked explicitly, then units are defined by <tb/> tags.
 
-`_,_ or _;_ or _:_ and/or <cb/> = "comma" or "clause" break.` Allows for this to be matched by word-diff and thus to rebase the forward looking diff algorithm. This is removed on rendering with no effect on html. (Anything either side of this tag is in the same `<p></p>`.) Used 'inline' with "\_" either side: "\_<cb/>\_"
+`, or ; or : and/or "<cb/> " = "comma" or "clause" break.` Allows for this to be matched by word-diff and thus to rebase the forward looking diff algorithm. This is removed on rendering with no effect on html. (Anything either side of this tag is in the same `<p></p>`.)
 
-`_._ or _?_ or _!_ or <tb/> = "thought" break.` As above. It tag, then on its own line. Used for conventional sentences. By default, defines **units** for sections which have an equal number of sentences/thoughts.
+`. or ? or ! or <tb/> = "thought" break.` As above. If marked with a tag, then this is on its own line. Used for conventional sentences. By default, defines **units** for sections which have an equal number of sentences/thoughts.
 
 `<pb/> = "paragraph" break.` As above, but on its own line in a source file with no delimiters. Simply renders a new `<p></p>` (or equivalent) in the html.
 
-`<ub></ub> A tag pair that overrides unit definition` That is, the visualization "units" for a screen or section. Needs to be a tag pair so as to be able to enclose (exceptionally) more than one <cb/> or <pb/> and or </tb> and their shared spans. Currently coded as `_<ub>_` and `_</ub>_`.
+`<ub></ub> A tag pair that overrides unit definition` That is, the visualization "units" for a screen or section. Needs to be a tag pair so as to be able to enclose (exceptionally) more than one <cb/> or <pb/> and or </tb> and their shared spans.
 
 `<sb/> = "screen" or "section" break.` On its own line in the source file. Marks generation and separate rendering of a new screen.
 
-#rtwtr git word diff
+# rtwtr git word diff
 
 **git word-diff using "_" delimiter:**
 
-`git diff --no-index --word-diff-regex="[^ _]+" --word-diff=porcelain a_file.txt b_file.txt > ab_worddiff.txt`
+`git diff --no-index --word-diff=porcelain a_file.txt b_file.txt > ab_worddiff.txt`
 
 **Output from run on page 1 for parsing:**
 
@@ -137,15 +137,3 @@ index fad65cb..86cf44b 100644
 ~
  <sb/>
 ```
-
-<br>
-
-To Install:
-
-$ npm install
-
-<br>
-
-To Run:
-
-open index.html in a browser (using a local server is advisable)
