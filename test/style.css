@@ -3,6 +3,10 @@ body {
   color:#444;
   font: 20px/23px Georgia, "Times New Roman", Times, serif;
   cursor: default;
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none;
 }
 span {
   white-space:pre-line;
@@ -72,16 +76,22 @@ span.anchor {
 /* p > span {
   display: inline-block;
 } */
-.adiv p > span.tb:hover, .adiv p > span.unit:hover{
+/* .adiv p > span.tb:hover, .adiv p > span.unit:hover{
   opacity:0.1;
   transition:opacity, 0.5s;
   transition-delay: .5s;
+} */
+.active .shared{
+  cursor: pointer;
 }
-
 .adiv p > span:hover .shared{
   color:orange;
+  transition:color, 0.5s;
 }
-
+.adiv p > span.hidden{
+  opacity:0.05;
+  transition:opacity, 0.5s;
+}
 .adiv{
   z-index: 2;
 }
