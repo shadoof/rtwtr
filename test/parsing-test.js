@@ -12,7 +12,7 @@ const TEXT_SIZE = 20, LINE_HEIGHT = 23;
 // Layout
 const CONTENT_WIDTH = 800, MARGIN_LEFT = 200;
 
-let myTimeout, phaseLive=false;
+let myTimeouts = [], phaseLive=false;
 // Tools
 
 function endsWithAny(str, array){
@@ -190,7 +190,8 @@ function parseText(data) {
     const spanOnHover = $(this);
     console.log("phase1")
     spanOnHover.addClass("active");
-    setTimeout(function(){phase3(spanOnHover)}, 3000, spanOnHover);
+    const phase1Timeout = setTimeout(function(){phase3(spanOnHover)}, 3000, spanOnHover);
+    myTimeouts.push(phase1Timeout);
 
   });
 
@@ -206,7 +207,7 @@ function parseText(data) {
 
     $('.adiv span').removeClass("anchor");
     // clear settimeout
-    clearTimeout(myTimeout);
+    clearTimeouts(myTimeouts);
     $('#overlay').css("opacity","0");
 
   })
@@ -230,6 +231,11 @@ function getMatchingBFromA(aspan) {
   return bspan;
 }
 
+function clearTimeouts(timeouts) {
+  for (var i = 0; i < timeouts.length; i++) {
+    clearTimeout(timeouts[i]);
+  }
+}
 function phase2(target) {
   if (phaseLive) return;
   let aspan = target.parent();
@@ -278,7 +284,7 @@ function animate(bspan, aspan, predefinedAnchor) {
   console.log("clear overlay")
   $('#overlay').css("opacity","0");
   $('#overlay span').text("");
-  clearTimeout(myTimeout);
+  clearTimeouts(myTimeouts);
 
   let context = basicAnalyze(aspan, bspan, predefinedAnchor);
   if (context.sharedSpans == undefined) {
@@ -301,23 +307,22 @@ function animate(bspan, aspan, predefinedAnchor) {
   layoutBeforeB(context.before.b.content, hoverAnchor);
 
   // display
-  myTimeout = setTimeout(function(){
+  const myTimeout = setTimeout(function(){
     $('#overlay').animate({opacity:1}, {
     duration:10, // TODO: need to solve overlay issue if we want a duration for the css animation
     complete:function() {
       //console.log("complete")
     }})
   }, 1000)
+  myTimeouts.push(myTimeout);
 
 }
 
 function layoutBeforeB(content, anchor) {
   const words = content.split(" ");
   words.reverse();
-  let cursor = {
-    x:$(anchor).offset().left,
-    y:$(anchor).offset().top
-  }
+  let cursor = handleMultiLineAnchor(anchor);
+  console.log(cursor);
   // clear previous layout
   $('#beforeAnchorB').empty();
 
@@ -329,6 +334,7 @@ function layoutBeforeB(content, anchor) {
      const textL = calculateTextLength(newSpan.innerText)
      cursor.x -= textL;
      if (cursor.x < MARGIN_LEFT) {
+       console.log("new line")
        cursor.y -= LINE_HEIGHT
        cursor.x += CONTENT_WIDTH
        // right align
@@ -344,6 +350,32 @@ function layoutBeforeB(content, anchor) {
        top: cursor.y
      })
 
+  }
+
+}
+
+function handleMultiLineAnchor(anchor) {
+  if ($(anchor).height() > LINE_HEIGHT) {
+    // multi line anchor, split to spans;
+    const anchorWords = anchor.innerText.split(" ");
+    $(anchor).empty();
+    for (var i = 0; i < anchorWords.length; i++) {
+      const word = anchorWords[i];
+      if (word == "") continue; // skip empty ones
+      const newSpan = document.createElement('span');
+      newSpan.innerText = word + " ";
+      anchor.append(newSpan);
+    }
+    const firstWord = anchor.children[0];
+    return {
+      x:$(firstWord).offset().left,
+      y:$(firstWord).offset().top
+    }
+  } else {
+    return {
+        x:$(anchor).offset().left,
+        y:$(anchor).offset().top
+      }
   }
 
 }

@@ -111,6 +111,9 @@ span.anchor {
 #beforeAnchorA {
   opacity: 0;
 }
+#beforeAnchorB span{
+  white-space: nowrap;
+}
 #overlay {
   opacity:0;
 }
