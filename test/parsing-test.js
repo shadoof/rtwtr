@@ -12,7 +12,7 @@ const TEXT_SIZE = 20, LINE_HEIGHT = 23;
 // Layout
 const CONTENT_WIDTH = 800, MARGIN_LEFT = 200;
 
-let myTimeout;
+let myTimeouts = [], phaseLive=false;
 // Tools
 
 function endsWithAny(str, array){
@@ -70,19 +70,6 @@ function getCurrentIndexInDirectParent(dom) {
     if (children[i] == dom[0]) return i;
   }
   return false;
-}
-
-function linguisticParsing(content){
-  // might not need this
-  const elements = content.split(/\s+/);
-  let parsedContent = "";
-  for (var i = 0; i < elements.length; i++) {
-    // if (elements[i] = ) {
-      parsedContent += "<span class='min'>" + elements[i] + "</span>"
-    // }
-  }
-  //console.log(parsedContent);
-  return content;
 }
 
 function parseText(data) {
@@ -199,35 +186,34 @@ function parseText(data) {
   $('#page1').addClass('current')
 
   // user interaction
-  $('.adiv > p > span').mouseenter(function() {
+  $('.adiv > p > span:not(.hidden)').mouseenter(function(){
+    const spanOnHover = $(this);
+    console.log("phase1")
+    spanOnHover.addClass("active");
+    const phase1Timeout = setTimeout(function(){phase3(spanOnHover)}, 3000, spanOnHover);
+    myTimeouts.push(phase1Timeout);
 
-    const spanIdx = getCurrentIndexInDirectParent($(this));
-    const pIdx = getCurrentIndexInDirectParent($(this).parent());
-    const currentPage = $(this).parent().parent().parent();
-    const bspan = currentPage.find('.bdiv').children().eq(pIdx).children().eq(spanIdx);
+  });
 
-    anime(bspan, $(this));
+  $(document).on('click','.adiv .active .shared',function(e){
+    phase2($(e.target));
+  });
 
-    myTimeout = setTimeout(function(){
-      $('#overlay').animate({opacity:1}, {
-      duration:10, // TODO: need to solve overlay issue if we want a duration for the css animation
-      complete:function() {
-        //console.log("complete")
-      }})
-    },1000)
+  $('.adiv > p > span, .adiv').mouseleave(function() {
+    console.log("mouseout")
+    phaseLive = false;
+    $('.adiv > p > span').removeClass("active");
+    $('.adiv > p > span').removeClass("hidden");
 
-  })
-
-  $('.adiv > p > span').mouseleave(function() {
     $('.adiv span').removeClass("anchor");
     // clear settimeout
-    clearTimeout(myTimeout);
+    clearTimeouts(myTimeouts);
     $('#overlay').css("opacity","0");
-    console.log("mouseout")
+
   })
+  // End of User Interaction
 
-
-  // menu
+  // Menu
   $('.menu li').click(function() {
     //console.log(this.innerText)
     $('.page').removeClass('current')
@@ -236,6 +222,40 @@ function parseText(data) {
 
 }
 // End of Parsing Section
+function getMatchingBFromA(aspan) {
+  const spanIdx = getCurrentIndexInDirectParent($(aspan));
+  const pIdx = getCurrentIndexInDirectParent($(aspan).parent());
+  const currentPage = $(aspan).parent().parent().parent();
+  const bspan = currentPage.find('.bdiv').children().eq(pIdx).children().eq(spanIdx);
+
+  return bspan;
+}
+
+function clearTimeouts(timeouts) {
+  for (var i = 0; i < timeouts.length; i++) {
+    clearTimeout(timeouts[i]);
+  }
+}
+function phase2(target) {
+  if (phaseLive) return;
+  let aspan = target.parent();
+  if (!aspan.parent().is("p")) aspan = aspan.parent();
+
+  console.log("phase2", target, target.id);
+  phaseLive = true;
+  $(aspan).addClass("hidden");
+  animate(getMatchingBFromA(aspan), aspan, target)
+}
+
+function phase3(thisDom) {
+  if (phaseLive) return;
+  const bspan = getMatchingBFromA(thisDom);
+
+  console.log("phase3", thisDom)
+  phaseLive = true;
+  $(thisDom).addClass("hidden");
+  animate(bspan, $(thisDom));
+}
 
 // Visualization Section
 function createNewPage(index, wrapper) {
@@ -247,50 +267,35 @@ function createNewPage(index, wrapper) {
 }
 
 
-function basicAnalyze(aspan, bspan, mousePosition) {
+function basicAnalyze(aspan, bspan, predefinedAnchor) {
   const dbug = 0;
-  // if no mouse position is provided, default reference point is the center
+  // TODO: take mousePosition as reference point?
   const ref = {
-    x:mousePosition ? mousePosition.x : aspan.width()/2,
-    y:mousePosition ? mousePosition.y : aspan.height()/2 + aspan[0].offsetTop - TEXT_SIZE
+    x:aspan.width()/2,
+    y:aspan.height()/2 + aspan[0].offsetTop - TEXT_SIZE
   }
-  dbug && console.log("Reference point:", ref);
-  return new contextReport(aspan, bspan, ref);
+  // console.log(predefinedAnchor);
+  return new contextReport(aspan, bspan, ref, predefinedAnchor);
 }
 
-// function getAnchorIndex(aspan, bspan) {
-//   const sharedInB = bspan.find('.shared'),
-//         sharedInA = aspan.find('.shared');
-//   if (sharedInB.length == sharedInA.length) {
-//     return parseInt(getAnchorId(aspan,bspan).replace(/[a-zA-Z ]/g,""));
-//     // closest
-//   } else {
-//     console.log("Error: The number of shared span doesn't match", sharedInA.length, sharedInB.length)
-//   }
-//
-// }
-
-
-
-
-
-function anime(bspan, aspan) {
+function animate(bspan, aspan, predefinedAnchor) {
   // !! Jquery offset() is different from native javascript offset values
   // clear overlay
+  console.log("clear overlay")
   $('#overlay').css("opacity","0");
-  console.log("clear")
   $('#overlay span').text("");
-  clearTimeout(myTimeout);
+  clearTimeouts(myTimeouts);
 
-  let context = basicAnalyze(aspan, bspan);
+  let context = basicAnalyze(aspan, bspan, predefinedAnchor);
   if (context.sharedSpans == undefined) {
-    // no shared spans, do nothing
+    console.log("no shared spans, do nothing")
     return;
   }
 
   $(context.anchor).addClass("anchor");
 
   const hoverAnchor = document.getElementById("anchor");
+  // fill the overlay layer
   $('#beforeAnchorA').text(context.before.a.content); // fake before a to get the right spacing
   $('#anchor').text(context.anchor.content);
   $('#afterAnchor').text(context.after.b.content);
@@ -301,15 +306,23 @@ function anime(bspan, aspan) {
 
   layoutBeforeB(context.before.b.content, hoverAnchor);
 
+  // display
+  const myTimeout = setTimeout(function(){
+    $('#overlay').animate({opacity:1}, {
+    duration:10, // TODO: need to solve overlay issue if we want a duration for the css animation
+    complete:function() {
+      //console.log("complete")
+    }})
+  }, 1000)
+  myTimeouts.push(myTimeout);
+
 }
 
 function layoutBeforeB(content, anchor) {
   const words = content.split(" ");
   words.reverse();
-  let cursor = {
-    x:$(anchor).offset().left,
-    y:$(anchor).offset().top
-  }
+  let cursor = handleMultiLineAnchor(anchor);
+  console.log(cursor);
   // clear previous layout
   $('#beforeAnchorB').empty();
 
@@ -321,6 +334,7 @@ function layoutBeforeB(content, anchor) {
      const textL = calculateTextLength(newSpan.innerText)
      cursor.x -= textL;
      if (cursor.x < MARGIN_LEFT) {
+       console.log("new line")
        cursor.y -= LINE_HEIGHT
        cursor.x += CONTENT_WIDTH
        // right align
@@ -336,6 +350,32 @@ function layoutBeforeB(content, anchor) {
        top: cursor.y
      })
 
+  }
+
+}
+
+function handleMultiLineAnchor(anchor) {
+  if ($(anchor).height() > LINE_HEIGHT) {
+    // multi line anchor, split to spans;
+    const anchorWords = anchor.innerText.split(" ");
+    $(anchor).empty();
+    for (var i = 0; i < anchorWords.length; i++) {
+      const word = anchorWords[i];
+      if (word == "") continue; // skip empty ones
+      const newSpan = document.createElement('span');
+      newSpan.innerText = word + " ";
+      anchor.append(newSpan);
+    }
+    const firstWord = anchor.children[0];
+    return {
+      x:$(firstWord).offset().left,
+      y:$(firstWord).offset().top
+    }
+  } else {
+    return {
+        x:$(anchor).offset().left,
+        y:$(anchor).offset().top
+      }
   }
 
 }

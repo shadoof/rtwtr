@@ -7,7 +7,7 @@ const Tester = {
 
 class contextReport {
   // Each contextReport is generated based on a reference point
-  constructor(aspan, bspan, ref) {
+  constructor(aspan, bspan, ref, predefinedAnchor) {
     this.sharedSpans = this.verifySharedSpans(aspan, bspan);
     if (this.sharedSpans == null) return;
 
@@ -22,7 +22,7 @@ class contextReport {
       a:{},
       b:{},
     };
-    this.findAnchor(aspan, bspan);
+    this.findAnchor(aspan, bspan, predefinedAnchor);
   }
   verifySharedSpans(aspan, bspan) {
     const shared_a = aspan.find('.shared');
@@ -39,7 +39,19 @@ class contextReport {
       }
     }
   }
-  findAnchor(aspan, bspan) {
+  findAnchor(aspan, bspan, predefinedAnchor) {
+
+    this.anchor.id = predefinedAnchor ? predefinedAnchor.attr("id") : this.getAnchorFromMinDistanceToRef().id;
+    this.generateFullReport(aspan, bspan, this.anchor.id);
+    const whichSharedSpan = this.whichSS(this.anchor)
+    this.adjustAnchorIfNotFit(whichSharedSpan,aspan, bspan);
+  }
+  whichSS(span){
+    for (var i = 0; i < this.sharedSpans.length; i++) {
+      if (this.sharedSpans[i] == span) return i;
+    }
+  }
+  getAnchorFromMinDistanceToRef() {
     let distances = [];
     for (var i = 0; i < this.sharedSpans.length; i++) {
       const s = this.sharedSpans[i];
@@ -57,17 +69,14 @@ class contextReport {
     let whichSharedSpan = distances.indexOf(minDistance);
     this.dbug && console.log(whichSharedSpan, this.sharedSpans[whichSharedSpan].innerText);
     //console.log(whichSharedSpan, this.sharedSpans[whichSharedSpan],this.sharedSpans);
-    this.anchor.id = this.sharedSpans[whichSharedSpan].id;
-    this.generateFullReport(aspan, bspan, this.anchor.id);
-    console.log(this);
-    this.adjustAnchorIfNotFit(whichSharedSpan,aspan, bspan);
+    return this.sharedSpans[whichSharedSpan]
   }
   adjustAnchorIfNotFit(whichSharedSpan,aspan, bspan) {
     // However, the content of b may not fit into the space
     while (this.before.indent < 0 || this.after.indent < 0) {
       if (this.before.indent < 0 && this.after.indent >= 0) {
         whichSharedSpan ++;
-        console.log(whichSharedSpan);
+        this.dbug && console.log(whichSharedSpan);
         if (whichSharedSpan < this.sharedSpans.length) {
           this.anchor.id = this.sharedSpans[whichSharedSpan].id;
           this.dbug && console.log("adjust +", this.anchor.id)
@@ -168,13 +177,6 @@ function getAllContent(spans) {
 function calculateTextLength(text) {
   Tester.dom.innerText = text + Tester.end;
   return Tester.dom.clientWidth - Tester.trim;
-}
-
-function calculateTotalTextLength(span) {
-  let total = 0;
-  // TODO: need to replace simple text length calculation
-  // with a better one that includes text wrap
-  return total;
 }
 
 function initTester(){
