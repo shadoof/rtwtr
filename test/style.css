@@ -14,6 +14,7 @@ span {
 p {
   margin-top:0px;
 }
+
 #getTextWidth {
    position: absolute;
    visibility: hidden;
@@ -21,6 +22,7 @@ p {
    width: auto;
    white-space: pre; /* Thanks to Herb Caudill comment */
 }
+
 /* Menu Style */
 .menu {
   margin: 20px 0 0 150px;
@@ -37,13 +39,16 @@ p {
   color:red;
 }
 /* End of Menu Style */
+
 .page, .adiv, .bdiv, #overlay{
   width:100%;
 }
-/* #hover span {
+.adiv, .bdiv, #overlay{
   position:absolute;
-  white-space: pre;
-} */
+  top: 0;
+  left: 0;
+  padding:0;
+}
 #content{
   width: 800px;
   position: relative;
@@ -51,14 +56,6 @@ p {
 	margin-right: 200px;
 	margin-top: 20px;
 }
-
-.adiv, .bdiv, #overlay{
-  position:absolute;
-  top: 0;
-  left: 0;
-  padding:0;
-}
-
 .page {
   position:inherit;
   display:none;
@@ -66,47 +63,20 @@ p {
 .page.current {
   display:block;
 }
-
-.unit{
-  /* background-color: #DDD; */
-}
-span.anchor {
-  color:green !important;
-}
-/* p > span {
-  display: inline-block;
-} */
-/* .adiv p > span.tb:hover, .adiv p > span.unit:hover{
-  opacity:0.1;
-  transition:opacity, 0.5s;
-  transition-delay: .5s;
-} */
-.active .shared{
-  cursor: pointer;
-}
-.adiv p > span:hover .shared{
-  color:orange;
-  transition:color, 0.5s;
-}
-.adiv p > span.hidden{
-  opacity:0.05;
-  transition:opacity, 0.5s;
-}
 .adiv{
   z-index: 2;
 }
 .bdiv {
   z-index:1;
 }
-
-/* .bdiv span {
-  display:
-} */
 .bdiv p > span {
   opacity: 0;
 }
 .adiv p > span {
   opacity: 1;
+}
+#overlay {
+  opacity:0;
 }
 #beforeAnchorA {
   opacity: 0;
@@ -114,26 +84,22 @@ span.anchor {
 #beforeAnchorB span{
   white-space: nowrap;
 }
-#overlay {
-  opacity:0;
-}
-/* #overlay {
-  top:500px;
-  display: flex;
-  flex-wrap: wrap-reverse;
-  direction: rtl;
-  justify-content: flex-end;
-}
-#beforeAnchor {
-flex-direction: row-reverse ;
 
-} */
-/*
-.bdiv p > span{
-  display: none;
-  position:fixed;
-  right:0;
-  margin-top: 0;
-  z-index: 1;
-  width:800px;
-} */
+/* Animation related CSS */
+/* Shared span change to orange color in 0.5s */
+.adiv p > span:hover .shared{
+  color:orange;
+  transition:color, 0.5s;
+}
+.active .shared{
+  cursor: pointer;
+}
+/* aspan fade out in 0.5s to 0.05 opacity  */
+.adiv p > span.hidden{
+  opacity:0.05;
+  transition:opacity, 0.5s;
+}
+/* Current anchor color */
+span.anchor {
+  color:green !important;
+}

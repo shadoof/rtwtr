@@ -1,20 +1,25 @@
-// Definitions
+// Parser: Definitions
 const CLAUSE_BREAKS = [", ", "; ", ": ", "</cb> "];
-const THOUGHT_BREAKS = [". ", "? ", "! ", "</tb>"]; // Done; space after needed
+const THOUGHT_BREAKS = [".", "?", "!", "</tb>"]; // Done; space after needed
 const PARAGRAPH_BREAK = "<pb/>"; // Done
 const SECTION_BREAK = "<sb/>"; // Done
 const UNIT_PAIRS = ["<ub>","</ub>"];// Done
-
 const DEFAULT_PATH = ".tb:last";
+
+// Animation Parameters
+const PHASE1_PHASE3_DELAY = 3000;// automatically enter phase3 after 3 seconds in phase1 on the same element
+const OVERLAY_FADEIN_DELAY = 1000;
+const OVERLAY_FADEIN_DURATION = 10; // TODO: need to solve overlay issue if we want a duration for the css animation
+// Animation Control
+let myTimeouts = [], phaseLive=false;
 
 // Typography
 const TEXT_SIZE = 20, LINE_HEIGHT = 23;
 // Layout
 const CONTENT_WIDTH = 800, MARGIN_LEFT = 200;
 
-let myTimeouts = [], phaseLive=false;
-// Tools
 
+// Tools
 function endsWithAny(str, array){
   for (let i = 0; i < array.length; i++) {
     const word = array[i];
@@ -72,7 +77,7 @@ function getCurrentIndexInDirectParent(dom) {
   return false;
 }
 
-function parseText(data) {
+function parseText(data, callback) {
   const lines = data.split("\n");
   // skip the top section
   lines.splice(0, 5);
@@ -185,43 +190,11 @@ function parseText(data) {
   // set current page
   $('#page1').addClass('current')
 
-  // user interaction
-  $('.adiv > p > span:not(.hidden)').mouseenter(function(){
-    const spanOnHover = $(this);
-    console.log("phase1")
-    spanOnHover.addClass("active");
-    const phase1Timeout = setTimeout(function(){phase3(spanOnHover)}, 3000, spanOnHover);
-    myTimeouts.push(phase1Timeout);
-
-  });
-
-  $(document).on('click','.adiv .active .shared',function(e){
-    phase2($(e.target));
-  });
-
-  $('.adiv > p > span, .adiv').mouseleave(function() {
-    console.log("mouseout")
-    phaseLive = false;
-    $('.adiv > p > span').removeClass("active");
-    $('.adiv > p > span').removeClass("hidden");
-
-    $('.adiv span').removeClass("anchor");
-    // clear settimeout
-    clearTimeouts(myTimeouts);
-    $('#overlay').css("opacity","0");
-
-  })
-  // End of User Interaction
-
-  // Menu
-  $('.menu li').click(function() {
-    //console.log(this.innerText)
-    $('.page').removeClass('current')
-    $('#page'+ this.innerText).addClass('current')
-  })
-
+  callback();
 }
 // End of Parsing Section
+
+// Visualization Section
 function getMatchingBFromA(aspan) {
   const spanIdx = getCurrentIndexInDirectParent($(aspan));
   const pIdx = getCurrentIndexInDirectParent($(aspan).parent());
@@ -236,6 +209,7 @@ function clearTimeouts(timeouts) {
     clearTimeout(timeouts[i]);
   }
 }
+
 function phase2(target) {
   if (phaseLive) return;
   let aspan = target.parent();
@@ -243,7 +217,6 @@ function phase2(target) {
 
   console.log("phase2", target, target.id);
   phaseLive = true;
-  $(aspan).addClass("hidden");
   animate(getMatchingBFromA(aspan), aspan, target)
 }
 
@@ -253,11 +226,10 @@ function phase3(thisDom) {
 
   console.log("phase3", thisDom)
   phaseLive = true;
-  $(thisDom).addClass("hidden");
   animate(bspan, $(thisDom));
 }
 
-// Visualization Section
+
 function createNewPage(index, wrapper) {
   const page = $('#template .page').clone()[0];
   page.id = "page" + index;
@@ -265,7 +237,6 @@ function createNewPage(index, wrapper) {
   // populate menu
   $('.menu ul').append("<li>"+ index + "</li>");
 }
-
 
 function basicAnalyze(aspan, bspan, predefinedAnchor) {
   const dbug = 0;
@@ -285,6 +256,8 @@ function animate(bspan, aspan, predefinedAnchor) {
   $('#overlay').css("opacity","0");
   $('#overlay span').text("");
   clearTimeouts(myTimeouts);
+
+  $(aspan).addClass("hidden");
 
   let context = basicAnalyze(aspan, bspan, predefinedAnchor);
   if (context.sharedSpans == undefined) {
@@ -309,11 +282,11 @@ function animate(bspan, aspan, predefinedAnchor) {
   // display
   const myTimeout = setTimeout(function(){
     $('#overlay').animate({opacity:1}, {
-    duration:10, // TODO: need to solve overlay issue if we want a duration for the css animation
+    duration:OVERLAY_FADEIN_DURATION,
     complete:function() {
       //console.log("complete")
     }})
-  }, 1000)
+  }, OVERLAY_FADEIN_DELAY)
   myTimeouts.push(myTimeout);
 
 }
@@ -392,6 +365,45 @@ function getIndent(total, unit, anchor) {
   };
 }
 
+function postParsing() {
+  // user interaction
+  $('.adiv > p > span:not(.hidden)').mouseenter(function(){
+    const spanOnHover = $(this);
+    console.log("phase1")
+    spanOnHover.addClass("active");
+    const phase1Timeout = setTimeout(function(){phase3(spanOnHover)}, PHASE1_PHASE3_DELAY, spanOnHover);
+    myTimeouts.push(phase1Timeout);
+
+  });
+
+  $(document).on('click','.adiv .active .shared',function(e){
+    phase2($(e.target));
+  });
+
+  $('.adiv > p > span, .adiv').mouseleave(function() {
+    console.log("mouseout")
+    phaseLive = false;
+    $('.adiv > p > span').removeClass("active");
+    $('.adiv > p > span').removeClass("hidden");
+
+    $('.adiv span').removeClass("anchor");
+    // clear settimeout
+    clearTimeouts(myTimeouts);
+    $('#overlay').css("opacity","0");
+
+  })
+  // End of User Interaction
+
+  // Menu
+  $('.menu li').click(function() {
+    //console.log(this.innerText)
+    $('.page').removeClass('current')
+    $('#page'+ this.innerText).addClass('current')
+  })
+
+}
 // End of Visualization Section
 
-readTextFile("../data/ab_worddiff.txt", parseText);
+readTextFile("../data/ab_worddiff.txt", function(data){
+  parseText(data, postParsing);
+});
