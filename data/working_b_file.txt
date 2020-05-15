@@ -1,14 +1,94 @@
-_<ub>_
-<pb/>
-_</ub>_
-_<ub>_Writing _is _an _important _gesture_,_ _because _it _both _articulates _and _produces _that _state _of _mind _which _is _called __“_historical _consciousness_,__”_ _History _began _with _the _invention _of _writing_,_ _not _for _the _banal _reason _often _advanced _that _written _texts _permit _us _to _reconstruct _the _past_,_ _but _for _the _more _pertinent _reason _that _the _world _is _not _perceived _as _a _process_,_ __“_historically_,__”_ _unless _one _signifies _it _by _successive _symbols_,_ _by _writing_. _</ub>_
-_<ub>_The _difference _between _prehistory _and _history _is _not _that _we _have _written _documents _that _permit _us _to _read _the _latter_,_ _but _that _during _history _there _are _literate _men _who _experience_,_ _understand_,_ _and _evaluate _the _world _as _a __“_becoming_,__”_ _whereas _in _prehistory _no _such _existential _attitude _is _possible_. __</ub>_
-If _the _art _of _writing _were _to _fall _into _oblivion_,_ _or _if _it _were _to _become _subservient _to _picture _making _(as _in _the __“_scriptwriting_”_ _in _films)_,_ _history _in _the _strict _sense _of _that _term _would _be _over_. _
-<sb/>
-If _one _examines _certain _Mesopotamian _tiles_,_ _one _can _see _that _the _original _purpose _of _writing _was _to _facilitate _the _deciphering _of _images_. _
-Those _tiles _contain _images _impressed _upon _them _with _cylindrical _seals _and __“_cuneiform_”_ _symbols _scratched _into _them _with _a _stylus_. _
-_<ub>_The __“_cuneiform_”_ _symbols _form _lines_,_ _and _they _obviously _mean _the _image _they _ac­ _company_. _
-They __“_explain_,__”_ __“_recount_,__”_ __“_tell_”_ _it_. __</ub>_
-They _do _so _by _unrolling _the _surface _of _the _image _into _lines_,_ _by _unwinding _the _tissue _of _the _image _into _the _threads _of _a _text_,_ _by _rendering __“_explicit_”_ _what _was __“_implicit_”_ _within _the _image_. _
-It _may _be _shown _through _text _analysis _that _the _original _purpose _of _writing_,_ _namely_,_ _the _transcoding _of _two-dimensional _codes _into _a _single _dimension_,_ _is _still _there_:_ _every _text_,_ _even _a _very _abstract _one_,_ _means_,_ _in _the _last _analysis_,_ _an _image_. _
-<sb/>
+But there is yet another, and more profound, reason for the invention of writing and of historical consciousness.
+There is in images, as in all mediations, a curious inherent dialectic.
+The purpose of images is to mean the world, but they may become opaque to the world and cover it, even substitute for it.
+They may come to constitute an imaginary world that no longer mediates between man and the world, but, on the contrary, imprisons man.
+Imagination no longer overcomes alienation, but becomes hallucination, or double alienation.
+No longer are such images tools, but man himself becomes a tool of his own tools; he “adores” the images he himself has produced.
+It is against this idolatry of images, as a therapy against this double alienation, that writing was invented.
+The early writers in our tradition – the prophets, for instance – knew this by committing themselves against idols and idol making.
+And so did Plato when he announced his hatred of what we now call the “plastic arts.”
+Writing, historical consciousness, linear, rational thought were invented to save humankind from “ideologies,” from hallucinatory imagination.
+§7<pb/>
+Now, if we consider history to be the period of writing, which implies that history is a development of prehistory, a rendering explicit of what was implicit in prehistorical myths, we find that it is a slow and painful, not to say tragic, process.
+For most of its course, historical consciousness was the privilege of a small elite, while the vast majority continued to lead a prehistoric, magico-mythical existence.
+This was so because texts were rare and expensive, and literacy the privilege of a class of scribes and literati.
+The invention of printing cracked this clerical class open, and it made historical consciousness accessible for the rising bourgeoisie, but it was only during the industrial revolution and through the public primary school system that literacy and historical consciousness can be said to have become common in the industrialized countries.
+But almost immediately a new kind of image, the photograph, was invented, which began to threaten the supremacy of writing, and it now looks as if the days of historical, rational, conceptual thinking were numbered, and as if we were approaching a new type of magico-mythical age, a posthistorical image culture.
+§8<pb/>
+The reason why rational, conceptual thinking (and acting) is an exceptional form of existence, why history seems to be a brief interlude within the ageless “eternal return” of myth and magic, is that writing, just like images, is torn by an internal dialectic, and that this dialectic takes a more pernicious aspect in writing than it does even in image making.
+The purpose of writing is to mean, to explain images, but texts may become opaque, unimaginable, and they then constitute barriers between man and the world.
+The vectors of meaning of such texts turn around and point at their authors, instead of pointing at the world.
+This inversion of writing may be observed very early in the course of history, but during the nineteenth century it becomes obvious: scientific texts (which are the most characteristic form of writing, and therefore the “aim of history”) tend to become explicitly unimaginable (one reads them erroneously if one tries to imagine their meaning), and scientific research “discovers” the rules that order its own texts (mainly logic and mathematics) “behind” the phenomena it is explaining.
+Such unimaginable explanations that mirror the structure of literate thought are existentially devoid of meaning, and in such a situation texts begin to constitute a kind of paranoid library wall that triply alienates man from his world.
+It is against the threatening lunacy of formal rationalism, of a meaningless existence amid speculative, opaque explanations, that the rise of the new image culture must be seen.
+§9<pb/>
+However, it would be an error to suppose that life amid posters, traffic signs, TV programs, illustrated magazines, and movie pictures will be like life before the invention of writing, that illiteracy will be restored.
+The new type of images are unlike their prehistoric predecessors in that they are themselves products of texts, and in that they feed on texts.
+They are products of history.
+The essential difference between a TV program and a tapestry is not (as one might believe) that the one moves and talks while the other stands still and is mute, but that the TV program is the result of scientific theories (texts) and that it needs texts (for instance, telegrams) for it to function.
+The new types of images are best called “techno-images,” and the convention they are based on is best called “techno-imagination” if one is to distinguish the world of the future from prehistoric existence.
+No doubt techno-images are a sort of image, and they therefore mean, like every image, a world of myth and of magic.
+But life in the threatening future will be mythical, magic, in a sense quite different from prehistoric myth and magic.
+This difference may be stated as follows: prehistoric images mean the world, posthistoric ones mean texts; prehistoric imagination tries to seize the world and posthistoric imagination tries to be text illustration.
+Therefore, prehistoric myths mean “real” situations and posthistoric myths will mean textual prescriptions, and prehistoric magic is meant to propitiate the world, whereas posthistoric magic will be meant to manipulate people.
+§10<pb/>
+The easiest way to imagine the future of writing, if the present trend toward a culture of techno-images goes on, is to imagine culture as a gigantic transcoder from text into image.
+It will be a sort of black box that has texts for input and images for output.
+All texts will flow into that box (news about events, theoretical comments about them, scientific papers, poetry, philosophical speculations), and they will come out again as images (films, TV programs, photographic pictures): which is to say that history will flow into the box, and that it will come out of it under the form of myth and magic.
+From the point of view of the texts that will flow into the box, this will be a utopian situation: the box is the “fullness of time,” because it devours linear time and freezes it into images.
+From the point of view of the images that come out of the box, this will be a situation in which history becomes a pretext for programs.
+In sum, the future of writing is to write pretexts for Programs while believing that one is writing for utopia.
+§11<pb/>
+It is not important for the understanding of such a future of writing to try to whiten the black box, to try to understand how it works.
+The attempt to “demythify” the transcoding apparatus of the future is, of course, one of the most important challenges of “forecasting and planning for the future.”
+But it is not indispensable where writing is the problem.
+One may disregard the wheels and screws that constitute the apparatus (the countless “media,” “programmers,” and other human and quasi-human operators who compose it), and concentrate upon the images as they come out of the box left black, if one wants to see what it will mean to be a “writer” in such a future.
+In other words, it is not necessary to analyze the whole hopelessly complex system that stands behind a TV program if one wants to understand the present crisis of rational thinking and acting.
+It is sufficient to analyze that program.
+§12<pb/>
+If one does so, one discovers the root of the present crisis: it is an inversion of the historical roles of reason and imagination.
+History may be said to be the attempt to submit imagination to the criticism of reason.
+Texts are meant to be critiques of images, and writing, as a code, is an analysis of surfaces into lines.
+Therefore, during history, imagination was the source of reason: the stronger the imagination, the greater the challenge of critical reason, and rich images permit more powerful linear explanations.
+There is something iconoclastic about historical reason: the better the icons against which it advances, the stronger is reason.
+But now writing is becoming subservient to image making, reason to imagination: one can observe this while analyzing any TV program.
+The better the reasoning, the richer becomes imagination.
+Planning has become a highly rational process in the service of highly irrational aims.
+The crisis is therefore not one of oblivion of the art of writing, of reason’s decadence.
+It is one of reason’s prostitution, of a “betrayal of the intellectuals.”
+One may sum this up as follows: when it became obvious that reason might be a kind of paranoia, the intellectuals stopped being iconoclastic and became idolatrous, and present TV programs are among the results of that conversion.
+§13<pb/>
+TV programs are not, of course, the most impressive examples of what happens when reason betrays itself and serves imagination.
+Nazism is a better illustration.
+Still, it may be held that Nazism is one of the cruder advances in the direction of a future culture of images, or that the future techno-image culture will be Nazism perfected.
+This is why the battle cry “L’imagination au pouvoir!” that shook so many intellectuals out of their dogmatic slumber in May'68 has such a dubious ring to it.
+No doubt, rebellion against paranoid reason, against meaningless explanations, is necessary and healthy.
+But intellectuals are writers.
+They are committed to clear and distinct concepts, to reason.
+They are the historical consciousness of their society.
+If they adhere to the claim that imagination should take over, the dignity of man as a free actor, which means “history,” will be over.
+§14<pb/>
+It may be asked, however, what else writers can do in the immediate future but serve imagination.
+If all the texts are going to be devoured by the gigantic transcoder to become images, how can this trend be resisted?
+Is it not so that if a text deliberately resists the trend, it becomes even better fodder for the transcoding apparatus?
+Actions committed to history and against the apparatus, like monks burning themselves to death or students being killed in riots, are even better pretexts for TV programs than are deliberate scripts made by TV programmers.
+It may look as if the trend, in which writing is becoming subservient to image making, planning to irrationality, and reason to magic, is increasingly automatic and autonomous of individual decisions.
+§15<pb/>
+This would be a perniciously wrong interpretation of the present crisis of writing.
+The purpose of writing is to explain images, and the task of reason is to criticize imagination.
+This is doubly true in the present crisis.
+At present, the purpose of writing is to explain techno-images, and the task of reason to criticize techno-imagination.
+Of course, this implies a sort of qualitative jump onto a new level of meaning on the part of reason.
+In the past, writing explained images of the world.
+It will have to explain illustrations of texts in the future.
+To write meant, in the past, to render opaque images transparent for the world.
+It will mean, in the future, to render opaque techno-images transparent for the texts they are hiding.
+In other words, reason, in the past, meant analysis of myths, and in the future it will mean de-ideologization.
+Reason will still be iconoclastic, but on a new level.
+§16<pb/>
+Nothing guarantees that reason will be able to perform such a jump, although there are some symptoms (for instance, cybernetics and structural analysis) that point in such a direction.
+It is perfectly possible that the general trend toward techno-images will become irresistible, and that reason will degenerate into the planning of programs-that to write will mean not to make “grams” but “programs,” and that all texts will become pretexts.
+Thus, in fact, we may discern, at present, two possible futures of writing: it will either become a critique of techno-imagination (which means an unmasking of the ideologies hiding behind a technical progress that has become autonomous of human decisions) or it will become the production of pretexts for techno-imagination (a planning for that technical progress).
+In the first alternative, the future will be unimaginable by definition.
+In the second, history in the strict sense of that term will come to an end, and we may easily imagine what will follow: the eternal return of life in an apparatus that progresses by its own inertia.
+§17

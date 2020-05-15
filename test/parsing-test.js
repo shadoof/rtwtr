@@ -1,6 +1,6 @@
 // Definitions
 const CLAUSE_BREAKS = [", ", "; ", ": ", "</cb> "];
-const THOUGHT_BREAKS = [".", "?", "!", "</tb>"]; // Done
+const THOUGHT_BREAKS = [". ", "? ", "! ", "</tb>"]; // Done; space after needed
 const PARAGRAPH_BREAK = "<pb/>"; // Done
 const SECTION_BREAK = "<sb/>"; // Done
 const UNIT_PAIRS = ["<ub>","</ub>"];// Done

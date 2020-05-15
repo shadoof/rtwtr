@@ -1,8 +1,8 @@
 diff --git a/a_file.txt b/b_file.txt
-index b7fa63d..b35b1e0 100644
+index 6e41953..f909f6d 100644
 --- a/a_file.txt
 +++ b/b_file.txt
-@@ -1,40 +1,27 @@
+@@ -1,96 +1,80 @@
  This 
 -“writing through” of Vilém Flusser’s ‘The Future of Writing,’ reconfiguring it so as to become John Cayley’s ‘The Future of Language,’
 +essay
@@ -205,4 +205,266 @@ index b7fa63d..b35b1e0 100644
   even a very abstract one,
 -also
   means, in the last analysis, an image.
+~
+ <sb/>
+~
+ 
+~
+ The translation from surface into line implies a radical change of
+-dimensionality with respect to the grasp of
+  meaning.
+~
+ The eye that deciphers an image scans the surface, and it thus establishes reversible
+-and arbitrary spatial
+  relations between the elements of the image.
+~
+ It may go back and forth while deciphering the image.
+~
+ This 
+-spatiality
++reversibility
+  of relations that prevails within the image characterizes the world for those who use images for the understanding of the world, who “imagine” it.
+~
+ For them, all the things in the world are related to each other in such a 
+-reversible, spatial equivalence,
++reversible way,
+  and 
+-the
++their
+  world is structured by “eternal return.”
+~
+ It is just as true to say that night follows day as that day follows night, that sowing follows reaping as that reaping follows sowing, that life follows death as that death follows life.
+~
+ The crowing of the cock calls the sun to rise just as much as the rising sun calls the cock to crow.
+~
+ In such a world, circular time orders all things, “assigns them their just place,” and if a thing is displaced it will be readjusted by time itself.
+~
+ Because to live is to displace things, life in such a world is a series of “unjust” acts that will be revenged in time.
+~
+ This demands that 
+-we
++man
+  propitiate the order of the world, the “gods” of which it is full.
+~
+ In sum: the “imagined” world is the world of myth, of magic, the 
+-ahistorical
++prehistorical
+  world.
+~
+ <sb/>
+~
+ 
+~
+ The eye that 
+-reads
++deciphers
+  a 
+-text, the ear that reads to hear and understand a voice,
++text
+  follows its lines, and thus establishes 
+-an evocalized
++the univocal
+  relation 
++of a chain
+  between the elements of which the 
+-language
++text
+  is composed.
+~
+ Those who 
+-lend authority to inscribed
++use
+  texts
+-in order
+  to understand the world, those who “conceive” it, mean a world with a linear structure.
+~
+ Everything in such a world follows from something, time flows irreversibly from the past toward the future, each instant lost is lost forever, and there is no repetition.
+~
+ Each day is different from every other day, each sowing has its own characteristics, if there is life after death it must be a new sort of life, and the links of the causal chain cannot be exchanged one for the other.
+~
+ In such a world, every human act is unique, and 
+-we are
++man is
+  responsible for it.
+~
+ The elements of such a world are, at least theoretically, distinct from each other like the beads on a string, and they can be counted.
+~
+ On the other hand, the string that orders the beads, the “univocal flow of time,” is what holds such a world together.
+~
+ In sum: the “conceived” world is the world of the religions, of salvation, of political commitment, of science, and of technology – the historical world.
+~
+ <sb/>
+~
+ 
+~
+ One may well ask why, six thousand years ago, 
++the
+  effort was 
+-expended
++made
+  to substitute the world of conception for the world of imagination, why
+-what we conventionally call
+  writing 
+-emerged in persistent authoritative gestures of inscription.
++was invented.
+~
+ One may ask this at present precisely because a “new civilization of 
+-image”
++images”
+  seems to be dawning.
+~
+ The answer is, of course: 
+-because
++because, six thousand years ago, some
+  people
+-have always
+  thought that some images needed explaining.
+~
+ Images are mediations between 
+-ourselves
++man
+  and 
+-our
++his
+  world, a 
+-reality the unimaginably vast majority of which is
++world that has become
+  inaccessible to 
+-human perception.
++him immediately.
+~
+ They are tools
+-intended
+  to overcome
+-this fundamental
+  human alienation: they are meant to permit action in a world in which 
+-we cannot live
++man no longer lives
+  immediately but that 
+-we face.
++he faces.
+~
+ Cave paintings are meant to permit hunting of ponies, cathedral windows to permit praying to God, road maps to permit motoring, and statistical projections
+-– now reconfigured by AI –
+  to permit decision making.
+~
+ One must learn how to 
+-read
++decipher
+  those images, one must learn the conventions that give them their meaning, and one may commit mistakes.
+~
+ For instance: it would be a mistake to 
+-read
++decipher
+  road maps as if they were cave paintings (magic for hunting tourists), or as if they were projections (proposals to build roads).
+~
+ The “imagination” that produces road maps is not the same as the “imagination” that produces cave paintings and projections.
+~
+ Explaining images with the help of 
+-persistent linguistic inscription
++texts
+  may therefore be useful.
+~
+ <sb/>
+~
+ 
+~
+ <ub>
+~
+ But 
+-language
++there
+  is 
+-a human faculty not a tool
++yet another, and more profound, reason
+  for
+-use.
+~
+-Language will always have articulated our consciousness in
+  the 
+-face
++invention
+  of 
+-imagination with more or less persistence.
++writing and of historical consciousness.
+~
+ </ub>
+~
+ There is in images, as in all mediations, a curious inherent dialectic.
+~
+ <ub>
+~
+-We see
++The purpose of images is to mean the world, but they may become opaque to
+  the world
+-as images both literally
+  and 
+-figuratively.
+~
+-Visuality is, in a sense, opaque, and covers reality, substituting the imaginary
++cover it, even substitute
+  for 
+-the real.
++it.
+~
+ </ub>
+~
+-Images
++They may
+  come to constitute an imaginary world that no longer mediates between 
+-us
++man
+  and 
+-our
++the
+  world, but, on the contrary, 
+-constrains and deludes us.
++imprisons man.
+~
+ Imagination 
+-does not overcome alienation; it
++no longer overcomes alienation, but
+  becomes hallucination, or double alienation.
+~
+ <ub>
+~
+-Images do not reveal; we
++No longer
+  are 
+-what they show us.
+~
+-We “adore” the images that we can see, even those
++such
+  images 
+-that we can see and
++tools, but man himself becomes a tool of his own tools; he “adores”
+  the 
+-world does not.
++images he himself has produced.
+~
+ </ub>
+~
+ It is against this idolatry of images, as a therapy against this double alienation, that 
+-language cares for us.
+~
+-Some of those who first spoke to us
++writing was invented.
+~
++The early writers
+  in our 
+-traditions
++tradition
+  – the prophets, for instance – 
+-learned
++knew
+  this by committing themselves against idols and idol making.
+~
+ And so did Plato when he announced his hatred of what we now call the “plastic arts.”
+~
+-Language, human inscription, in time and the world, of what we are – language allows us
++Writing, historical consciousness, linear, rational thought were invented
+  to save 
+-the images and care for the
++humankind from “ideologies,” from hallucinatory
+  imagination.
 ~
