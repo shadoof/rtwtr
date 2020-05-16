@@ -1,8 +1,8 @@
 diff --git a/a_file.txt b/b_file.txt
-index 6e41953..f909f6d 100644
+index 39dc752..0b95663 100644
 --- a/a_file.txt
 +++ b/b_file.txt
-@@ -1,96 +1,80 @@
+@@ -1,231 +1,196 @@
  This 
 -“writing through” of Vilém Flusser’s ‘The Future of Writing,’ reconfiguring it so as to become John Cayley’s ‘The Future of Language,’
 +essay
@@ -467,4 +467,793 @@ index 6e41953..f909f6d 100644
 -the images and care for the
 +humankind from “ideologies,” from hallucinatory
   imagination.
+~
+ <sb/>
+~
+ 
+~
+ Now, if we consider history to be the period 
+-during
++of writing,
+  which 
+-conventional writing performs
++implies that history is a development of prehistory,
+  a rendering explicit of what 
+-is
++was
+  implicit in 
+-myths of the imaginary, this continues to be, for us,
++prehistorical myths, we find that it is
+  a 
+-problematic
++slow
+  and painful, not to say tragic, process.
+~
+ For
+-the
+  most 
+-part,
++of its course,
+  historical consciousness 
+-is
++was
+  the privilege of a small elite, while the vast majority 
+-continues
++continued
+  to lead 
+-an ahistoric,
++a prehistoric,
+  magico-mythical existence.
+~
+ <ub>
+~
+-The
++This was so because
+  texts 
+-of authority have always been scarce
++were rare
+  and 
+-expensive.
+~
+-The deep reading of books –
++expensive, and literacy
+  the 
+-knowledge
++privilege
+  of
+-how and what to read – is restricted to
+  a
+-privileged
+  class of scribes and literati.
+~
+ </ub>
+~
+ The invention of printing 
+-did, historically, crack open our
++cracked this
+  clerical 
+-classes
++class open,
+  and 
++it
+  made
+-the
+  historical 
+-regime
++consciousness
+  accessible 
+-to a
++for the
+  rising bourgeoisie, but it was only during the industrial revolution and through the public primary school system that 
+-knowing the language of “literacy”
++literacy
+  and historical consciousness can be said to have become common in the industrialized countries.
+~
+ But almost immediately a new kind of image, the photograph, was invented, which began to threaten the supremacy of
+-conventional
+  writing, and
+-in the twentieth century
+  it 
+-looked
++now looks
+  as if the days of historical, rational, conceptual thinking were numbered, and as if we were approaching a new type of magico-mythical age, a posthistorical image culture.
+~
+ <sb/>
+~
+ 
+~
+ <ub>
+~
+-Rational,
++The reason why rational,
+  conceptual thinking (and acting)
+-has an intimate relationship with language as our shared realm for symbolic practice, yet rationality, which
+  is
+-also in our world, may seem to us
+  an exceptional form of existence, 
+-allied with the apparent progress of written
++why
+  history 
+-and perhaps no more than
++seems to be
+  a brief interlude within 
+-our simultaneously
++the
+  ageless “eternal return” of
+-the imaginary, of
+  myth and 
+-magic.
+~
+-But language,
++magic, is that writing,
+  just like 
+-imaginary, may be
++images, is
+  torn by an internal dialectic, and 
++that
+  this dialectic 
+-may take
++takes
+  a more pernicious aspect in 
+-language
++writing
+  than it does even in image making.
+~
+ </ub>
+~
+ <ub>
+~
+-Language may
++The purpose of writing is to
+  mean, 
+-and may
++to
+  explain images, 
+-and
++but
+  texts may become opaque,
+-unreadable,
+  unimaginable, and 
+-so
++they then
+  constitute barriers between 
+-ourselves
++man
+  and the world.
+-Today, moreover, formal language literally constitutes images, concealed beneath their perceptible surfaces.
+~
+ </ub>
+~
+ The vectors of meaning of such texts turn around and point at their authors, instead of pointing at 
+-our shared world, real or imaginary.
++the world.
+~
+ This 
+-perversion
++inversion
+  of 
+-language
++writing
+  may be observed very early in the course of history, but during the nineteenth century it becomes obvious: scientific texts (which are the most characteristic form of
+-persistent
+  writing, and therefore the “aim of history”) tend to become explicitly unimaginable (one reads them erroneously if one tries to imagine their meaning), and scientific research “discovers” the rules that order its own texts (mainly logic and mathematics) “behind” the phenomena it is explaining.
+~
+ Such unimaginable explanations that mirror the structure of literate thought are existentially devoid of meaning, and in such a situation texts begin to constitute a kind of paranoid library wall that triply alienates 
+-us
++man
+  from 
+-our
++his
+  world.
+~
+ <ub>
+~
+ It is against the threatening lunacy of formal rationalism, of a meaningless existence amid speculative, opaque explanations, that the rise of the new image culture must be seen.
+~
+-For the reason that the new image culture is, precisely, encoded and computed as, precisely, this threatening lunacy.
+~
+ </ub>
+~
+ <sb/>
+~
+ 
+~
+ However, it would be an error to suppose that life amid posters, traffic signs, TV programs, illustrated magazines,
+-movie pictures, the internet,
+  and 
+-feedback surveillance
++movie pictures
+  will be like life before 
+-we inscribed language as persistent visuality,
++the invention of writing,
+  that 
+-aliteracy
++illiteracy
+  will be restored.
+~
+-Even those
++The new type of
+  images
+-generated by photo-optical apparatuses
+  are unlike 
+-the images that have been given to us by the world
++their prehistoric predecessors
+  in that they are themselves products of texts, and in that they feed on texts.
+~
+ They are products of 
+-historical process.
++history.
+~
+ <ub>
+~
+-Scientistic technics allowed the construction of photo-optical image makers As for the images of digitalized cultural, they are composed from formal text as such, from programs and software.
+~
+ The essential difference between a TV program and a tapestry is not (as one might believe) that the one moves and talks while the other stands still and is mute, but that the TV program is the result of scientific theories (texts) and that it needs texts (for instance, telegrams) for it to function.
+~
+ </ub>
+~
+-These
++The new
+  types of images 
+-were called, by Vilém Flusser, “techno- (or technical) images,”
++are best called “techno-images,”
+  and the convention
+-that
+  they are based on 
+-Flusser designated as “techno-imagination,” so as
++is best called “techno-imagination” if one is
+  to distinguish 
+-a
++the
+  world 
+-that was still in
++of
+  the future 
+-when he performed this act of naming.
++from prehistoric existence.
+~
+ No doubt techno-images are a sort of image, and they therefore mean, like every image, 
+-our
++a
+  world of myth and of 
+-magic, our imaginary.
++magic.
+~
+ But life in the 
++threatening
+  future 
+-at which we have arrived bears
++will be mythical, magic, in
+  a 
++sense quite
+  different 
+-relation to the mythical, magic within which we had evolved to live long before textually defined apparatuses or digitalization.
++from prehistoric myth and magic.
+~
+ This difference may be 
+-addressed
++stated
+  as follows: 
++prehistoric
+  images
+-as such are given by and are intended to
+  mean the 
+-world;
++world,
+  posthistoric 
+-images imply texts and are now also composed from integrated texts.
+~
+-Imagination as such
++ones mean texts; prehistoric imagination
+  tries to 
+-grasp
++seize
+  the world and posthistoric imagination tries to be text 
+-illustration or to illustrate the world as itself text.
++illustration.
+~
+ <ub>
+~
+ Therefore, 
++prehistoric
+  myths 
+-as such imagine
++mean
+  “real” situations and posthistoric myths will mean textual 
+-prescriptions.
+~
+-Magic as such
++prescriptions, and prehistoric magic
+  is meant to propitiate the world, whereas posthistoric magic will be 
+-designed to manipulate people,
++meant
+  to manipulate 
+-us, ourselves.
++people.
+~
+ </ub>
+~
+ <sb/>
+~
+ 
+~
+ <ub>
+~
+-We can imagine a future for practices of writing but we must keep in mind the circumstance that language is an evolved faculty and will not change significantly until evolution enables it to do so – beyond the scope of our imagination – because imagination, myth and magic, our imaginary and symbolic existences are similarly evolved.
+~
+-All of what we call history can only ever be something that we imagine and express as language within the scope of our evolved faculties.
+~
+-We ourselves have not changed; our shared practices are reconfigured within this scope with respect to technics that are, indeed, associated with the symbolic, if not also the real.
+~
+ </ub>
+~
+ <pb/>
+~
+ <ub>
+~
+ The 
++easiest way to imagine the future of writing, if the present
+  trend toward a culture of techno-images 
+-underwent a profound reconfiguration that was prefigured but not fully appreciated by Flusser.
+~
+-As he anticipated, culture, historically, became
++goes on, is to imagine culture as
+  a gigantic transcoder 
+-although not “from
++from
+  text into 
+-image.”
+~
+-Rather, images are all now both transcoded and composed, inscribed as generative text in the sense of formal processes of computation, essentially and (to-date) necessarily linear.
++image.
+~
+ </ub>
+~
+-Culture is
++It will be
+  a sort of black box that has texts for input and images
+-encoded and composed from text
+  for output.
+~
+ <ub>
+~
+-In so far are these processes are now also multi-layered, so-called neural networks of probabilistic circuits, the culture box is truly black in that no telling of its text could conjure an image that we would care to see.
+ All texts 
+-now
++will
+  flow into that box (news about events, theoretical comments about them, scientific papers, poetry, philosophical speculations), and they 
++will
+  come out again as images (films, TV programs, photographic 
+-pictures, [typo]graphic design in the service of social and socialized media):
++pictures):
+  which is to say that history 
++will
+  flow into the box, and 
+-comes
++that it will come
+  out of it under the form of myth and magic.
+~
+ </ub>
+~
+ From the point of view of the texts that 
++will
+  flow into the 
+-box – i.e. from the point of view of the contemporary regime of computation, from the point of view of Big Software and Big Data –
++box,
+  this 
+-is the
++will be a
+  utopian 
+-situation that was misperceived in the late 1980s and 1990s:
++situation:
+  the box is the “fullness of time,” because it devours linear
+-time, it consumes and renders
+  time 
+-as persuasive images that consume our attention.
++and freezes it into images.
+~
+ From the point of view of the images that come out of the box, this will be a situation in which history becomes a
+-mere
+  pretext for 
+-the programs that have produced them.
++programs.
+~
+ In sum, the future
+-for practices
+  of writing
+-as such
+  is to write
+-and code
+  pretexts for 
+-programs
++Programs
+  while believing that one is writing for utopia.
+~
+ <sb/>
+~
+ 
+~
+ It is not important for the understanding of 
+-this present or any
++such a
+  future
+-for practices
+  of writing to try to whiten the black box, to try to understand how it works.
+~
+ The attempt to “demythify” the
+-computational
+  transcoding apparatus 
++of the future
+  is, of course, one of the most important challenges of “forecasting and planning
+-now and
+  for the future.”
+~
+ But it is not indispensable where
+-practices of
+  writing 
+-are
++is
+  the problem.
+~
+ One may disregard the wheels and screws that constitute the apparatus (the countless “media,” “programmers,” and other human and quasi-human operators who compose it), and concentrate upon the images as they come out of the box left black, if one wants to see what it 
+-is
++will mean
+  to be a “writer”
+-now and
+  in 
+-the
++such a
+  future.
+~
+ In other words, it is not necessary to analyze the whole hopelessly complex system that stands behind a TV program
+-or social media platform
+  if one wants to understand the present crisis of rational thinking and acting.
+~
+ It is sufficient to analyze 
+-and critique the programs.
++that program.
+~
+ <sb/>
+~
+ 
+~
+ <ub>
+~
+-As I say this, with Flusser, we presuppose a present crisis.
+~
+-For Flusser it is a crisis of history, of teleology even.
+~
+-For me it is a crisis within
++If one does so, one discovers
+  the 
+-pace and extension of evolution where history and imagination, like language, are merely faculties or potentialities
++root
+  of
+-a particular evolved entity
+  the 
+-end of which
++present crisis: it
+  is
+-certain while evolution as such may well be as long and extensive as the universe of which we are
+  an 
+-infinitesimal part.
+~
+-There is no crisis
++inversion
+  of
+-any moment.
+~
+-<pb/>
+~
+-Nonetheless,
+  the 
+-circumstances
++historical roles
+  of 
+-any and all relationships between language
++reason
+  and 
+-imagination remain critical.
++imagination.
+~
+ </ub>
+~
+ History may be said to be the attempt to submit imagination to the criticism of reason.
+~
+-Practices of language
++Texts
+  are meant to be critiques of images, and 
+-language,
++writing,
+  as a 
+-coded inscription,
++code,
+  is an analysis of surfaces into lines.
+~
+ Therefore, during history, imagination was the source of reason: the stronger the imagination, the greater the challenge of critical reason, and rich images permit more powerful linear explanations.
+~
+ There is something iconoclastic about historical reason: the better the icons against which it advances, the stronger is reason.
+~
+ But now 
+-practices of language are
++writing is
+  becoming subservient to image making, reason to imagination: one can observe this while analyzing any TV 
+-program or social media platform.
++program.
+~
+ The better the reasoning, the richer becomes imagination.
+~
+ Planning has become a highly rational process in the service of highly irrational aims.
+~
+ The 
+-critical thing
++crisis
+  is therefore not one of oblivion 
+-for
++of
+  the 
+-arts
++art
+  of 
+-language,
++writing,
+  of reason’s decadence.
+~
+ It is one of reason’s prostitution, of a “betrayal of the 
+-intellectuals,” especially the humanists
++intellectuals.”
+~
+ One may sum this up as follows: when it became obvious that reason might be a kind of paranoia, the intellectuals stopped being iconoclastic and became idolatrous, and present TV programs
+-and social media platforms
+  are among the results of that conversion.
+~
+ <sb/>
+~
+ 
+~
+-Social media platforms
++TV programs
+  are not, of course, the most impressive examples of what happens when reason betrays itself and serves imagination.
+~
+-Fake News, proto-fascist Trumpism, and certain aspects of the surveillance-driven attention economy are
++Nazism is a
+  better 
+-illustrations.
+~
+-It
++illustration.
+~
++Still, it
+  may be held that 
+-proto-fascist Trumpism
++Nazism
+  is one of the cruder advances in the direction of a future culture of images, or that the future techno-image culture will be 
+-proto-fascist Trumpism
++Nazism
+  perfected.
+~
+ This is why the battle cry “L’imagination au pouvoir!” that shook so many intellectuals out of their dogmatic slumber in 
+-May ’68
++May'68
+  has such a dubious ring to it.
+~
+ No doubt, rebellion against paranoid reason, against meaningless explanations, is necessary and healthy.
+~
+ But intellectuals are 
+-language makers.
++writers.
+~
+ They are committed to clear and distinct concepts, to reason.
+~
+ They are the historical consciousness of their society.
+~
+ If they adhere to the claim that imagination should take over, the dignity of man as a free actor, which means “history,” will be over.
+~
+ <sb/>
+~
+ 
+~
+ It may be asked, however, what 
+-language artists
++else writers
+  can do in the immediate future but serve imagination.
+~
+ If all the texts are 
++going to be
+  devoured by the gigantic transcoder to become images, how can this trend be resisted?
+~
+ Is it not so that if a text deliberately resists the trend, it becomes even better fodder for the
+-universal computational
+  transcoding apparatus?
+~
+ Actions committed to history and against the apparatus, like monks burning themselves to death or students being killed in riots, are even better pretexts for TV programs
+-and social media
+  than are deliberate scripts made by TV 
+-programmers or bloggers.
+~
+-The universal trend in
++programmers.
+~
++It may look as if
+  the 
+-developed world –
++trend,
+  in which
+-practices of language and of digitalized
+  writing 
+-in particular are
++is
+  becoming subservient to image making, planning to irrationality, and reason to 
+-magic –
++magic,
+  is 
+-now literally automatic: computed, automated
++increasingly automatic
+  and autonomous of
+-both institutional and
+  individual decisions.
+~
+ <sb/>
+~
+ 
+~
+ This would be a perniciously wrong interpretation of the 
++present
+  crisis of 
+-language.
+~
+-Language makes and works together with
++writing.
+~
++The purpose of writing is to explain
+  images, and the task of 
+-reason, or symbolic thought as language,
++reason
+  is to criticize imagination.
+~
+ This is doubly true in the present crisis.
+~
+-Language must now make and work with both the techno-images of Flusser’s apparatuses and with
++At present,
+  the 
+-symbolic computational images
++purpose
+  of 
+-which digitalized culture
++writing
+  is 
+-composed,
++to explain techno-images,
+  and the task of 
+-reason, or language as symbolic thought, is
++reason
+  to criticize 
+-techno- and computational-imagination.
++techno-imagination.
+~
+ Of course, this implies a sort of qualitative jump onto a new level of meaning on the part of reason.
+~
+-Practices of
++In the past,
+  writing
+-once
+  explained images of the world.
+~
+-If we are to care for a culture that has been wounded and misdirected by computation, the arts of language
++It
+  will have to explain
+-those
+  illustrations 
+-that its programs have produced.
++of texts in the future.
+~
+ To 
+-practice writing as an inscriptional language
++write
+  meant, 
+-and may still mean,
++in the past,
+  to render opaque images transparent for the world.
+~
+-Now, it must mean
++It will mean, in the future,
+  to render opaque 
+-techno- and computational images
++techno-images
+  transparent for the texts they are hiding.
+~
+ In other words, reason, in the past, meant analysis of myths, and in the future it will mean de-ideologization.
+~
+ Reason will still be iconoclastic, but on a new 
+-level and with a new politics.
++level.
+~
+ <sb/>
+~
+ 
+~
+-But language is an evolved faculty and cannot
++Nothing guarantees that reason will
+  be 
+-more for us than it is, despite our deep reading of
++able to perform such a jump, although there are some symptoms (for instance,
+  cybernetics and
+-software studies, of
+  structural 
+-and poststructural analyses.
++analysis) that point in such a direction.
+~
+ <ub>
+~
+ It is perfectly possible that the general trend toward 
+-techno- and computational images is already
++techno-images will become
+  irresistible, and that 
+-practices of language (as opposed to language-as-such) have already degenerated
++reason will degenerate
+  into the planning of 
+-programs – that
++programs-that
+  to 
+-make language is already
++write will mean
+  not to make “grams” but 
+-“programs”
++“programs,”
+  and that all texts 
+-are mere
++will become
+  pretexts.
+-There is no future of language.
+~
+-An evolved faculty cannot have a future for an entity that has evolved to have this faculty.
+~
+ </ub>
+~
+-It is simply a fact that the making
++Thus, in fact, we may discern, at present, two possible futures
+  of 
+-language
++writing: it
+  will either 
++become a
+  critique 
+-and exceed the techno- and computational imagination
++of techno-imagination
+  (which means 
++an
+  unmasking 
++of
+  the ideologies hiding behind a technical progress that has become autonomous of human decisions) or it will 
+-serve
++become
+  the production of pretexts for 
+-techno- and computational images, allowing a constitutive faculty to operate perversely as
++techno-imagination (a planning for that technical progress).
+~
++In
+  the 
+-instrument of reductive, scientistic “progress.”
+~
+-As language speaks
++first alternative,
+  the future 
+-is
++will be
+  unimaginable by definition.
+~
+-If language is to serve computation,
++In the second,
+  history in 
+-any shared understanding
++the strict sense
+  of that term 
+-has already
++will
+  come to an end, and we may easily imagine what will follow: the eternal return of
+-digitalized
+  life in 
+-a computational configuration
++an apparatus
+  that progresses by its own inertia.
 ~
