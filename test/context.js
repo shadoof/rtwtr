@@ -29,7 +29,7 @@ class contextReport {
     const shared_b = bspan.find('.shared');
 
     if (shared_a.length != shared_b.length) {
-      console.error("Error! shared span numbers doesn't match", aspan, bspan)
+      console.error("Error! shared span numbers doesn't match", shared_a.length, shared_b.length)
     } else {
       if (shared_a.length > 0) {
         return shared_a;
