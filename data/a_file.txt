@@ -9,13 +9,13 @@ The “future” of language, or rather, of those gestures which align symbols t
 <sb/>
 
 <ub>
-All those gestures that we make with the prospect that others of us might read and understand them as entering and helping to constitute the world of language, all these gestures, regardless of their perceptible support media are archi-writing in Jacques Derrida’s sense.
+All those gestures that we make with the prospect that others of us might read and understand them as entering and helping to constitute the world of language, all these gestures, regardless of their perceptible support media are <i>archi-writing</i> in Jacques Derrida’s sense.
 Iterable traces of actual language, all words are writing, as Derrida showed us.
 There is always and only the “logic of the supplement” with respect to the perceptible traces of language, typically and genetically supported by aurality; by cultural predominance, “historically” supported by calligraphic and now typographic visuality.
 </ub>
 <pb/>
-<ub>
 The configuration of practices that we conventionally call writing is an important subsidiary configuration of linguistic gesture, because it both articulates and produces that state of mind which is called “historical consciousness.”
+<ub>
 History began with the authoritative emergence of writing in visuality, not for the banal reason often advanced that written texts permit us to reconstruct the past, but for the more pertinent reason that the world is not necessarily perceived as a process, “historically,” unless one signifies it by successive symbols that persist as writing.
 “Writing” in this historically implicated sense is ambiguous.
 The effects of a certain persistence in collective memory – such as those promoted by oral cultures – are every bit as “historical” as the effects of literal or letteral writing.
@@ -24,6 +24,8 @@ Historical persistence in collective memory is an effect of what was archi-writi
 </ub>
 <ub>
 The difference between so-called prehistory and history is not that we have written documents that permit us to read the latter, but that during history there are literate persons who experience, understand, and evaluate the world as a “becoming.”
+</ub>
+<ub>
 In what we prejudicially call “prehistory” this kind of existential, historical attitude has a different extension and scale with respect to the sum of human culture.
 </ub>
 If the art of writing (in either sense, post-Derridean or conventional) were to fall into oblivion, or if it were to become subservient to picture making (as in the “scriptwriting” of films), history in the conventional (historically emergent) sense of that term would be over, and perhaps it is.
@@ -66,8 +68,8 @@ In sum: the “conceived” world is the world of the religions, of salvation, o
 One may well ask why, six thousand years ago, effort was expended to substitute the world of conception for the world of imagination, why what we conventionally call writing emerged in persistent authoritative gestures of inscription.
 One may ask this at present precisely because a “new civilization of image” seems to be dawning.
 The answer is, of course: because people have always thought that some images needed explaining.
-Images are mediations between ourselves and our world, a reality the unimaginably vast majority of which is inaccessible to human perception.
-They are tools intended to overcome this fundamental human alienation: they are meant to permit action in a world in which we cannot live immediately but that we face.
+Images are mediations between ourselves and our <i>world</i>, a reality the unimaginably vast majority of which is inaccessible to human perception.
+They are tools intended to overcome this fundamental human alienation: they are meant to permit action in a world in which we <i>cannot</i> live immediately but that we face.
 Cave paintings are meant to permit hunting of ponies, cathedral windows to permit praying to God, road maps to permit motoring, and statistical projections – now reconfigured by AI – to permit decision making.
 One must learn how to read those images, one must learn the conventions that give them their meaning, and one may commit mistakes.
 For instance: it would be a mistake to read road maps as if they were cave paintings (magic for hunting tourists), or as if they were projections (proposals to build roads).
@@ -148,9 +150,9 @@ We ourselves have not changed; our shared practices are reconfigured within this
 </ub>
 <pb/>
 <ub>
-The trend toward a culture of techno-images underwent a profound reconfiguration that was prefigured but not fully appreciated by Flusser.
-As he anticipated, culture, historically, became a gigantic transcoder although not “from text into image.”
-Rather, images are all now both transcoded and composed, inscribed as generative text in the sense of formal processes of computation, essentially and (to-date) necessarily linear.
+The trend toward a culture of techno-images underwent a profound reconfiguration that was <i>pre</i>figured but not fully appreciated by Flusser.
+As he anticipated, culture, <i>historically</i>, became a gigantic transcoder although not “from text into image.”
+Rather, images are all now both transcoded and composed, inscribed as generative text in the sense of formal processes of computation, essentially and (to-date) necessarily <i>linear</i>.
 </ub>
 Culture is a sort of black box that has texts for input and images encoded and composed from text for output.
 <ub>
@@ -173,7 +175,7 @@ It is sufficient to analyze and critique the programs.
 <ub>
 As I say this, with Flusser, we presuppose a present crisis.
 For Flusser it is a crisis of history, of teleology even.
-For me it is a crisis within the pace and extension of evolution where history and imagination, like language, are merely faculties or potentialities of a particular evolved entity the end of which is certain while evolution as such may well be as long and extensive as the universe of which we are an infinitesimal part.
+For me it is a crisis <i>within</i> the pace and extension of evolution where history and imagination, like language, are merely faculties or potentialities of a particular evolved entity the end of which is certain while evolution as such may well be as long and extensive as the universe of which we are an infinitesimal part.
 There is no crisis of any moment.
 <pb/>
 Nonetheless, the circumstances of any and all relationships between language and imagination remain critical.
@@ -204,7 +206,7 @@ It may be asked, however, what language artists can do in the immediate future b
 If all the texts are devoured by the gigantic transcoder to become images, how can this trend be resisted?
 Is it not so that if a text deliberately resists the trend, it becomes even better fodder for the universal computational transcoding apparatus?
 Actions committed to history and against the apparatus, like monks burning themselves to death or students being killed in riots, are even better pretexts for TV programs and social media than are deliberate scripts made by TV programmers or bloggers.
-The universal trend in the developed world – in which practices of language and of digitalized writing in particular are becoming subservient to image making, planning to irrationality, and reason to magic – is now literally automatic: computed, automated and autonomous of both institutional and individual decisions.
+The universal trend in the developed world – in which practices of language and of digitalized writing in particular are becoming subservient to image making, planning to irrationality, and reason to magic – is now literally automatic: computed, <i>automated</i> and autonomous of both institutional and individual decisions.
 <sb/>
 
 This would be a perniciously wrong interpretation of the crisis of language.
@@ -229,3 +231,14 @@ An evolved faculty cannot have a future for an entity that has evolved to have t
 It is simply a fact that the making of language will either critique and exceed the techno- and computational imagination (which means unmasking the ideologies hiding behind a technical progress that has become autonomous of human decisions) or it will serve the production of pretexts for techno- and computational images, allowing a constitutive faculty to operate perversely as the instrument of reductive, scientistic “progress.”
 As language speaks the future is unimaginable by definition.
 If language is to serve computation, history in any shared understanding of that term has already come to an end, and we may easily imagine what will follow: the eternal return of digitalized life in a computational configuration that progresses by its own inertia.
+<pb/>
+-John<br/>
++Vilém<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Cay<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+F<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;l<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+uss<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-y<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+r<br/>
+2019–20

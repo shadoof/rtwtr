@@ -1,8 +1,8 @@
 diff --git a/a_file.txt b/b_file.txt
-index 39dc752..0b95663 100644
+index b7d6c6f..5629e7b 100644
 --- a/a_file.txt
 +++ b/b_file.txt
-@@ -1,231 +1,196 @@
+@@ -1,244 +1,211 @@
  This 
 -“writing through” of Vilém Flusser’s ‘The Future of Writing,’ reconfiguring it so as to become John Cayley’s ‘The Future of Language,’
 +essay
@@ -86,7 +86,7 @@ index 39dc752..0b95663 100644
 ~
  <ub>
 ~
--All those gestures that we make with the prospect that others of us might read and understand them as entering and helping to constitute the world of language, all these gestures, regardless of their perceptible support media are archi-writing in Jacques Derrida’s sense.
+-All those gestures that we make with the prospect that others of us might read and understand them as entering and helping to constitute the world of language, all these gestures, regardless of their perceptible support media are <i>archi-writing</i> in Jacques Derrida’s sense.
 ~
 -Iterable traces of actual language, all words are writing, as Derrida showed us.
 ~
@@ -96,16 +96,15 @@ index 39dc752..0b95663 100644
 ~
  <pb/>
 ~
- <ub>
-~
 -The configuration of practices that we conventionally call writing
 +Writing
   is an important
 -subsidiary configuration of linguistic
-  gesture, because it both articulates and produces that state of mind which is called “historical 
--consciousness.”
-+consciousness,”
-  History began with the 
+  gesture, because it both articulates and produces that state of mind which is called “historical consciousness.”
+~
+ <ub>
+~
+ History began with the 
 -authoritative emergence
 +invention
   of 
@@ -138,9 +137,15 @@ index 39dc752..0b95663 100644
 +men
   who experience, understand, and evaluate the world as a 
 -“becoming.”
++“becoming,”
+  
+~
+ </ub>
+~
+ <ub>
 ~
 -In what we prejudicially call “prehistory” this kind of existential, historical
-+“becoming,” whereas in prehistory no such existential
++whereas in prehistory no such existential
   attitude 
 -has a different extension and scale with respect to the sum of human culture.
 +is possible.
@@ -324,9 +329,9 @@ index 39dc752..0b95663 100644
 -ourselves
 +man
   and 
--our
-+his
-  world, a 
+-our <i>world</i>,
++his world,
+  a 
 -reality the unimaginably vast majority of which is
 +world that has become
   inaccessible to 
@@ -338,7 +343,7 @@ index 39dc752..0b95663 100644
   to overcome
 -this fundamental
   human alienation: they are meant to permit action in a world in which 
--we cannot live
+-we <i>cannot</i> live
 +man no longer lives
   immediately but that 
 -we face.
@@ -794,9 +799,9 @@ index 39dc752..0b95663 100644
  The 
 +easiest way to imagine the future of writing, if the present
   trend toward a culture of techno-images 
--underwent a profound reconfiguration that was prefigured but not fully appreciated by Flusser.
+-underwent a profound reconfiguration that was <i>pre</i>figured but not fully appreciated by Flusser.
 ~
--As he anticipated, culture, historically, became
+-As he anticipated, culture, <i>historically</i>, became
 +goes on, is to imagine culture as
   a gigantic transcoder 
 -although not “from
@@ -804,7 +809,7 @@ index 39dc752..0b95663 100644
   text into 
 -image.”
 ~
--Rather, images are all now both transcoded and composed, inscribed as generative text in the sense of formal processes of computation, essentially and (to-date) necessarily linear.
+-Rather, images are all now both transcoded and composed, inscribed as generative text in the sense of formal processes of computation, essentially and (to-date) necessarily <i>linear</i>.
 +image.
 ~
  </ub>
@@ -923,7 +928,7 @@ index 39dc752..0b95663 100644
 ~
 -For Flusser it is a crisis of history, of teleology even.
 ~
--For me it is a crisis within
+-For me it is a crisis <i>within</i>
 +If one does so, one discovers
   the 
 -pace and extension of evolution where history and imagination, like language, are merely faculties or potentialities
@@ -1087,7 +1092,7 @@ index 39dc752..0b95663 100644
 -magic –
 +magic,
   is 
--now literally automatic: computed, automated
+-now literally automatic: computed, <i>automated</i>
 +increasingly automatic
   and autonomous of
 -both institutional and
@@ -1256,4 +1261,45 @@ index 39dc752..0b95663 100644
 -a computational configuration
 +an apparatus
   that progresses by its own inertia.
+~
+ <pb/>
+~
+--John<br/>
+~
+-+Vilém<br/>
+~
+-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Cay<br/>
+~
+-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+F<br/>
+~
+-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;l<br/>
+~
+-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+uss<br/>
+~
+-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e<br/>
+~
+-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-y<br/>
+~
+-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+r<br/>
+~
+-2019–20
++-Vilém<br/>
+~
+++John<br/>
+~
++&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-F<br/>
+~
++&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+Cay<br/>
+~
++&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;l<br/>
+~
++&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-uss<br/>
+~
++&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e<br/>
+~
++&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-r<br/>
+~
++&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+y<br/>
+~
++1983–4
 ~

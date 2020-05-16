@@ -9,7 +9,7 @@ const DEFAULT_PATH = ".tb:last";
 // Animation Parameters
 const PHASE1_PHASE3_DELAY = 3000;// automatically enter phase3 after 3 seconds in phase1 on the same element
 const OVERLAY_FADEIN_DELAY = 1000;
-const OVERLAY_FADEIN_DURATION = 10; // TODO: need to solve overlay issue if we want a duration for the css animation
+const OVERLAY_FADEIN_DURATION = 1000; // TODO: need to solve overlay issue if we want a duration for the css animation
 // Animation Control
 let myTimeouts = [], phaseLive=false;
 
