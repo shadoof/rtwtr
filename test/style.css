@@ -38,6 +38,9 @@ p {
 .menu ul li:hover{
   color:red;
 }
+.menu li.current {
+  color:red;
+}
 /* End of Menu Style */
 
 .page, .adiv, .bdiv, #overlay{
