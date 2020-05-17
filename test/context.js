@@ -71,6 +71,11 @@ class contextReport {
     //console.log(whichSharedSpan, this.sharedSpans[whichSharedSpan],this.sharedSpans);
     return this.sharedSpans[whichSharedSpan]
   }
+  isThereEnoughSpace() {
+    const aText = getAllContent(aspan.find('span:not(.tb)'));
+    const bText = getAllContent(bspan.find('span:not(.tb)'));
+    return calculateTextLength(aText) >= calculateTextLength(bText)
+  }
   adjustAnchorIfNotFit(whichSharedSpan,aspan, bspan) {
     // However, the content of b may not fit into the space
     while (this.before.indent < 0 || this.after.indent < 0) {
@@ -78,21 +83,27 @@ class contextReport {
         whichSharedSpan ++;
         this.dbug && console.log(whichSharedSpan);
         if (whichSharedSpan < this.sharedSpans.length) {
-          this.anchor.id = this.sharedSpans[whichSharedSpan].id;
-          this.dbug && console.log("adjust +", this.anchor.id)
-          this.generateFullReport(aspan, bspan, this.anchor.id);
+          const id = this.sharedSpans[whichSharedSpan].id;
+          this.dbug && console.log("adjust +", id)
+          this.generateFullReport(aspan, bspan, id);
         } else {
-          //TODO: any solution for this case? Ex: page 3, unit3
-          console.log("Not enough space for b before, no solution found.")
+          if (this.isThereEnoughSpace) {
+            // fix
+            console.log("Todo")
+          } else {
+            console.log("Not enough space for b, no solution found.")
+          }
           break;
         }
       } else if(this.after.indent < 0 && this.before.indent >= 0) {
         whichSharedSpan --;
         if (whichSharedSpan >= 0) {
-          this.anchor.id = this.sharedSpans[whichSharedSpan].id;
-          this.dbug && console.log("adjust -", this.anchor.id)
-          this.generateFullReport(aspan, bspan, this.anchor.id);
+          const id = this.sharedSpans[whichSharedSpan].id;
+          this.dbug && console.log("adjust -", id)
+          this.generateFullReport(aspan, bspan, id);
         } else {
+          // calculateTextLength()
+
           console.log("Not enough space for b after, no solution found.")
           break;
         }
@@ -113,18 +124,21 @@ class contextReport {
     this.after.indent = this.after.a.length - this.after.b.length
   }
   generateContext(t, parent, idx) {
-    this.analysis("before", t, parent, idx);
-    this.analysis("after", t, parent, idx);
+    this.before[t] = this.analysis("before", t, parent, idx);
+    this.after[t] = this.analysis("after", t, parent, idx);
   }
 
   analysis(section, t, parent, idx) {
     const getChildren = section == "before" ? getChildrenBefore: getChildrenAfter;
-    this[section][t].spans = getChildren(parent.find('span:not(.tb)'), t + idx);
-    this[section][t].content = getAllContent(this[section][t].spans);
-    this[section][t].length = calculateTextLength(this[section][t].content); // tmp
-  //  this[section][t].length = calculateTotalTextLength(this[section][t].spans);
-    //console.log(section, t, this[section][t].spans);
+    const spans = getChildren(parent.find('span:not(.tb)'), t + idx);
+    const content = getAllContent(spans);
+    return {
+      spans: spans,
+      content: content,
+      length: calculateTextLength(content)
+    }
   }
+
   getIdxFromId(id){
     return parseInt(id.replace(/[a-zA-Z ]/g,""));
   }
