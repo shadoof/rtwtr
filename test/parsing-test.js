@@ -101,7 +101,7 @@ function parseText(data, callback) {
     content = removeBreaks(content);
     // fix space after sentence end
     content = content.replace(/(\S)$/g,"$1 ");
-    newSpan.innerText = content;
+    newSpan.innerHTML = content;
 
     const currentAdiv = $(contentToBeAppend).find('#page' + currentPage +' .adiv'),
           currentBdiv =  $(contentToBeAppend).find('#page' + currentPage +' .bdiv');
