@@ -81,10 +81,7 @@ function parseText(data, callback) {
   const lines = data.split("\n");
   // skip the top section
   lines.splice(0, 5);
-  // Cayley's preprocessing
-  for (var i = 0; i < lines.length; i++) {
-    lines[i] = lines[i].replace(/^  /," ").replace(/(\S)$/,"$1 ").replace(/> $/,">");
-  }
+
   let contentToBeAppend = document.createElement('div');
   $(contentToBeAppend).attr("id", "content");
 
@@ -102,9 +99,8 @@ function parseText(data, callback) {
     // clean up syntags
     content = removeGitDiffSyntags(content);
     content = removeBreaks(content);
-    // fix space after & before punctuatiion
-    // NOT NEEDED content = content.replace(/([,;:.\?!])$/g,"$1 ");
-    // content = content.replace(/^ ([,;:.\?!])/g,"$1");
+    // fix space after sentence end
+    content = content.replace(/(\S)$/g,"$1 ");
     newSpan.innerText = content;
 
     const currentAdiv = $(contentToBeAppend).find('#page' + currentPage +' .adiv'),
