@@ -1,6 +1,7 @@
 // Parser: Definitions
 const CLAUSE_BREAKS = [", ", "; ", ": ", "</cb> "];
-const THOUGHT_BREAKS = [".", "?", "!", "</tb>"]; // Done; space after needed
+const THOUGHT_BREAKS = /[!|.|.?][”|"]?$/g;
+// Handle quotation: TODO: replace with regex
 const PARAGRAPH_BREAK = "<pb/>"; // Done
 const SECTION_BREAK = "<sb/>"; // Done
 const UNIT_PAIRS = ["<ub>","</ub>"];// Done
@@ -20,13 +21,6 @@ const CONTENT_WIDTH = 800, MARGIN_LEFT = 200;
 
 
 // Tools
-function endsWithAny(str, array){
-  for (let i = 0; i < array.length; i++) {
-    const word = array[i];
-    if (str.endsWith(word)) return true;
-  }
-  return false;
-}
 
 function wordCount(str) {
   return str.trim().split(/\s+/).length;
@@ -81,16 +75,14 @@ function parseText(data, callback) {
   const lines = data.split("\n");
   // skip the top section
   lines.splice(0, 5);
-  // Cayley's preprocessing
-  for (var i = 0; i < lines.length; i++) {
-    lines[i] = lines[i].replace(/^  /," ").replace(/(\S)$/,"$1 ").replace(/> $/,">");
-  }
+
   let contentToBeAppend = document.createElement('div');
   $(contentToBeAppend).attr("id", "content");
 
   let currentPage = 1, currentNo = 0, match = false;
 
   createNewPage(currentPage, contentToBeAppend);
+  $('.menu li').addClass("current");
 
   for (var i = 0; i < lines.length; i++) {
 
@@ -102,10 +94,13 @@ function parseText(data, callback) {
     // clean up syntags
     content = removeGitDiffSyntags(content);
     content = removeBreaks(content);
-    // fix space after & before punctuatiion
-    // NOT NEEDED content = content.replace(/([,;:.\?!])$/g,"$1 ");
-    // content = content.replace(/^ ([,;:.\?!])/g,"$1");
-    newSpan.innerText = content;
+    // fix space after sentence end
+    content = content.replace(/(\S)$/g,"$1 ");
+
+    // ignore empty lines
+    if (content == "" || content == " ") continue;
+
+    newSpan.innerHTML = content;
 
     const currentAdiv = $(contentToBeAppend).find('#page' + currentPage +' .adiv'),
           currentBdiv =  $(contentToBeAppend).find('#page' + currentPage +' .bdiv');
@@ -174,10 +169,11 @@ function parseText(data, callback) {
     } // End of Switch
 
     // Handle THOUGHT_BREAKS
-    if(endsWithAny(line, THOUGHT_BREAKS)) {
+
+    if(line.match(THOUGHT_BREAKS)) {
       const tb = "<span class='tb'></span>";
-      currentAdiv.find(".tb:last").parent().append(tb);
-      currentBdiv.find(".tb:last").parent().append(tb);
+      if(type == " " || type == "-") currentAdiv.find(".tb:last").parent().append(tb);
+      if(type == " " || type == "+") currentBdiv.find(".tb:last").parent().append(tb);
     }
 
   } // End of for loop
@@ -200,7 +196,7 @@ function getMatchingBFromA(aspan) {
   const pIdx = getCurrentIndexInDirectParent($(aspan).parent());
   const currentPage = $(aspan).parent().parent().parent();
   const bspan = currentPage.find('.bdiv').children().eq(pIdx).children().eq(spanIdx);
-
+  // console.log(pIdx, spanIdx, bspan)
   return bspan;
 }
 
@@ -224,7 +220,7 @@ function phase3(thisDom) {
   if (phaseLive) return;
   const bspan = getMatchingBFromA(thisDom);
 
-  console.log("phase3", thisDom)
+  console.log("phase3", thisDom, bspan)
   phaseLive = true;
   animate(bspan, $(thisDom));
 }
@@ -236,6 +232,7 @@ function createNewPage(index, wrapper) {
   $(wrapper).append(page);
   // populate menu
   $('.menu ul').append("<li>"+ index + "</li>");
+
 }
 
 function basicAnalyze(aspan, bspan, predefinedAnchor) {
@@ -258,8 +255,9 @@ function animate(bspan, aspan, predefinedAnchor) {
   clearTimeouts(myTimeouts);
 
   $(aspan).addClass("hidden");
-
   let context = basicAnalyze(aspan, bspan, predefinedAnchor);
+  console.log(context);
+
   if (context.sharedSpans == undefined) {
     console.log("no shared spans, do nothing")
     return;
@@ -397,8 +395,9 @@ function postParsing() {
   // Menu
   $('.menu li').click(function() {
     //console.log(this.innerText)
-    $('.page').removeClass('current')
+    $('.page, .menu li').removeClass('current');
     $('#page'+ this.innerText).addClass('current')
+    $(this).addClass('current');
   })
 
 }
