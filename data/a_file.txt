@@ -135,8 +135,10 @@ The essential difference between a TV program and a tapestry is not (as one migh
 These types of images were called, by Vilém Flusser, “techno- (or technical) images,” and the convention that they are based on Flusser designated as “techno-imagination,” so as to distinguish a world that was still in the future when he performed this act of naming.
 No doubt techno-images are a sort of image, and they therefore mean, like every image, our world of myth and of magic, our imaginary.
 But life in the future at which we have arrived bears a different relation to the mythical, magic within which we had evolved to live long before textually defined apparatuses or digitalization.
+<ub>
 This difference may be addressed as follows: images as such are given by and are intended to mean the world; posthistoric images imply texts and are now also composed from integrated texts.
 Imagination as such tries to grasp the world and posthistoric imagination tries to be text illustration or to illustrate the world as itself text.
+</ub>
 <ub>
 Therefore, myths as such imagine “real” situations and posthistoric myths will mean textual prescriptions.
 Magic as such is meant to propitiate the world, whereas posthistoric magic will be designed to manipulate people, to manipulate us, ourselves.
