@@ -1,8 +1,8 @@
 diff --git a/a_file.txt b/b_file.txt
-index 25c6445..79d8283 100644
+index ef29164..dc0229c 100644
 --- a/a_file.txt
 +++ b/b_file.txt
-@@ -1,246 +1,213 @@
+@@ -1,247 +1,213 @@
  This 
 -“writing through” of Vilém Flusser’s ‘The Future of Writing,’ reconfiguring it so as to become John Cayley’s ‘The Future of Language,’
 +essay
@@ -914,7 +914,10 @@ index 25c6445..79d8283 100644
 ~
  In other words, it is not necessary to analyze the whole hopelessly complex system that stands behind a TV program
 -or social media platform
-  if one wants to understand the present crisis of rational thinking and acting.
+  if one wants to understand 
+-any ostensible
++the present
+  crisis of rational thinking and acting.
 ~
  It is sufficient to analyze 
 -and critique the programs.
@@ -1007,7 +1010,7 @@ index 25c6445..79d8283 100644
   of reason’s decadence.
 ~
  It is one of reason’s prostitution, of a “betrayal of the 
--intellectuals,” especially the humanists
+-intellectuals,” especially the humanists.
 +intellectuals.”
 ~
  One may sum this up as follows: when it became obvious that reason might be a kind of paranoia, the intellectuals stopped being iconoclastic and became idolatrous, and present TV programs
@@ -1101,8 +1104,9 @@ index 25c6445..79d8283 100644
 ~
  
 ~
- This would be a perniciously wrong interpretation of the 
-+present
+ This would be a perniciously wrong interpretation of 
+-any ostensible
++the present
   crisis of 
 -language.
 ~
@@ -1115,9 +1119,14 @@ index 25c6445..79d8283 100644
 +reason
   is to criticize imagination.
 ~
- This is doubly true in the present crisis.
+ This is doubly true in
+-any supposed crisis.
 ~
--Language must now make and work with both the techno-images of Flusser’s apparatuses and with
+-Language must now make and work with both
+  the 
+-techno-images of Flusser’s apparatuses and with
++present crisis.
+~
 +At present,
   the 
 -symbolic computational images
@@ -1179,10 +1188,10 @@ index 25c6445..79d8283 100644
 -But language is an evolved faculty and cannot
 +Nothing guarantees that reason will
   be 
--more for us than it is, despite our deep reading of
-+able to perform such a jump, although there are some symptoms (for instance,
-  cybernetics and
--software studies, of
+-more for us than it is, despite our deep reading of, for
++able to perform such a jump, although there are some symptoms (for
+  instance, cybernetics and
+-software studies, or of
   structural 
 -and poststructural analyses.
 +analysis) that point in such a direction.
@@ -1232,15 +1241,12 @@ index 25c6445..79d8283 100644
 -serve
 +become
   the production of pretexts for 
--techno- and computational images, allowing a constitutive faculty to operate perversely as
+-techno- and computational images, allowing a constitutive faculty to operate perversely as the instrument of reductive, scientistic “progress.”
 +techno-imagination (a planning for that technical progress).
 ~
-+In
-  the 
--instrument of reductive, scientistic “progress.”
-~
--As language speaks
-+first alternative,
+ In 
+-any event, as language speaks
++the first alternative,
   the future 
 -is
 +will be
@@ -1263,42 +1269,42 @@ index 25c6445..79d8283 100644
 ~
  <pb/>
 ~
---John<br/>
+-&nbsp;-John<br/>
 ~
--+Vilém<br/>
+-&nbsp;+Vilém<br/>
 ~
--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Cay<br/>
+-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Cay<br/>
 ~
--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+F<br/>
+-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+F<br/>
 ~
--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;l<br/>
+-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;l<br/>
 ~
--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+uss<br/>
+-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+uss<br/>
 ~
--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e<br/>
+-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e<br/>
 ~
--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-y<br/>
+-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-y<br/>
 ~
--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+r<br/>
+-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+r<br/>
 ~
 -2019–20
-+-Vilém<br/>
++&nbsp;-Vilém<br/>
 ~
-++John<br/>
++&nbsp;+John<br/>
 ~
-+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-F<br/>
++&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-F<br/>
 ~
-+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+Cay<br/>
++&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+Cay<br/>
 ~
-+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;l<br/>
++&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;l<br/>
 ~
-+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-uss<br/>
++&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-uss<br/>
 ~
-+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e<br/>
++&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e<br/>
 ~
-+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-r<br/>
++&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-r<br/>
 ~
-+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+y<br/>
++&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+y<br/>
 ~
 +1983–4
 ~

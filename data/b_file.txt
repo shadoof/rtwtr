@@ -201,13 +201,13 @@ Thus, in fact, we may discern, at present, two possible futures of writing: it w
 In the first alternative, the future will be unimaginable by definition.
 In the second, history in the strict sense of that term will come to an end, and we may easily imagine what will follow: the eternal return of life in an apparatus that progresses by its own inertia.
 <pb/>
--Vilém<br/>
-+John<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-F<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+Cay<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;l<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-uss<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-r<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+y<br/>
+&nbsp;-Vilém<br/>
+&nbsp;+John<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-F<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+Cay<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;l<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-uss<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-r<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+y<br/>
 1983–4
