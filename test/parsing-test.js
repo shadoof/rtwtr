@@ -15,7 +15,7 @@ const OVERLAY_FADEIN_DURATION = 1000; // TODO: need to solve overlay issue if we
 let myTimeouts = [], phaseLive=false;
 
 // Typography
-const TEXT_SIZE = 20, LINE_HEIGHT = 23;
+const TEXT_SIZE = 24, LINE_HEIGHT = 27;
 // Layout
 const CONTENT_WIDTH = 800, MARGIN_LEFT = 200;
 
@@ -257,6 +257,7 @@ function animate(bspan, aspan, predefinedAnchor) {
   $(aspan).addClass("hidden");
   let context = basicAnalyze(aspan, bspan, predefinedAnchor);
   console.log(context);
+  // return;
 
   if (context.sharedSpans == undefined) {
     console.log("no shared spans, do nothing")

@@ -78,14 +78,30 @@ class contextReport {
   }
   adjustAnchorIfNotFit(whichSharedSpan,aspan, bspan) {
     // However, the content of b may not fit into the space
+    let attempt = 0
     while (this.before.indent < 0 || this.after.indent < 0) {
+      attempt ++;
+      if (attempt > this.sharedSpans.length) break; // avoid getting stuck in the while loop
       if (this.before.indent < 0 && this.after.indent >= 0) {
+        const gap = this.before.indent;
         whichSharedSpan ++;
         this.dbug && console.log(whichSharedSpan);
         if (whichSharedSpan < this.sharedSpans.length) {
           const id = this.sharedSpans[whichSharedSpan].id;
-          this.dbug && console.log("adjust +", id)
+
           this.generateFullReport(aspan, bspan, id);
+          if (this.after.indent < 0 && this.before.indent >= 0) {
+            this.dbug && console.log("choose one from two situations")
+            if (this.after.indent >=  gap) break;
+            else {
+              // go back
+              whichSharedSpan --;
+              const id = this.sharedSpans[whichSharedSpan].id;
+              this.generateFullReport(aspan, bspan, id);
+            }
+
+          }
+          this.dbug && console.log("adjust +", id)
         } else {
           if (this.isThereEnoughSpace) {
             // fix
@@ -96,11 +112,23 @@ class contextReport {
           break;
         }
       } else if(this.after.indent < 0 && this.before.indent >= 0) {
+        const gap = this.after.indent;
         whichSharedSpan --;
         if (whichSharedSpan >= 0) {
           const id = this.sharedSpans[whichSharedSpan].id;
           this.dbug && console.log("adjust -", id)
           this.generateFullReport(aspan, bspan, id);
+
+          if (this.before.indent < 0 && this.after.indent >= 0) {
+            this.dbug && console.log("choose one from two situations")
+            if (this.before.indent >=  gap) break;
+            else {
+              // go back
+              whichSharedSpan --;
+              const id = this.sharedSpans[whichSharedSpan].id;
+              this.generateFullReport(aspan, bspan, id);
+            }
+          }
         } else {
           // calculateTextLength()
 
