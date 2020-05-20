@@ -1,6 +1,2 @@
-src/*.java
-node_modules
-node_modules/*
-*.esproj
-*-bak*
+.git
 .DS_Store
