@@ -90,19 +90,11 @@ p {
 
 /* Animation related CSS */
 /* Shared span change to orange color in 0.5s */
-.adiv p > span:hover .shared{
-  color:orange;
-  transition:color, 0.5s;
-}
 .active .shared{
   cursor: pointer;
 }
-/* aspan fade out in 0.5s to 0.05 opacity  */
-.adiv p > span.hidden{
-  opacity:0.05;
-  transition:opacity, 0.5s;
-}
+
 /* Current anchor color */
-span.anchor {
+/* span.anchor {
   color:green !important;
-}
+} */
