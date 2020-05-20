@@ -8,17 +8,25 @@ const UNIT_PAIRS = ["<ub>","</ub>"];// Done
 const DEFAULT_PATH = ".tb:last";
 
 // Animation Parameters
-const PHASE1_PHASE3_DELAY = 3000;// automatically enter phase3 after 3 seconds in phase1 on the same element
-const OVERLAY_FADEIN_DELAY = 1000;
-const OVERLAY_FADEIN_DURATION = 1000; // TODO: need to solve overlay issue if we want a duration for the css animation
-// Animation Control
-let myTimeouts = [], phaseLive=false;
+
+const DEFAULT_COLOR = 'black';
+const ONHOVER_COLOR = '#777', TRANSITION_ONHOVER = 500 ;
+const DELAY_SHARED = 500, TRANSITION_SHARED = 500;
+
+const DELAY_1_2 = 1500;// automatically enter phase2 after 3 seconds in phase1 on the same element
+
+const FADE_OPACITY = 0.1, TRANSITION_FADEOUT = 1000;
+const DELAY_OVERLAY_FADEIN = 1000;
+const TRANSITION_OVERLAY_FADEIN = 500;
 
 // Typography
 const TEXT_SIZE = 24, LINE_HEIGHT = 27;
 // Layout
 const CONTENT_WIDTH = 800, MARGIN_LEFT = 200;
 
+
+// Animation Control
+let myTimeouts = [], phaseLive=false;
 
 // Tools
 
@@ -178,11 +186,14 @@ function parseText(data, callback) {
 
   } // End of for loop
 
+
   // append content
   $(contentToBeAppend).append($('#overlay'));
   $('body').append(contentToBeAppend);
   initTester();
   removeEmptyElements('.tb')
+  $('.page p > span:not(unit)').addClass("unit"); // batch add class unit for tb
+
   // set current page
   $('#page1').addClass('current')
 
@@ -206,23 +217,23 @@ function clearTimeouts(timeouts) {
   }
 }
 
-function phase2(target) {
-  if (phaseLive) return;
-  let aspan = target.parent();
-  if (!aspan.parent().is("p")) aspan = aspan.parent();
+// function phase2(target) {
+//   if (phaseLive) return;
+//   let aspan = target.parent();
+//   if (!aspan.parent().is("p")) aspan = aspan.parent();
+//
+//   console.log("phase2", target, target.id);
+//   phaseLive = true;
+//   animate(getMatchingBFromA(aspan), aspan, target)
+// }
 
-  console.log("phase2", target, target.id);
-  phaseLive = true;
-  animate(getMatchingBFromA(aspan), aspan, target)
-}
-
-function phase3(thisDom) {
+function phase2(thisDom, target) {
   if (phaseLive) return;
   const bspan = getMatchingBFromA(thisDom);
 
-  console.log("phase3", thisDom, bspan)
+  console.log("phase2", thisDom, bspan)
   phaseLive = true;
-  animate(bspan, $(thisDom));
+  animate(bspan, $(thisDom), target);
 }
 
 
@@ -254,10 +265,12 @@ function animate(bspan, aspan, predefinedAnchor) {
   $('#overlay span').text("");
   clearTimeouts(myTimeouts);
 
-  $(aspan).addClass("hidden");
+  $(aspan).css({
+    opacity: FADE_OPACITY,
+    transition : 'opacity '+ TRANSITION_FADEOUT/1000 + 's ease-in-out'
+  });
   let context = basicAnalyze(aspan, bspan, predefinedAnchor);
   console.log(context);
-  // return;
 
   if (context.sharedSpans == undefined) {
     console.log("no shared spans, do nothing")
@@ -268,29 +281,48 @@ function animate(bspan, aspan, predefinedAnchor) {
 
   const hoverAnchor = document.getElementById("anchor");
   // fill the overlay layer
+
   $('#beforeAnchorA').text(context.before.a.content); // fake before a to get the right spacing
   $('#anchor').text(context.anchor.content);
-  $('#afterAnchor').text(context.after.b.content);
+  $('#anchor').addClass("shared");
+
+  for (var i = 0; i < context.after.b.spans.length; i++) {
+    const span = context.after.b.spans.eq(i).clone();
+    span.attr("id", "");
+    $('#afterAnchor').append(span);
+  }
+  // $('#afterAnchor').innerHTML(contentAfterAnchor);
 
   const overlay = document.getElementById("overlay");
   overlay.style.top = (aspan[0].offsetTop) + "px";
   overlay.style.textIndent = (aspan[0].offsetLeft) + "px";
 
-  layoutBeforeB(context.before.b.content, hoverAnchor);
+  layoutBeforeB(context.before.b, hoverAnchor);
 
   // display
+  $('#overlay').css({
+    color: ONHOVER_COLOR
+  })
+  $('#overlay .shared').css({
+    color: DEFAULT_COLOR
+  })
+
+
   const myTimeout = setTimeout(function(){
-    $('#overlay').animate({opacity:1}, {
-    duration:OVERLAY_FADEIN_DURATION,
-    complete:function() {
-      //console.log("complete")
-    }})
-  }, OVERLAY_FADEIN_DELAY)
+    $('#overlay').css({
+      opacity:1,
+      // "z-index":3,
+      transition:'opacity '+ TRANSITION_OVERLAY_FADEIN/1000 + 's ease-in-out'
+    })
+
+
+  }, DELAY_OVERLAY_FADEIN)
   myTimeouts.push(myTimeout);
 
 }
 
-function layoutBeforeB(content, anchor) {
+function layoutBeforeB(beforeB, anchor) {
+  const content = beforeB.content
   const words = content.split(" ");
   words.reverse();
   let cursor = handleMultiLineAnchor(anchor);
@@ -299,6 +331,7 @@ function layoutBeforeB(content, anchor) {
   $('#beforeAnchorB').empty();
 
   for (var i = 0; i < words.length; i++) {
+
      const word = words[i];
      if (word == "") continue; // skip empty ones
      const newSpan = document.createElement('span');
@@ -366,29 +399,57 @@ function getIndent(total, unit, anchor) {
 
 function postParsing() {
   // user interaction
-  $('.adiv > p > span:not(.hidden)').mouseenter(function(){
-    const spanOnHover = $(this);
+  $('.adiv > p .unit:not(.hidden)').mouseenter(function(){
+    const unitOnHover = $(this);
     console.log("phase1")
-    spanOnHover.addClass("active");
-    const phase1Timeout = setTimeout(function(){phase3(spanOnHover)}, PHASE1_PHASE3_DELAY, spanOnHover);
+    unitOnHover.find('span.shared, span.hide').css({
+      color: ONHOVER_COLOR,
+      transition : 'color '+ TRANSITION_ONHOVER/1000 + 's ease-in-out'
+    });
+
+    const sharedSpanTimeout = setTimeout(function(){
+      unitOnHover.find('span.shared').css({
+        color: DEFAULT_COLOR,
+        transition : 'color '+ TRANSITION_SHARED/1000 + 's ease-in-out'
+      });
+    }, DELAY_SHARED)
+
+    myTimeouts.push(sharedSpanTimeout);
+
+    const phase1Timeout = setTimeout(function(){
+      console.log("evaluate for phase2")
+      unitOnHover.addClass("active");
+      // if already on hover shared span
+      const currentOnHover = unitOnHover.find('.shared:hover');
+      if (currentOnHover.length != 0) {
+        console.log(unitOnHover.find('.shared:hover'))
+        phase2(unitOnHover, currentOnHover);
+      }
+    }, DELAY_1_2, unitOnHover
+    );
+
     myTimeouts.push(phase1Timeout);
-
   });
 
-  $(document).on('click','.adiv .active .shared',function(e){
-    phase2($(e.target));
+  $(document).on('mouseover','.adiv .unit.active .shared',function(e){
+    // mouseover shared spans to go to phase 2
+    phase2($(e.target).closest('.unit'), $(e.target));
   });
 
-  $('.adiv > p > span, .adiv').mouseleave(function() {
+  $('.adiv > p > span, .adiv, #overlay').mouseleave(function() {
     console.log("mouseout")
     phaseLive = false;
     $('.adiv > p > span').removeClass("active");
     $('.adiv > p > span').removeClass("hidden");
-
     $('.adiv span').removeClass("anchor");
+    $('.adiv > p .unit').css("opacity", 1);
+    $('.adiv > p .unit span').css("color", DEFAULT_COLOR);
     // clear settimeout
     clearTimeouts(myTimeouts);
-    $('#overlay').css("opacity","0");
+    $('#overlay').css({
+      opacity:0,
+      // "z-index":1
+    });
 
   })
   // End of User Interaction
