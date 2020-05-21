@@ -22,8 +22,7 @@ const TRANSITION_OVERLAY_FADEIN = 500;
 // Typography
 const TEXT_SIZE = 24, LINE_HEIGHT = 27;
 // Layout
-const CONTENT_WIDTH = 800, MARGIN_LEFT = 200;
-
+const CONTENT_WIDTH = 800, MARGIN_LEFT = 200, MARGIN_RIGHT = 200, MARGIN_TOP = 100;
 
 // Animation Control
 let myTimeouts = [], phaseLive=false;
@@ -290,6 +289,16 @@ function animate(bspan, aspan, predefinedAnchor) {
     const span = context.after.b.spans.eq(i).clone();
     span.attr("id", "");
     $('#afterAnchor').append(span);
+    // if not enought space for b after
+    if (context.after.indent < 0) {
+        $('#overlay p').css({
+          "margin-right": context.after.indent < -50 ? "-50px" : "-100px" // tmp
+        })
+    } else {
+      $('#overlay p').css({
+        "margin-right": "-20px"
+      })
+    }
   }
   // $('#afterAnchor').innerHTML(contentAfterAnchor);
 
@@ -297,7 +306,7 @@ function animate(bspan, aspan, predefinedAnchor) {
   overlay.style.top = (aspan[0].offsetTop) + "px";
   overlay.style.textIndent = (aspan[0].offsetLeft) + "px";
 
-  layoutBeforeB(context.before.b, hoverAnchor);
+  layoutBeforeB(context.before, hoverAnchor, aspan[0].offsetLeft, aspan[0].offsetTop);
 
   // display
   $('#overlay').css({
@@ -321,25 +330,26 @@ function animate(bspan, aspan, predefinedAnchor) {
 
 }
 
-function layoutBeforeB(beforeB, anchor) {
-  const content = beforeB.content
+function layoutBeforeB(before, anchor, offsetALeft, offsetATop) {
+  const content = before.b.content;
   const words = content.split(" ");
-  words.reverse();
+  const reverseWords = words.reverse();
   let cursor = handleMultiLineAnchor(anchor);
-  console.log(cursor);
+  //console.log(cursor);
   // clear previous layout
   $('#beforeAnchorB').empty();
+  offsetArray = [];
 
-  for (var i = 0; i < words.length; i++) {
+  // TMP: allow extra space to margin left
+  const extraSpace = before.indent < 0 ? 50 : 0;
 
-     const word = words[i];
+  for (var i = 0; i < reverseWords.length; i++) {
+     const word = reverseWords[i];
      if (word == "") continue; // skip empty ones
-     const newSpan = document.createElement('span');
-     newSpan.innerText = word + " ";
-     const textL = calculateTextLength(newSpan.innerText)
+     const textL = calculateTextLength(word + " ")
      cursor.x -= textL;
-     if (cursor.x < MARGIN_LEFT) {
-       console.log("new line")
+     if (cursor.x < MARGIN_LEFT - extraSpace) {
+       //console.log("new line")
        cursor.y -= LINE_HEIGHT
        cursor.x += CONTENT_WIDTH
        // right align
@@ -349,14 +359,64 @@ function layoutBeforeB(beforeB, anchor) {
 
      }
      //console.log(newSpan.innerText, cursor);
-     $('#beforeAnchorB').append(newSpan);
-     $(newSpan).offset({
+     offsetArray.push({
+       text:word,
        left: cursor.x,
        top: cursor.y
-     })
+     });
 
+     // console.log(cursor,  offsetALeft+MARGIN_LEFT, offsetATop)
   }
 
+  offsetArray.reverse();
+
+  // split these two into two functions
+  let index = 0;
+
+  for (var i = 0; i < before.b.spans.length; i++) {
+    const currentSpan = before.b.spans[i];
+    const wrapperSpan = document.createElement('span');
+    $('#beforeAnchorB').append(wrapperSpan);
+    if (currentSpan.classList.contains("shared")) {
+      wrapperSpan.classList.add("shared");
+    }
+    const spanWords = currentSpan.innerText.split(" ");
+    for (var j = 0; j < spanWords.length; j++) {
+      const word = spanWords[j];
+      if (word == "") continue;
+      if (offsetArray[index].text == word) {
+        const newSpan = document.createElement('span');
+        newSpan.innerText = word + " ";
+        $('#beforeAnchorB > span:last').append(newSpan);
+
+        if (offsetArray[index].top == offsetATop + MARGIN_TOP) {
+          // left might need adjustment
+          if (offsetArray[index].left < offsetALeft + MARGIN_LEFT) {
+            console.log("off", word, offsetArray[index].left);
+            // adjust the whole line for the rest
+            const offLeft = 7 + offsetALeft + MARGIN_LEFT - offsetArray[index].left;
+            offsetArray = adjustOffLeft(offsetArray, index, offLeft)
+          }
+        }
+        $(newSpan).offset({
+          left:offsetArray[index].left,
+          top: offsetArray[index].top
+        })
+        index ++;
+      }
+    } // End of spanWord for loop
+  }
+}
+
+function adjustOffLeft(array, index, offLeft) {
+  const thisLine = array[index].top;
+  for (var i = index; i < array.length; i++) {
+    if (array[i].top == thisLine) {
+      array[i].left += offLeft;
+    }
+    else if(array[i].top < thisLine) break;
+  }
+  return array;
 }
 
 function handleMultiLineAnchor(anchor) {
@@ -397,7 +457,22 @@ function getIndent(total, unit, anchor) {
   };
 }
 
+function initializeCSS() {
+  $('#content').css({
+    width: CONTENT_WIDTH,
+    "margin-left": MARGIN_LEFT,
+    "margin-right": MARGIN_RIGHT,
+    "margin-top": MARGIN_TOP,
+    "font-size": TEXT_SIZE + "px",
+    "line-height": LINE_HEIGHT + "px"
+  })
+  $('#getTextWidth').css({
+    "font-size": TEXT_SIZE + "px",
+    "line-height": LINE_HEIGHT + "px"
+  })
+}
 function postParsing() {
+  initializeCSS();
   // user interaction
   $('.adiv > p .unit:not(.hidden)').mouseenter(function(){
     const unitOnHover = $(this);
