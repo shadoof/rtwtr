@@ -1,5 +1,5 @@
 diff --git a/a_file.txt b/b_file.txt
-index ef29164..dc0229c 100644
+index b3b51fa..dc0229c 100644
 --- a/a_file.txt
 +++ b/b_file.txt
 @@ -1,247 +1,213 @@
@@ -321,7 +321,9 @@ index ef29164..dc0229c 100644
 +because, six thousand years ago, some
   people
 -have always
-  thought that some images needed explaining.
+  thought that some images needed 
+-explaining and, six thousand years ago, they found new practices of language that were amenable to persistent exposition.
++explaining.
 ~
  Images are mediations between 
 -ourselves
@@ -356,10 +358,9 @@ index ef29164..dc0229c 100644
 +decipher
   those images, one must learn the conventions that give them their meaning, and one may commit mistakes.
 ~
- For instance: it would be a mistake to 
--read
-+decipher
-  road maps as if they were cave paintings (magic for hunting tourists), or as if they were projections (proposals to build roads).
+ For instance: it would be a mistake to
+-read or
+  decipher road maps as if they were cave paintings (magic for hunting tourists), or as if they were projections (proposals to build roads).
 ~
  The “imagination” that produces road maps is not the same as the “imagination” that produces cave paintings and projections.
 ~
