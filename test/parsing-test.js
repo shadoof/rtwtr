@@ -9,10 +9,10 @@ const DEFAULT_PATH = ".tb:last";
 
 // Animation Parameters
 
-const DEFAULT_COLOR = 'black'; // black
+const DEFAULT_COLOR = '#013'; // black
 const ONHOVER_COLOR = '#89a'; // #777
-const OVERLAY_DEFAULT_COLOR = 'black';
-const OVERLAY_ONHOVER_COLOR = '#89a';
+const OVERLAY_DEFAULT_COLOR = '#410';
+const OVERLAY_ONHOVER_COLOR = '#976';
 
 const TRANSITION_ONHOVER = 500;
 const DELAY_SHARED = 500, TRANSITION_SHARED = 500;

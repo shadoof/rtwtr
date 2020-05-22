@@ -13,14 +13,14 @@ div {
   top: 0;
   right: 0;
   z-index: 2;
-  color: #014;
+  color: #89a;
 }
 
 .bdiv {
   top: 500;
   margin-top: 0;
   z-index: 1;
-  color: #410;
+  color: #a89;
 }
 
 h1 {
