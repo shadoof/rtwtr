@@ -214,8 +214,12 @@ The universal trend in the developed world – in which practices of language an
 
 This would be a perniciously wrong interpretation of any ostensible crisis of language.
 Language makes and works together with images, and the task of reason, or symbolic thought as language, is to criticize imagination.
+<ub>
 This is doubly true in any supposed crisis.
+</ub>
+<ub>
 Language must now make and work with both the techno-images of Flusser’s apparatuses and with the symbolic computational images of which digitalized culture is composed, and the task of reason, or language as symbolic thought, is to criticize techno- and computational-imagination.
+</ub>
 Of course, this implies a sort of qualitative jump onto a new level of meaning on the part of reason.
 Practices of writing once explained images of the world.
 If we are to care for a culture that has been wounded and misdirected by computation, the arts of language will have to explain those illustrations that its programs have produced.
