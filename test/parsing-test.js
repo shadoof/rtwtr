@@ -10,7 +10,11 @@ const DEFAULT_PATH = ".tb:last";
 // Animation Parameters
 
 const DEFAULT_COLOR = 'black'; // black
-const ONHOVER_COLOR = '#89a', TRANSITION_ONHOVER = 500 ; // #777
+const ONHOVER_COLOR = '#89a'; // #777
+const OVERLAY_DEFAULT_COLOR = 'black';
+const OVERLAY_ONHOVER_COLOR = '#89a';
+
+const TRANSITION_ONHOVER = 500;
 const DELAY_SHARED = 500, TRANSITION_SHARED = 500;
 
 const DELAY_1_2 = 1500;// automatically enter phase2 after 3 seconds in phase1 on the same element
@@ -310,10 +314,10 @@ function animate(bspan, aspan, predefinedAnchor) {
 
   // display
   $('#overlay').css({
-    color: ONHOVER_COLOR
+    color: OVERLAY_ONHOVER_COLOR
   })
   $('#overlay .shared').css({
-    color: DEFAULT_COLOR
+    color: OVERLAY_DEFAULT_COLOR
   })
 
 
