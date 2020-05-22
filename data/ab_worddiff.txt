@@ -1,8 +1,8 @@
 diff --git a/a_file.txt b/b_file.txt
-index b3b51fa..dc0229c 100644
+index dfaef80..169683b 100644
 --- a/a_file.txt
 +++ b/b_file.txt
-@@ -1,247 +1,213 @@
+@@ -1,251 +1,217 @@
  This 
 -“writing through” of Vilém Flusser’s ‘The Future of Writing,’ reconfiguring it so as to become John Cayley’s ‘The Future of Language,’
 +essay
@@ -138,7 +138,6 @@ index b3b51fa..dc0229c 100644
   who experience, understand, and evaluate the world as a 
 -“becoming.”
 +“becoming,”
-  
 ~
  </ub>
 ~
@@ -1120,14 +1119,18 @@ index b3b51fa..dc0229c 100644
 +reason
   is to criticize imagination.
 ~
- This is doubly true in
--any supposed crisis.
+ <ub>
 ~
--Language must now make and work with both
-  the 
--techno-images of Flusser’s apparatuses and with
-+present crisis.
+ This is doubly true in 
+-any supposed
++the present
+  crisis.
 ~
+ </ub>
+~
+ <ub>
+~
+-Language must now make and work with both the techno-images of Flusser’s apparatuses and with
 +At present,
   the 
 -symbolic computational images
@@ -1144,6 +1147,8 @@ index b3b51fa..dc0229c 100644
   to criticize 
 -techno- and computational-imagination.
 +techno-imagination.
+~
+ </ub>
 ~
  Of course, this implies a sort of qualitative jump onto a new level of meaning on the part of reason.
 ~

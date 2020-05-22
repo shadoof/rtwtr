@@ -10,8 +10,7 @@ class contextReport {
   constructor(aspan, bspan, ref, predefinedAnchor) {
     this.sharedSpans = this.verifySharedSpans(aspan, bspan);
     if (this.sharedSpans == null) return;
-
-    this.dbug = 0;
+    this.dbug = 1;
     this.ref = ref;
     this.anchor = {};
     this.before = {
@@ -85,10 +84,9 @@ class contextReport {
       if (this.before.indent < 0 && this.after.indent >= 0) {
         const gap = this.before.indent;
         whichSharedSpan ++;
-        this.dbug && console.log(whichSharedSpan);
+        this.dbug && console.log(whichSharedSpan-1, "-> ", whichSharedSpan);
         if (whichSharedSpan < this.sharedSpans.length) {
           const id = this.sharedSpans[whichSharedSpan].id;
-
           this.generateFullReport(aspan, bspan, id);
           if (this.after.indent < 0 && this.before.indent >= 0) {
             this.dbug && console.log("choose one from two situations")
@@ -102,6 +100,12 @@ class contextReport {
 
           }
           this.dbug && console.log("adjust +", id)
+        } else if (whichSharedSpan - 2 >= 0){
+          // try going to another direction
+          whichSharedSpan -= 2;
+          const id = this.sharedSpans[whichSharedSpan].id;
+          this.generateFullReport(aspan, bspan, id);
+
         } else {
           if (this.isThereEnoughSpace) {
             // fix
@@ -136,10 +140,17 @@ class contextReport {
           break;
         }
       } else if(this.after.indent < 0 && this.before.indent < 0){
-        console.error("B span is larger than A span!",this.before.indent, this.after.indent)
+        console.log("B span is larger than A span!",this.before.indent, this.after.indent)
+        // get the first shared span
+        whichSharedSpan  = 0;
+        const id = this.sharedSpans[whichSharedSpan].id;
+        this.generateFullReport(aspan, bspan, id);
         break;
       }
     }
+  }
+  findTheBestAnchorIfNotFit(whichSharedSpan,aspan, bspan) {
+    //TODO: replace adjustAnchor
   }
   generateFullReport(aspan, bspan, anchorId) {
     this.getAnchorInfo(anchorId);
