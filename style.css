@@ -13,16 +13,18 @@ div {
   top: 0;
   right: 0;
   z-index: 2;
+  color: #014;
 }
 
 .bdiv {
   top: 500;
   margin-top: 0;
   z-index: 1;
+  color: #410;
 }
 
 h1 {
-  font: 30px/40px Georgia, "Times New Roman", Times, serif;
+  font: 24px/27px Garamond, Georgia, "Times New Roman", Times, serif;
 }
 
 .b_file {
@@ -31,21 +33,23 @@ h1 {
 }
 
 span {
-  font: 20px/30px Georgia, "Times New Roman", Times, serif;
+  font: 24px/27px Garamond, Georgia, "Times New Roman", Times, serif;
   cursor: default;
 }
 
 .text {
-  color: rgba(0,0,0,0);
-  transition: color 2s ease-in-out;
+  /*opacity: 0;*/
+  transition: opacity 2s ease-in-out;
 }
 
 .text.a {
-  color: rgba(0,0,0,255);
+  opacity: 1;
+  /*color: rgba(0,0,127,255);*/
 }
 
 .text.b {
-  color: rgba(0,0,0,0);
+  opacity: 0.1;
+  /*color: rgba(0,0,0,0);*/
 }
 
 /*.text.a:hover {
