@@ -1,8 +1,8 @@
 diff --git a/a_file.txt b/b_file.txt
-index f497270..169683b 100644
+index 6e37620..b6e3d1b 100644
 --- a/a_file.txt
 +++ b/b_file.txt
-@@ -1,251 +1,217 @@
+@@ -1,253 +1,219 @@
  This 
 -“writing through” of Vilém Flusser’s ‘The Future of Writing,’ reconfiguring it so as to become John Cayley’s ‘The Future of Language,’
 +essay
@@ -14,7 +14,7 @@ index f497270..169683b 100644
 -teaching or philosophizing
 +future
   of 
--an
+-any particular
 +teaching the
   art of 
 -language
@@ -96,11 +96,13 @@ index f497270..169683b 100644
 ~
  <pb/>
 ~
--The configuration of practices that we conventionally call writing
+-Instanced in integrated linguistic systems of inscription, the configuration of practices that we conventionally call writing
 +Writing
-  is an important
--subsidiary configuration of linguistic
-  gesture, because it both articulates and produces that state of mind which is called “historical consciousness.”
+  is 
++an
+  important 
++gesture,
+  because it both articulates and produces that state of mind which is called “historical consciousness.”
 ~
  <ub>
 ~
@@ -1272,6 +1274,8 @@ index f497270..169683b 100644
 ~
  <pb/>
 ~
+ <ub>
+~
 -&nbsp;-John<br/>
 ~
 -&nbsp;+Vilém<br/>
@@ -1290,7 +1294,7 @@ index f497270..169683b 100644
 ~
 -&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+r<br/>
 ~
--2019–20
+-2019–20.
 +&nbsp;-Vilém<br/>
 ~
 +&nbsp;+John<br/>
@@ -1310,4 +1314,6 @@ index f497270..169683b 100644
 +&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+y<br/>
 ~
 +1983–4
+~
+ </ub>
 ~
