@@ -1,5 +1,5 @@
 diff --git a/a_file.txt b/b_file.txt
-index dca822e..ce2f2c4 100644
+index a0eae91..ce2f2c4 100644
 --- a/a_file.txt
 +++ b/b_file.txt
 @@ -1,253 +1,220 @@
@@ -35,8 +35,11 @@ index dca822e..ce2f2c4 100644
  <ub>
 ~
  Instead, it proposes to consider a tendency that underlies those problems: namely, the tendency 
--to deny or distrust the fundamental linearity of language (as perceptible phenomenon)
-+away from linear codes such as writing
+-to deny or distrust the fundamental linearity of language – including
++away from linear codes such
+  as 
+-it is perceived during processes of reading –
++writing
   and toward 
 -multi-dimensional
 +two-dimensional
@@ -57,7 +60,7 @@ index dca822e..ce2f2c4 100644
   if one glances even superficially at the codified world that surrounds us.
 -Literature is $50bn behind art.
 ~
--The MoMAs in every province and metropolis are stuffed to their gills with hipsters, gleeful families and young “artists” while fewer and fewer deserted book malls provide desultory subterranean spaces for retiree reading groups.
+-The MoMAs in every province and metropolis are stuffed to their gills with hipsters, gleeful families, and young “artists” while fewer and fewer deserted book malls provide desultory subterranean spaces for retiree reading groups.
 ~
  </ub>
 ~
@@ -88,9 +91,9 @@ index dca822e..ce2f2c4 100644
 ~
 -All those gestures that we make with the prospect that others of us might read and understand them as entering and helping to constitute the world of language, all these gestures, regardless of their perceptible support media are <i>archi-writing</i> in Jacques Derrida’s sense.
 ~
--Iterable traces of actual language, all words are writing, as Derrida showed us.
+-Iterable traces of actual language, all words are <i>writing</i>, as Derrida showed us.
 ~
--There is always and only the “logic of the supplement” with respect to the perceptible traces of language, typically and genetically supported by aurality; by cultural predominance, “historically” supported by calligraphic and now typographic visuality.
+-There is always and only the “logic of the supplement” with respect to the perceptible traces of language, typically and genetically supported by aurality; but in terms of cultural predominance – “historically” – supported by calligraphic and now typographic visuality.
 ~
  </ub>
 ~
