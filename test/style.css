@@ -26,13 +26,59 @@ p {
 
 /* Menu Style */
 .menu {
-  margin: 20px 0 0 150px;
+  margin: 20px 0 20px 200px;
   position:absolute;
   top:0;
 }
-.menu ul{
-  list-style: none;
-  margin-bottom: 20px;
+.menu > div {
+  float:left;
+}
+.menu .button {
+  padding:5px 5px;
+}
+/* The container must be positioned relative: */
+.custom-select {
+  position: relative;
+}
+
+.custom-select select {
+  display: none; /*hide original SELECT element: */
+}
+
+.select-selected {
+  background-color: white;
+  margin-left: 0px;
+}
+
+/* style the items (options), including the selected item: */
+.select-items div,.select-selected, .menu .button{
+  color: #333;
+  padding: 3px 5px;
+  width: 20px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-align: center;
+}
+.select-items div{
+  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+}
+
+/* Style items (options): */
+.select-items {
+  position: absolute;
+  background-color: white;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}
+
+/* Hide the items when the select box is closed: */
+.select-hide {
+  display: none;
+}
+.select-items div:hover, .same-as-selected, .select-selected:hover,.menu .button:hover{
+  background-color: rgba(0, 0, 0, 0.07);
 }
 .menu ul li {
   display: inline-block;
@@ -43,6 +89,9 @@ p {
 }
 .menu li.current {
   color:red;
+}
+.menu .hide {
+  display: none !important;
 }
 /* End of Menu Style */
 

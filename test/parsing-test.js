@@ -250,7 +250,7 @@ function createNewPage(index, wrapper) {
   page.id = "page" + index;
   $(wrapper).append(page);
   // populate menu
-  $('.menu ul').append("<li>"+ index + "</li>");
+  $('.menu select').append("<option value='" + index +"'>"+ index + "</option>");
 
 }
 
@@ -553,14 +553,6 @@ function postParsing() {
 
   })
   // End of User Interaction
-
-  // Menu
-  $('.menu li').click(function() {
-    //console.log(this.innerText)
-    $('.page, .menu li').removeClass('current');
-    $('#page'+ this.innerText).addClass('current')
-    $(this).addClass('current');
-  })
 
 }
 // End of Visualization Section
