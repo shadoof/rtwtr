@@ -239,7 +239,7 @@ It is simply a fact that the making of language will either critique and exceed 
 In any event, as language speaks the future is unimaginable by definition.
 If language is to serve computation, history in any shared understanding of that term has already come to an end, and we may easily imagine what will follow: the eternal return of digitalized life in a computational configuration that progresses by its own inertia.
 <ub>
-<p style="font:'Courier New';">
+<pb/>
 &nbsp;-John<br/>
 &nbsp;+Vilém<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Cay<br/>
