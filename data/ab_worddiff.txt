@@ -1,5 +1,9 @@
 diff --git a/a_file.txt b/b_file.txt
+<<<<<<< HEAD
 index 81c1d76..ce2f2c4 100644
+=======
+index 044fc48..80744f7 100644
+>>>>>>> d7afefe0a1d363cabe1f82a76001f34459c22bc4
 --- a/a_file.txt
 +++ b/b_file.txt
 @@ -1,253 +1,220 @@
@@ -1288,7 +1292,7 @@ index 81c1d76..ce2f2c4 100644
 ~
  <ub>
 ~
- <p style="font:'Courier New';">
+ <pb/>
 ~
 -&nbsp;-John<br/>
 ~

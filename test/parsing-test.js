@@ -2,7 +2,7 @@
 const CLAUSE_BREAKS = [", ", "; ", ": ", "</cb> "];
 const THOUGHT_BREAKS = /[!|.|.?][”|"]?$/g;
 // Handle quotation: TODO: replace with regex
-const PARAGRAPH_BREAK = "<pb/>"; // Done
+const PARAGRAPH_BREAK = /<pb\/>/g; // Done
 const SECTION_BREAK = "<sb/>"; // Done
 const UNIT_PAIRS = ["<ub>","</ub>"];// Done
 const DEFAULT_PATH = ".tb:last";
@@ -64,7 +64,7 @@ function removeGitDiffSyntags(content) {
 }
 
 function removeBreaks(content) {
-  return content.replace(/(<ub> |<\/ub> |<sb\/> |<pb\/> )/g,"");
+  return content.replace(/(<ub> |<\/ub> |<sb\/> |<pb\/>)/g,"");
 }
 
 function removeEmptyElements(selector) {
@@ -74,8 +74,8 @@ function removeEmptyElements(selector) {
   });
 }
 
-function getCurrentIndexInDirectParent(dom) {
-  const children = dom.parent().children();
+function getCurrentUnitIndex(dom) {
+  const children = dom.closest('div[class$="div"]').find('.unit');
   for (var i = 0; i < children.length; i++) {
     if (children[i] == dom[0]) return i;
   }
@@ -101,7 +101,6 @@ function parseText(data, callback) {
           type = lines[i][0];
     let content = lines[i],
         newSpan =  document.createElement("span");
-
     // clean up syntags
     content = removeGitDiffSyntags(content);
     content = removeBreaks(content);
@@ -109,8 +108,7 @@ function parseText(data, callback) {
     content = content.replace(/(\S)$/g,"$1 ");
 
     // ignore empty lines
-    if (content == "" || content == " ") continue;
-
+    if (line == " " || line == "") continue;
     newSpan.innerHTML = content;
 
     const currentAdiv = $(contentToBeAppend).find('#page' + currentPage +' .adiv'),
@@ -134,10 +132,6 @@ function parseText(data, callback) {
               currentPage ++;
               createNewPage(currentPage, contentToBeAppend);
             }
-          } else if (line == PARAGRAPH_BREAK) {
-            // Handle paragraph breaks
-            currentAdiv.append("<p></p>");
-            currentBdiv.append("<p></p>");
           } else if (UNIT_PAIRS.indexOf(line) > -1) {
             // Handle unit
             if (line == UNIT_PAIRS[0]) {
@@ -179,12 +173,16 @@ function parseText(data, callback) {
         //console.log("[Warning] Unparsable line", line);
     } // End of Switch
 
-    // Handle THOUGHT_BREAKS
-
-    if(line.match(THOUGHT_BREAKS)) {
+    if (line.match(THOUGHT_BREAKS)) {
+      // Handle THOUGHT_BREAKS
       const tb = "<span class='tb'></span>";
       if(type == " " || type == "-") currentAdiv.find(".tb:last").parent().append(tb);
       if(type == " " || type == "+") currentBdiv.find(".tb:last").parent().append(tb);
+    }
+    if (line.indexOf("<pb/>") > -1) {
+        // Handle paragraph breaks
+      if(type == " " || type == "-") currentAdiv.append("<p><span class='tb'></span></p>");
+      if(type == " " || type == "+") currentBdiv.append("<p><span class='tb'></span></p>");
     }
 
   } // End of for loop
@@ -196,6 +194,14 @@ function parseText(data, callback) {
   initTester();
   removeEmptyElements('.tb')
   $('.page p > span:not(unit)').addClass("unit"); // batch add class unit for tb
+  $('.bdiv .unit').each(function() {
+    // go over all the units in b,
+    // and if it's empty or there is no .shared span in b, add .toB class to corresponding aunit
+    if (this.innerHTML == "" || $(this).find(".shared").length == 0)  {
+      const aspan = getMatchingUnit(this, 'a');
+      aspan.addClass('toB');
+    }
+  })
 
   // set current page
   $('#page1').addClass('current')
@@ -205,13 +211,12 @@ function parseText(data, callback) {
 // End of Parsing Section
 
 // Visualization Section
-function getMatchingBFromA(aspan) {
-  const spanIdx = getCurrentIndexInDirectParent($(aspan));
-  const pIdx = getCurrentIndexInDirectParent($(aspan).parent());
-  const currentPage = $(aspan).parent().parent().parent();
-  const bspan = currentPage.find('.bdiv').children().eq(pIdx).children().eq(spanIdx);
+function getMatchingUnit(span, target) {
+  const unitIdx = getCurrentUnitIndex($(span));
+  const currentPage = $(span).closest('.page');
+  const c_span = currentPage.find(target== "a" ? '.adiv' : '.bdiv').find('.unit').eq(unitIdx);
   // console.log(pIdx, spanIdx, bspan)
-  return bspan;
+  return c_span;
 }
 
 function clearTimeouts(timeouts) {
@@ -232,7 +237,7 @@ function clearTimeouts(timeouts) {
 
 function phase2(thisDom, target) {
   if (phaseLive) return;
-  const bspan = getMatchingBFromA(thisDom);
+  const bspan = getMatchingUnit(thisDom);
 
   console.log("phase2", thisDom, bspan)
   phaseLive = true;
@@ -245,7 +250,7 @@ function createNewPage(index, wrapper) {
   page.id = "page" + index;
   $(wrapper).append(page);
   // populate menu
-  $('.menu ul').append("<li>"+ index + "</li>");
+  $('.menu select').append("<option value='" + index +"'>"+ index + "</option>");
 
 }
 
@@ -262,26 +267,29 @@ function basicAnalyze(aspan, bspan, predefinedAnchor) {
 
 function animate(bspan, aspan, predefinedAnchor) {
   // !! Jquery offset() is different from native javascript offset values
-  // clear overlay
-  console.log("clear overlay")
-  $('#overlay').css("opacity","0");
-  $('#overlay span').text("");
-  clearTimeouts(myTimeouts);
-
+  clearOverlay();
+  // fade a unit
   $(aspan).css({
     opacity: FADE_OPACITY,
     transition : 'opacity '+ TRANSITION_FADEOUT/1000 + 's ease-in-out'
   });
+  console.log(aspan, bspan);
   let context = basicAnalyze(aspan, bspan, predefinedAnchor);
   console.log(context);
 
   if (context.sharedSpans == undefined) {
-    console.log("no shared spans, do nothing")
+    if (bspan.children().length > 0) {
+      console.log("show b without an anchor")
+      cloneContentToAfterB(bspan.children());
+      repositionOverlay(aspan[0].offsetTop, aspan[0].offsetLeft);
+      displayOverlay();
+    } else {
+      console.log("no shared spans, do nothing")
+    }
     return;
   }
 
   $(context.anchor).addClass("anchor");
-
   const hoverAnchor = document.getElementById("anchor");
   // fill the overlay layer
 
@@ -289,12 +297,21 @@ function animate(bspan, aspan, predefinedAnchor) {
   $('#anchor').text(context.anchor.content);
   $('#anchor').addClass("shared");
 
-  for (var i = 0; i < context.after.b.spans.length; i++) {
-    const span = context.after.b.spans.eq(i).clone();
+  cloneContentToAfterB(context.after.b.spans, context);
+  repositionOverlay(aspan[0].offsetTop, aspan[0].offsetLeft);
+  layoutBeforeB(context.before, hoverAnchor, aspan[0].offsetLeft, aspan[0].offsetTop);
+  // display
+  displayOverlay();
+
+}
+
+function cloneContentToAfterB(children, context){
+  for (var i = 0; i < children.length; i++) {
+    const span = children.eq(i).clone();
     span.attr("id", "");
     $('#afterAnchor').append(span);
     // if not enought space for b after
-    if (context.after.indent < 0) {
+    if (context && context.after.indent < 0) {
         $('#overlay p').css({
           "margin-right": context.after.indent < -50 ? "-50px" : "-100px" // tmp
         })
@@ -304,15 +321,23 @@ function animate(bspan, aspan, predefinedAnchor) {
       })
     }
   }
-  // $('#afterAnchor').innerHTML(contentAfterAnchor);
 
+}
+function clearOverlay() {
+  // clear overlay
+  //console.log("clear overlay")
+  $('#overlay').css("opacity","0");
+  $('#overlay span').text("");
+  clearTimeouts(myTimeouts);
+}
+
+function repositionOverlay(top, left) {
   const overlay = document.getElementById("overlay");
-  overlay.style.top = (aspan[0].offsetTop) + "px";
-  overlay.style.textIndent = (aspan[0].offsetLeft) + "px";
+  overlay.style.top = top + "px";
+  overlay.style.textIndent = left + "px";
+}
 
-  layoutBeforeB(context.before, hoverAnchor, aspan[0].offsetLeft, aspan[0].offsetTop);
-
-  // display
+function displayOverlay() {
   $('#overlay').css({
     color: OVERLAY_ONHOVER_COLOR
   })
@@ -320,18 +345,14 @@ function animate(bspan, aspan, predefinedAnchor) {
     color: OVERLAY_DEFAULT_COLOR
   })
 
-
   const myTimeout = setTimeout(function(){
     $('#overlay').css({
       opacity:1,
       // "z-index":3,
       transition:'opacity '+ TRANSITION_OVERLAY_FADEIN/1000 + 's ease-in-out'
     })
-
-
   }, DELAY_OVERLAY_FADEIN)
   myTimeouts.push(myTimeout);
-
 }
 
 function layoutBeforeB(before, anchor, offsetALeft, offsetATop) {
@@ -500,7 +521,7 @@ function postParsing() {
       unitOnHover.addClass("active");
       // if already on hover shared span
       const currentOnHover = unitOnHover.find('.shared:hover');
-      if (currentOnHover.length != 0) {
+      if (unitOnHover.hasClass("toB") || currentOnHover.length != 0) {
         console.log(unitOnHover.find('.shared:hover'))
         phase2(unitOnHover, currentOnHover);
       }
@@ -532,14 +553,6 @@ function postParsing() {
 
   })
   // End of User Interaction
-
-  // Menu
-  $('.menu li').click(function() {
-    //console.log(this.innerText)
-    $('.page, .menu li').removeClass('current');
-    $('#page'+ this.innerText).addClass('current')
-    $(this).addClass('current');
-  })
 
 }
 // End of Visualization Section
