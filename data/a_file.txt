@@ -39,7 +39,7 @@ They “explain,” “recount,” “tell” it.
 They provide it with an evocalization.
 </ub>
 They do so by unrolling the surface of the image into lines, by unwinding the tissue of the image into the threads of a text, the vocabulary of an utterance, by rendering “explicit” what was “implicit” within the image.
-It may be shown through text analysis, through reading, that the purpose of such writing, namely, the transcoding of two-dimensional codes into a single dimension, is still there: Every text, every utterance, even a very abstract one, also means, in the last analysis, an image.
+It may be shown through text analysis, through reading, that the purpose of such writing, namely, the transcoding of two-dimensional codes into a single dimension, is still there: every text, every utterance, even a very abstract one, also means, in the last analysis, an image.
 <sb/>
 
 The translation from surface into line implies a radical change of dimensionality with respect to the grasp of meaning.
@@ -52,16 +52,16 @@ The crowing of the cock calls the sun to rise just as much as the rising sun cal
 In such a world, circular time orders all things, “assigns them their just place,” and if a thing is displaced it will be readjusted by time itself.
 Because to live is to displace things, life in such a world is a series of “unjust” acts that will be revenged in time.
 This demands that we propitiate the order of the world, the “gods” of which it is full.
-In sum: the “imagined” world is the world of myth, of magic, the ahistorical world.
+In sum: the “imagined” world may be a world of myth, of magic, an ahistorical world.
 <sb/>
 
 The eye that reads a text, the ear that reads to hear and understand a voice, follows its lines, and thus establishes an evocalized relation between the elements of which the language is composed.
-Those who lend authority to inscribed texts in order to understand the world, those who “conceive” it, mean a world with a linear structure.
+Those who lend authority to inscribed texts in order to understand the world, those who “conceive” it, intend a world with a linear structure.
 Everything in such a world follows from something, time flows irreversibly from the past toward the future, each instant lost is lost forever, and there is no repetition.
 Each day is different from every other day, each sowing has its own characteristics, if there is life after death it must be a new sort of life, and the links of the causal chain cannot be exchanged one for the other.
 In such a world, every human act is unique, and we are responsible for it.
 The elements of such a world are, at least theoretically, distinct from each other like the beads on a string, and they can be counted.
-On the other hand, the string that orders the beads, the “univocal flow of time,” is what holds such a world together.
+On the other hand, the string that orders the beads, the “textual, evocalized flow of time,” is what holds such a world together.
 In sum: the “conceived” world is the world of the religions, of salvation, of political commitment, of science, and of technology – the historical world.
 <sb/>
 
@@ -223,7 +223,7 @@ Language must now make and work with both the techno-images of Flusser’s appar
 Of course, this implies a sort of qualitative jump onto a new level of meaning on the part of reason.
 Practices of writing once explained images of the world.
 If we are to care for a culture that has been wounded and misdirected by computation, the arts of language will have to explain those illustrations that its programs have produced.
-To practice writing as an inscriptional language meant, and may still mean, to render opaque images transparent for the world.
+To practice writing in an inscriptional language meant, and may still mean, to render opaque images transparent for the world.
 Now, it must mean to render opaque techno- and computational images transparent for the texts they are hiding.
 In other words, reason, in the past, meant analysis of myths, and in the future it will mean de-ideologization.
 Reason will still be iconoclastic, but on a new level and with a new politics.
@@ -236,7 +236,7 @@ There is no future of language.
 An evolved faculty cannot have a future for an entity that has evolved to have this faculty.
 </ub>
 It is simply a fact that the making of language will either critique and exceed the techno- and computational imagination (which means unmasking the ideologies hiding behind a technical progress that has become autonomous of human decisions) or it will serve the production of pretexts for techno- and computational images, allowing a constitutive faculty to operate perversely as the instrument of reductive, scientistic “progress.”
-In any event, as language speaks the future is unimaginable by definition.
+In any event, as language speaks, the future is unimaginable by definition.
 If language is to serve computation, history in any shared understanding of that term has already come to an end, and we may easily imagine what will follow: the eternal return of digitalized life in a computational configuration that progresses by its own inertia.
 <ub>
 <p style="font:'Courier New';">

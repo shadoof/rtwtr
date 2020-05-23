@@ -1,5 +1,5 @@
 diff --git a/a_file.txt b/b_file.txt
-index a0eae91..ce2f2c4 100644
+index 81c1d76..ce2f2c4 100644
 --- a/a_file.txt
 +++ b/b_file.txt
 @@ -1,253 +1,220 @@
@@ -204,11 +204,8 @@ index a0eae91..ce2f2c4 100644
 +original
   purpose of
 -such
-  writing, namely, the transcoding of two-dimensional codes into a single dimension, is still there:
--Every text,
-  every 
--utterance,
-+text,
+  writing, namely, the transcoding of two-dimensional codes into a single dimension, is still there: every text,
+-every utterance,
   even a very abstract one,
 -also
   means, in the last analysis, an image.
@@ -253,9 +250,12 @@ index a0eae91..ce2f2c4 100644
 +man
   propitiate the order of the world, the “gods” of which it is full.
 ~
- In sum: the “imagined” world is the world of myth, of magic, the 
--ahistorical
-+prehistorical
+ In sum: the “imagined” world 
+-may be a
++is the
+  world of myth, of magic, 
+-an ahistorical
++the prehistorical
   world.
 ~
  <sb/>
@@ -283,7 +283,10 @@ index a0eae91..ce2f2c4 100644
 +use
   texts
 -in order
-  to understand the world, those who “conceive” it, mean a world with a linear structure.
+  to understand the world, those who “conceive” it, 
+-intend
++mean
+  a world with a linear structure.
 ~
  Everything in such a world follows from something, time flows irreversibly from the past toward the future, each instant lost is lost forever, and there is no repetition.
 ~
@@ -296,7 +299,10 @@ index a0eae91..ce2f2c4 100644
 ~
  The elements of such a world are, at least theoretically, distinct from each other like the beads on a string, and they can be counted.
 ~
- On the other hand, the string that orders the beads, the “univocal flow of time,” is what holds such a world together.
+ On the other hand, the string that orders the beads, the 
+-“textual, evocalized
++“univocal
+  flow of time,” is what holds such a world together.
 ~
  In sum: the “conceived” world is the world of the religions, of salvation, of political commitment, of science, and of technology – the historical world.
 ~
@@ -1166,11 +1172,14 @@ index a0eae91..ce2f2c4 100644
 -those
   illustrations 
 -that its programs have produced.
-+of texts in the future.
 ~
- To 
--practice writing as an inscriptional language
-+write
+-To practice writing
++of texts
+  in 
+-an inscriptional language
++the future.
+~
++To write
   meant, 
 -and may still mean,
 +in the past,
@@ -1253,7 +1262,7 @@ index a0eae91..ce2f2c4 100644
 +techno-imagination (a planning for that technical progress).
 ~
  In 
--any event, as language speaks
+-any event, as language speaks,
 +the first alternative,
   the future 
 -is
