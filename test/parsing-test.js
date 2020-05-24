@@ -370,7 +370,7 @@ function cloneContentToAfterB(children, context){
       })
   } else {
     $('#overlay p').css({
-      "margin-right": "-15px" // tmp wrapping
+      "margin-right": context.after.content == undefined ?  "0px" :"-15px" // tmp wrapping
     })
   }
 }
