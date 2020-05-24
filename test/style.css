@@ -121,10 +121,10 @@ p {
 .bdiv {
   z-index:1;
 }
-.bdiv p > span {
+.bdiv .unit {
   opacity: 0;
 }
-.adiv p > span {
+.adiv .unit {
   opacity: 1;
 }
 #overlay {

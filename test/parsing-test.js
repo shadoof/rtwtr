@@ -82,6 +82,29 @@ function getCurrentUnitIndex(dom) {
   return false;
 }
 
+function wrapDirectChildrenToP(parent) {
+  const children = parent.children();
+  let p = document.createElement('p');
+  for (var i = 0; i < children.length; i++) {
+    if (children[i].tagName != 'P'){
+      p.append(children[i]);
+    } else if (i != 0 && p.children.length > 0) {
+      console.log("append")
+      $(p).insertBefore(children[i])
+      p = document.createElement('p');
+    }
+
+  }
+
+  if (p.children.length > 1) parent.append(p);
+}
+
+function wrapAllDirentChildrenToP() {
+  $('.page').each(function() {
+    wrapDirectChildrenToP($(this).find('.adiv'));
+    wrapDirectChildrenToP($(this).find('.bdiv'));
+  })
+}
 function parseText(data, callback) {
   const lines = data.split("\n");
   // skip the top section
@@ -90,7 +113,8 @@ function parseText(data, callback) {
   let contentToBeAppend = document.createElement('div');
   $(contentToBeAppend).attr("id", "content");
 
-  let currentPage = 1, currentNo = 0, match = false;
+  let currentPage = 1, currentNo = 0;
+  let match = false, inUnit = false, inP = false;
 
   createNewPage(currentPage, contentToBeAppend);
   $('.menu li').addClass("current");
@@ -132,16 +156,24 @@ function parseText(data, callback) {
               currentPage ++;
               createNewPage(currentPage, contentToBeAppend);
             }
+            inP = false;
+
           } else if (UNIT_PAIRS.indexOf(line) > -1) {
             // Handle unit
+            const LocationA = inP ? currentAdiv.find("p:last") : currentAdiv;
+            const LocationB =inP ? currentBdiv.find("p:last") : currentBdiv;
+
             if (line == UNIT_PAIRS[0]) {
+              inUnit = true;
               const unit = "<span class='unit manual'><span class='tb'></span></span>";
-              currentAdiv.find("p:last").append(unit);
-              currentBdiv.find("p:last").append(unit);
+              LocationA.append(unit);
+              LocationB.append(unit);
             } else {
+              // create a new tb:last
               const tb = "<span class='tb'></span>";
-              currentAdiv.find("p:last").append(tb);
-              currentBdiv.find("p:last").append(tb);
+              LocationA.append(tb);
+              LocationB.append(tb);
+              inUnit = false;
             }
 
           } else {
@@ -179,8 +211,9 @@ function parseText(data, callback) {
       if(type == " " || type == "-") currentAdiv.find(".tb:last").parent().append(tb);
       if(type == " " || type == "+") currentBdiv.find(".tb:last").parent().append(tb);
     }
-    if (line.indexOf("<pb/>") > -1) {
+    if (line.match(PARAGRAPH_BREAK)) {
         // Handle paragraph breaks
+      inP = true;
       if(type == " " || type == "-") currentAdiv.append("<p><span class='tb'></span></p>");
       if(type == " " || type == "+") currentBdiv.append("<p><span class='tb'></span></p>");
     }
@@ -193,7 +226,11 @@ function parseText(data, callback) {
   $('body').append(contentToBeAppend);
   initTester();
   removeEmptyElements('.tb')
-  $('.page p > span:not(unit)').addClass("unit"); // batch add class unit for tb
+
+  wrapAllDirentChildrenToP();
+  // batch add class unit for tb
+  $('.page p > span:not(unit)').addClass("unit");
+
   $('.bdiv .unit').each(function() {
     // go over all the units in b,
     // and if it's empty or there is no .shared span in b, add .toB class to corresponding aunit
@@ -202,7 +239,6 @@ function parseText(data, callback) {
       aspan.addClass('toB');
     }
   })
-
   // set current page
   $('#page1').addClass('current')
 
