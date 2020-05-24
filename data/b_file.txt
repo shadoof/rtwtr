@@ -69,8 +69,8 @@ Explaining images with the help of texts may therefore be useful.
 <sb/>
 
 <ub>
-But there is yet another, and more profound, reason for the invention of writing and of historical consciousness.
 </ub>
+But there is yet another, and more profound, reason for the invention of writing and of historical consciousness.
 There is in images, as in all mediations, a curious inherent dialectic.
 <ub>
 The purpose of images is to mean the world, but they may become opaque to the world and cover it, even substitute for it.
@@ -106,6 +106,7 @@ This inversion of writing may be observed very early in the course of history, b
 Such unimaginable explanations that mirror the structure of literate thought are existentially devoid of meaning, and in such a situation texts begin to constitute a kind of paranoid library wall that triply alienates man from his world.
 <ub>
 It is against the threatening lunacy of formal rationalism, of a meaningless existence amid speculative, opaque explanations, that the rise of the new image culture must be seen.
+<ub>
 </ub>
 <sb/>
 
