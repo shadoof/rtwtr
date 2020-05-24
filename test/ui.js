@@ -5,6 +5,29 @@ $(document).on('click','.menu .select-items div',function(){
   $('.page, .menu li').removeClass('current');
   $('#page'+ this.innerText).addClass('current')
 })
+
+$(document).on('click','.menu .button',function(){
+  const currentIdx = parseInt($('.menu .select-selected')[0].innerText);
+  const totalPageL = $('.menu select option').length;
+  let newIdx = 1;
+
+  if( this.innerText == ">>") { // next page
+    newIdx = currentIdx + 1 < totalPageL ? currentIdx + 1 : 1;
+  } else { // previous page
+    newIdx = currentIdx > 1 ? currentIdx - 1 : totalPageL;
+  }
+  $('.page, .menu li').removeClass('current');
+  $('#page'+ newIdx).addClass('current');
+
+  // update select
+  $('.select-selected')[0].innerText = newIdx;
+  $('.select-items div').removeClass('same-as-selected');
+  $('.select-items div').removeClass('hide');
+  $('.select-items div:nth(' + (newIdx-1) +')').addClass('same-as-selected');
+})
+
+
+
 // https://www.w3schools.com/howto/howto_custom_select.asp
 var x, i, j, selElmnt, a, b, c;
 /* Look for any elements with the class "custom-select": */
