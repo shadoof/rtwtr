@@ -10,7 +10,8 @@ class contextReport {
   constructor(aspan, bspan, ref, predefinedAnchor) {
     this.sharedSpans = this.verifySharedSpans(aspan, bspan);
     if (this.sharedSpans == null) return;
-    this.dbug = 1;
+    this.space = this.spaceDifference(aspan, bspan);
+    this.dbug = 0;
     this.ref = ref;
     this.anchor = {};
     this.before = {
@@ -70,11 +71,13 @@ class contextReport {
     //console.log(whichSharedSpan, this.sharedSpans[whichSharedSpan],this.sharedSpans);
     return this.sharedSpans[whichSharedSpan]
   }
-  isThereEnoughSpace() {
+
+  spaceDifference(aspan, bspan) {
     const aText = getAllContent(aspan.find('span:not(.tb)'));
     const bText = getAllContent(bspan.find('span:not(.tb)'));
-    return calculateTextLength(aText) >= calculateTextLength(bText)
+    return calculateTextLength(aText) - calculateTextLength(bText)
   }
+
   adjustAnchorIfNotFit(whichSharedSpan,aspan, bspan) {
     // However, the content of b may not fit into the space
     let attempt = 0
@@ -107,10 +110,11 @@ class contextReport {
           this.generateFullReport(aspan, bspan, id);
 
         } else {
-          if (this.isThereEnoughSpace) {
+          if (this.spaceDifference > - 5) {
             // fix
             console.log("Todo")
           } else {
+            // move a
             console.log("Not enough space for b, no solution found.")
           }
           break;
@@ -135,7 +139,6 @@ class contextReport {
           }
         } else {
           // calculateTextLength()
-
           console.log("Not enough space for b after, no solution found.")
           break;
         }

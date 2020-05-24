@@ -82,6 +82,29 @@ function getCurrentUnitIndex(dom) {
   return false;
 }
 
+function wrapDirectChildrenToP(parent) {
+  const children = parent.children();
+  let p = document.createElement('p');
+  for (var i = 0; i < children.length; i++) {
+    if (children[i].tagName != 'P'){
+      p.append(children[i]);
+    } else if (i != 0 && p.children.length > 0) {
+      console.log("append")
+      $(p).insertBefore(children[i])
+      p = document.createElement('p');
+    }
+
+  }
+
+  if (p.children.length > 1) parent.append(p);
+}
+
+function wrapAllDirentChildrenToP() {
+  $('.page').each(function() {
+    wrapDirectChildrenToP($(this).find('.adiv'));
+    wrapDirectChildrenToP($(this).find('.bdiv'));
+  })
+}
 function parseText(data, callback) {
   const lines = data.split("\n");
   // skip the top section
@@ -90,7 +113,8 @@ function parseText(data, callback) {
   let contentToBeAppend = document.createElement('div');
   $(contentToBeAppend).attr("id", "content");
 
-  let currentPage = 1, currentNo = 0, match = false;
+  let currentPage = 1, currentNo = 0;
+  let match = false, inUnit = false, inP = {a:false, b:false};
 
   createNewPage(currentPage, contentToBeAppend);
   $('.menu li').addClass("current");
@@ -132,16 +156,24 @@ function parseText(data, callback) {
               currentPage ++;
               createNewPage(currentPage, contentToBeAppend);
             }
+            inP = {a:false, b:false};
+
           } else if (UNIT_PAIRS.indexOf(line) > -1) {
             // Handle unit
+            const LocationA = inP.a ? currentAdiv.find("p:last") : currentAdiv;
+            const LocationB = inP.b ? currentBdiv.find("p:last") : currentBdiv;
+
             if (line == UNIT_PAIRS[0]) {
+              inUnit = true;
               const unit = "<span class='unit manual'><span class='tb'></span></span>";
-              currentAdiv.find("p:last").append(unit);
-              currentBdiv.find("p:last").append(unit);
+              LocationA.append(unit);
+              LocationB.append(unit);
             } else {
+              // create a new tb:last
               const tb = "<span class='tb'></span>";
-              currentAdiv.find("p:last").append(tb);
-              currentBdiv.find("p:last").append(tb);
+              LocationA.append(tb);
+              LocationB.append(tb);
+              inUnit = false;
             }
 
           } else {
@@ -179,10 +211,17 @@ function parseText(data, callback) {
       if(type == " " || type == "-") currentAdiv.find(".tb:last").parent().append(tb);
       if(type == " " || type == "+") currentBdiv.find(".tb:last").parent().append(tb);
     }
-    if (line.indexOf("<pb/>") > -1) {
+    if (line.match(PARAGRAPH_BREAK)) {
         // Handle paragraph breaks
-      if(type == " " || type == "-") currentAdiv.append("<p><span class='tb'></span></p>");
-      if(type == " " || type == "+") currentBdiv.append("<p><span class='tb'></span></p>");
+        const unitHTML = "<p>"+ (inUnit ? "": "<span class='tb'></span>") +"</p>";
+      if(type == " " || type == "-") {
+        currentAdiv.append(unitHTML);
+        inP.a = true;
+      }
+      if(type == " " || type == "+") {
+        currentBdiv.append(unitHTML);
+        inP.b = true;
+      }
     }
 
   } // End of for loop
@@ -193,7 +232,11 @@ function parseText(data, callback) {
   $('body').append(contentToBeAppend);
   initTester();
   removeEmptyElements('.tb')
-  $('.page p > span:not(unit)').addClass("unit"); // batch add class unit for tb
+
+  wrapAllDirentChildrenToP();
+  // batch add class unit for tb
+  $('.page p > span:not(unit)').addClass("unit");
+
   $('.bdiv .unit').each(function() {
     // go over all the units in b,
     // and if it's empty or there is no .shared span in b, add .toB class to corresponding aunit
@@ -202,7 +245,6 @@ function parseText(data, callback) {
       aspan.addClass('toB');
     }
   })
-
   // set current page
   $('#page1').addClass('current')
 
@@ -293,16 +335,25 @@ function animate(bspan, aspan, predefinedAnchor) {
   const hoverAnchor = document.getElementById("anchor");
   // fill the overlay layer
 
-  $('#beforeAnchorA').text(context.before.a.content); // fake before a to get the right spacing
+
   $('#anchor').text(context.anchor.content);
   $('#anchor').addClass("shared");
 
   cloneContentToAfterB(context.after.b.spans, context);
   repositionOverlay(aspan[0].offsetTop, aspan[0].offsetLeft);
-  layoutBeforeB(context.before, hoverAnchor, aspan[0].offsetLeft, aspan[0].offsetTop);
+  if (context.before.indent < -5 && context.space > 0 && aspan[0].offsetTop == context.anchor.offsetTop) {
+    // if there is enough space overall but not enough space before
+    // && anchor is in the first line
+    console.log("layout b without anchor")
+    $('#beforeAnchorA').text(context.before.b.content);
+    $('#beforeAnchorA').css("opacity","1");
+  } else {
+    $('#beforeAnchorA').text(context.before.a.content); // fake before a to get the right spacing
+    layoutBeforeB(context.before, hoverAnchor, aspan[0].offsetLeft, aspan[0].offsetTop);
+  }
+
   // display
   displayOverlay();
-
 }
 
 function cloneContentToAfterB(children, context){
@@ -310,23 +361,24 @@ function cloneContentToAfterB(children, context){
     const span = children.eq(i).clone();
     span.attr("id", "");
     $('#afterAnchor').append(span);
-    // if not enought space for b after
-    if (context && context.after.indent < 0) {
-        $('#overlay p').css({
-          "margin-right": context.after.indent < -50 ? "-50px" : "-100px" // tmp
-        })
-    } else {
-      $('#overlay p').css({
-        "margin-right": "-20px"
-      })
-    }
   }
 
+  // if not enought space for b after
+  if (context && context.after.indent < 0) {
+      $('#overlay p').css({
+        "margin-right": context.after.indent < -50 ? "-100px" : "-50px" // tmp
+      })
+  } else {
+    $('#overlay p').css({
+      "margin-right": context.after.content == undefined ?  "0px" :"-15px" // tmp wrapping
+    })
+  }
 }
 function clearOverlay() {
   // clear overlay
   //console.log("clear overlay")
   $('#overlay').css("opacity","0");
+  $('#beforeAnchorA').css("opacity","0");
   $('#overlay span').text("");
   clearTimeouts(myTimeouts);
 }
@@ -496,10 +548,20 @@ function initializeCSS() {
     "line-height": LINE_HEIGHT + "px"
   })
 }
+
+function test() {
+  // loop through all the a unit in the paragraph and render a report
+  $('.adiv .unit').each(function(){
+    console.log($(this).closest('.page')[0].id, getCurrentUnitIndex($(this)));
+    const bspan = getMatchingUnit(this);
+    basicAnalyze($(this), bspan);
+  })
+}
+
 function postParsing() {
   initializeCSS();
   // user interaction
-  $('.adiv > p .unit:not(.hidden)').mouseenter(function(){
+  $('.adiv .unit:not(.hidden)').mouseenter(function(){
     const unitOnHover = $(this);
     console.log("phase1")
     unitOnHover.find('span.shared, span.hide').css({
@@ -553,7 +615,7 @@ function postParsing() {
 
   })
   // End of User Interaction
-
+  //test()
 }
 // End of Visualization Section
 
