@@ -246,8 +246,8 @@ An evolved faculty cannot have a future for an entity that has evolved to have t
 It is simply a fact that the making of language will either critique and exceed the techno- and computational imagination (which means unmasking the ideologies hiding behind a technical progress that has become autonomous of human decisions) or it will serve the production of pretexts for techno- and computational images, allowing a constitutive faculty to operate perversely as the instrument of reductive, scientistic “progress.”
 In any event, as language speaks, the future is unimaginable by definition.
 If language is to serve computation, history in any shared understanding of that term has already come to an end, and we may easily imagine what will follow: the eternal return of digitalized life in a computational configuration that progresses by its own inertia.
-<ub>
 <pb/>
+<ub>
 &nbsp;-John<br/>
 &nbsp;+Vilém<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Cay<br/>
@@ -259,3 +259,4 @@ If language is to serve computation, history in any shared understanding of that
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+r<br/>
 2019–20
 </ub>
+<pb/>
