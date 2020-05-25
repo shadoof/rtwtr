@@ -114,8 +114,8 @@ However, it would be an error to suppose that life amid posters, traffic signs, 
 The new type of images are unlike their prehistoric predecessors in that they are themselves products of texts, and in that they feed on texts.
 They are products of history.
 <ub>
-The essential difference between a TV program and a tapestry is not (as one might believe) that the one moves and talks while the other stands still and is mute, but that the TV program is the result of scientific theories (texts) and that it needs texts (for instance, telegrams) for it to function.
 </ub>
+The essential difference between a TV program and a tapestry is not (as one might believe) that the one moves and talks while the other stands still and is mute, but that the TV program is the result of scientific theories (texts) and that it needs texts (for instance, telegrams) for it to function.
 The new types of images are best called “techno-images,” and the convention they are based on is best called “techno-imagination” if one is to distinguish the world of the future from prehistoric existence.
 No doubt techno-images are a sort of image, and they therefore mean, like every image, a world of myth and of magic.
 But life in the threatening future will be mythical, magic, in a sense quite different from prehistoric myth and magic.
@@ -135,11 +135,11 @@ The easiest way to imagine the future of writing, if the present trend toward a 
 </ub>
 It will be a sort of black box that has texts for input and images for output.
 <ub>
-All texts will flow into that box (news about events, theoretical comments about them, scientific papers, poetry, philosophical speculations), and they will come out again as images (films, TV programs, photographic pictures): which is to say that history will flow into the box, and that it will come out of it under the form of myth and magic.
 </ub>
+All texts will flow into that box (news about events, theoretical comments about them, scientific papers, poetry, philosophical speculations), and they will come out again as images (films, TV programs, photographic pictures): which is to say that history will flow into the box, and that it will come out of it under the form of myth and magic.
 From the point of view of the texts that will flow into the box, this will be a utopian situation: the box is the “fullness of time,” because it devours linear time and freezes it into images.
 From the point of view of the images that come out of the box, this will be a situation in which history becomes a pretext for programs.
-In sum, the future of writing is to write pretexts for Programs while believing that one is writing for utopia.
+In sum, the future of writing is to write pretexts for programs while believing that one is writing for utopia.
 <sb/>
 
 It is not important for the understanding of such a future of writing to try to whiten the black box, to try to understand how it works.
@@ -171,7 +171,7 @@ One may sum this up as follows: when it became obvious that reason might be a ki
 TV programs are not, of course, the most impressive examples of what happens when reason betrays itself and serves imagination.
 Nazism is a better illustration.
 Still, it may be held that Nazism is one of the cruder advances in the direction of a future culture of images, or that the future techno-image culture will be Nazism perfected.
-This is why the battle cry “L’imagination au pouvoir!” that shook so many intellectuals out of their dogmatic slumber in May ’68 has such a dubious ring to it.
+This is why the battle cry “l’imagination au pouvoir!” that shook so many intellectuals out of their dogmatic slumber in May ’68 has such a dubious ring to it.
 No doubt, rebellion against paranoid reason, against meaningless explanations, is necessary and healthy.
 But intellectuals are writers.
 They are committed to clear and distinct concepts, to reason.
@@ -208,8 +208,8 @@ Reason will still be iconoclastic, but on a new level.
 <sb/>
 
 Nothing guarantees that reason will be able to perform such a jump, although there are some symptoms (for instance, cybernetics and structural analysis) that point in such a direction.
-<ub>
 It is perfectly possible that the general trend toward techno-images will become irresistible, and that reason will degenerate into the planning of programs-that to write will mean not to make “grams” but “programs,” and that all texts will become pretexts.
+<ub>
 </ub>
 Thus, in fact, we may discern, at present, two possible futures of writing: it will either become a critique of techno-imagination (which means an unmasking of the ideologies hiding behind a technical progress that has become autonomous of human decisions) or it will become the production of pretexts for techno-imagination (a planning for that technical progress).
 In the first alternative, the future will be unimaginable by definition.
