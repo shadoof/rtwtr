@@ -22,6 +22,8 @@ const DELAY_1_2 = 2000; // 1500 automatically enter phase2 after 3 seconds in ph
 const FADE_OPACITY = 0.1, TRANSITION_FADEOUT = 1000;
 const DELAY_OVERLAY_FADEIN = 1000;
 const TRANSITION_OVERLAY_FADEIN = 800;
+const DELAY_DEFAULT_B = 1500;
+const TRANSITION_DEFAULT_B = 800;
 
 // Typography
 const TEXT_SIZE = 24, LINE_HEIGHT = 27;
@@ -30,6 +32,8 @@ const CONTENT_WIDTH = 800, MARGIN_LEFT = 200, MARGIN_RIGHT = 200, MARGIN_TOP = 1
 
 // Animation Control
 let myTimeouts = [], phaseLive=false;
+
+const debug = false; // parser debug
 
 // Tools
 
@@ -267,16 +271,6 @@ function clearTimeouts(timeouts) {
   }
 }
 
-// function phase2(target) {
-//   if (phaseLive) return;
-//   let aspan = target.parent();
-//   if (!aspan.parent().is("p")) aspan = aspan.parent();
-//
-//   console.log("phase2", target, target.id);
-//   phaseLive = true;
-//   animate(getMatchingBFromA(aspan), aspan, target)
-// }
-
 function phase2(thisDom, target) {
   if (phaseLive) return;
   const bspan = getMatchingUnit(thisDom);
@@ -298,7 +292,6 @@ function createNewPage(index, wrapper) {
 
 function basicAnalyze(aspan, bspan, predefinedAnchor) {
   const dbug = 0;
-  // TODO: take mousePosition as reference point?
   const ref = {
     x:aspan.width()/2,
     y:aspan.height()/2 + aspan[0].offsetTop - TEXT_SIZE
@@ -310,7 +303,7 @@ function basicAnalyze(aspan, bspan, predefinedAnchor) {
 function animate(bspan, aspan, predefinedAnchor) {
   // !! Jquery offset() is different from native javascript offset values
   clearOverlay();
-  // fade a unit
+  // fade out a unit
   $(aspan).css({
     opacity: FADE_OPACITY,
     transition : 'opacity '+ TRANSITION_FADEOUT/1000 + 's ease-in-out'
@@ -333,9 +326,8 @@ function animate(bspan, aspan, predefinedAnchor) {
 
   $(context.anchor).addClass("anchor");
   const hoverAnchor = document.getElementById("anchor");
+
   // fill the overlay layer
-
-
   $('#anchor').text(context.anchor.content);
   $('#anchor').addClass("shared");
 
@@ -397,14 +389,27 @@ function displayOverlay() {
     color: OVERLAY_DEFAULT_COLOR
   })
 
-  const myTimeout = setTimeout(function(){
+  const fadeInTimeout = setTimeout(function(){
     $('#overlay').css({
       opacity:1,
       // "z-index":3,
       transition:'opacity '+ TRANSITION_OVERLAY_FADEIN/1000 + 's ease-in-out'
     })
+
+    const defaultBTimeout = setTimeout(function(){
+      $('#overlay').css({
+        color: OVERLAY_DEFAULT_COLOR,
+        transition:'color '+ TRANSITION_DEFAULT_B/1000 + 's ease-in-out'
+      })
+    }, DELAY_DEFAULT_B)
+    myTimeouts.push(defaultBTimeout);
+
   }, DELAY_OVERLAY_FADEIN)
-  myTimeouts.push(myTimeout);
+  myTimeouts.push(fadeInTimeout);
+
+
+
+
 }
 
 function layoutBeforeB(before, anchor, offsetALeft, offsetATop) {
