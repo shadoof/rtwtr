@@ -112,10 +112,10 @@ class contextReport {
         } else {
           if (this.spaceDifference > - 5) {
             // fix
-            console.log("Todo")
+            this.dbug && console.log("Todo")
           } else {
             // move a
-            console.log("Not enough space for b, no solution found.")
+            this.dbug && console.log("Not enough space for b, no solution found.")
           }
           break;
         }
@@ -139,11 +139,11 @@ class contextReport {
           }
         } else {
           // calculateTextLength()
-          console.log("Not enough space for b after, no solution found.")
+          this.dbug && console.log("Not enough space for b after, no solution found.")
           break;
         }
       } else if(this.after.indent < 0 && this.before.indent < 0){
-        console.log("B span is larger than A span!",this.before.indent, this.after.indent)
+        this.dbug && console.log("B span is larger than A span!",this.before.indent, this.after.indent)
         // get the first shared span
         whichSharedSpan  = 0;
         const id = this.sharedSpans[whichSharedSpan].id;
@@ -222,7 +222,7 @@ function getAllContent(spans) {
 
   for (var i = 0; i < spans.length; i++) {
     if (spans[i].innerText == undefined) {
-      console.log("Error! Can't retrieve innerText.")
+      this.dbug && console.log("Error! Can't retrieve innerText.")
     } else {
       all += spans[i].innerText;
     }
