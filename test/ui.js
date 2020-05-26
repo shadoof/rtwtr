@@ -12,7 +12,7 @@ $(document).on('click','.menu .button',function(){
   let newIdx = 1;
 
   if( this.innerText == ">>") { // next page
-    newIdx = currentIdx + 1 < totalPageL ? currentIdx + 1 : 1;
+    newIdx = currentIdx < totalPageL ? currentIdx + 1 : 1;
   } else { // previous page
     newIdx = currentIdx > 1 ? currentIdx - 1 : totalPageL;
   }

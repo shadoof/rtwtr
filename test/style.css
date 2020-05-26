@@ -55,7 +55,7 @@ p {
 .select-items div,.select-selected, .menu .button{
   color: #333;
   padding: 3px 5px;
-  width: 20px;
+  width: 24px;
   border: 1px solid transparent;
   cursor: pointer;
   text-align: center;
