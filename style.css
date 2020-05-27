@@ -1,7 +1,7 @@
 body {
   background-color: white;
   color:#013;
-  font-family: Garamond, Georgia, "Times New Roman", Times, serif;
+  font-family: "Garamond", "Adobe Caslon Pro", "Adobe Garamond Pro", Georgia, "Times New Roman";
   cursor: default;
   -webkit-user-select: none; /* Safari */
   -moz-user-select: none; /* Firefox */
