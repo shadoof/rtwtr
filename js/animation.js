@@ -117,8 +117,9 @@ function cloneContentToAfterB(children, context){
         "margin-right": context.after.indent < -50 ? "-100px" : "-50px" // tmp
       })
   } else {
+    // console.log((!context || context.after.content == undefined));
     $('#overlay p').css({
-      "margin-right": (!context || context.after.content == undefined)  ?  "0px" :"-15px" // tmp wrapping
+      "margin-right": (!context || context.after.b.content == undefined || context.after.b.content == "")  ?  "0px" :"-15px" // tmp wrapping
     })
   }
 }
