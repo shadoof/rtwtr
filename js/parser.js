@@ -231,6 +231,6 @@ function parseText(data, callback) {
 // End of Parsing Section
 
 
-readTextFile("../data/ab_worddiff.txt", function(data){
+readTextFile("data/ab_worddiff.txt", function(data){
   parseText(data, postParsing);
 });
