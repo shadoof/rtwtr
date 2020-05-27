@@ -1,7 +1,24 @@
+@font-face {
+    font-family: 'Garamond';
+    src: url('/fonts/Garamond.ttf');
+}
+
+@font-face {
+    font-family: 'Garamond';
+    src: url('/fonts/Garamond Bold.ttf');
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: 'Garamond';
+    src: url('/fonts/Garamond Italic.ttf');
+    font-style: italic;
+}
+
 body {
   background-color: white;
   color:#013;
-  font-family: "Garamond", "Adobe Caslon Pro", "Adobe Garamond Pro", Georgia, "Times New Roman";
+  font-family: "Garamond", Georgia, "Times New Roman";
   cursor: default;
   -webkit-user-select: none; /* Safari */
   -moz-user-select: none; /* Firefox */
