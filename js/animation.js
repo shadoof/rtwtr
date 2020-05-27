@@ -87,16 +87,22 @@ function animate(bspan, aspan, predefinedAnchor) {
     // If there is enough space overall but not enough space before
     // && anchor is in the first line
     debug && console.log("layout b without anchor")
-    $('#beforeAnchorA').text(context.before.b.content);
+    cloneContentToBeforeAnchorA(context.before.b.spans);
     $('#beforeAnchorA').css("opacity","1");
   } else {
-    $('#beforeAnchorA').text(context.before.a.content); // fake before a to get the right spacing
+    cloneContentToBeforeAnchorA(context.before.a.spans); // fake before a to get the right spacing
     layoutBeforeB(context.before, hoverAnchor, aspan[0].offsetLeft, aspan[0].offsetTop);
   }
 
   displayOverlay();
 }
-
+function cloneContentToBeforeAnchorA(children) {
+  for (var i = 0; i < children.length; i++) {
+    const span = children.eq(i).clone(); // keep inline style
+    span.attr("id", "");
+    $('#beforeAnchorA').append(span);
+  }
+}
 function cloneContentToAfterB(children, context){
   for (var i = 0; i < children.length; i++) {
     const span = children.eq(i).clone();
@@ -110,8 +116,9 @@ function cloneContentToAfterB(children, context){
         "margin-right": context.after.indent < -50 ? "-100px" : "-50px" // tmp
       })
   } else {
+    // console.log((!context || context.after.content == undefined));
     $('#overlay p').css({
-      "margin-right": (!context || context.after.content == undefined)  ?  "0px" :"-15px" // tmp wrapping
+      "margin-right": (!context || context.after.b.content == undefined || context.after.b.content == "")  ?  "0px" :"-15px" // tmp wrapping
     })
   }
 }
