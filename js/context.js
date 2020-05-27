@@ -11,7 +11,7 @@ class contextReport {
     this.sharedSpans = this.verifySharedSpans(aspan, bspan);
     if (this.sharedSpans == null) return;
     this.space = this.spaceDifference(aspan, bspan);
-    this.dbug = 0;
+    this.dbug = 1;
     this.ref = ref;
     this.anchor = {};
     this.before = {

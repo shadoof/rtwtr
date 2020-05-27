@@ -23,7 +23,7 @@ const CONTENT_WIDTH = 800, MARGIN_TOP = 100, MARGIN_RIGHT = 200, MARGIN_LEFT = 2
 let myTimeouts = [], phaseLive=false;
 
 // Animation Debug
-const debug = false;
+const debug = true;
 
 // Visualization Section
 function getMatchingUnit(span, target) {
@@ -82,21 +82,28 @@ function animate(bspan, aspan, predefinedAnchor) {
   $('#anchor').addClass("shared");
 
   cloneContentToAfterB(context.after.b.spans, context);
+  console.log(aspan[0].offsetLeft);
   repositionOverlay(aspan[0].offsetTop, aspan[0].offsetLeft);
   if (context.before.indent < -5 && context.space > 0 && aspan[0].offsetTop == context.anchor.offsetTop) {
     // If there is enough space overall but not enough space before
     // && anchor is in the first line
     debug && console.log("layout b without anchor")
-    $('#beforeAnchorA').text(context.before.b.content);
+    cloneContentToBeforeAnchorA(context.before.b.spans);
     $('#beforeAnchorA').css("opacity","1");
   } else {
-    $('#beforeAnchorA').text(context.before.a.content); // fake before a to get the right spacing
+    cloneContentToBeforeAnchorA(context.before.a.spans); // fake before a to get the right spacing
     layoutBeforeB(context.before, hoverAnchor, aspan[0].offsetLeft, aspan[0].offsetTop);
   }
 
   displayOverlay();
 }
-
+function cloneContentToBeforeAnchorA(children) {
+  for (var i = 0; i < children.length; i++) {
+    const span = children.eq(i).clone(); // keep inline style
+    span.attr("id", "");
+    $('#beforeAnchorA').append(span);
+  }
+}
 function cloneContentToAfterB(children, context){
   for (var i = 0; i < children.length; i++) {
     const span = children.eq(i).clone();
