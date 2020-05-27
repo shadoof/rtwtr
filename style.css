@@ -159,3 +159,7 @@ p {
 .active .shared{
   cursor: pointer;
 }
+
+.signature {
+  font-family: 'Courier New', monospace;
+}

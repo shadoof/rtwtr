@@ -3,7 +3,7 @@ const CLAUSE_BREAKS = [", ", "; ", ": ", "</cb> "];
 const THOUGHT_BREAKS = /[!|.|.?][”|"]?$/g;
 const PARAGRAPH_BREAK = /<pb\/>/g;
 const SECTION_BREAK = "<sb/>";
-const UNIT_PAIRS = ["<ub>","</ub>"];
+const UNIT_PAIRS = /<ub|\/ub>/g;
 const DEFAULT_PATH = ".tb:last";
 
 // Tools
@@ -137,22 +137,23 @@ function parseText(data, callback) {
             }
             inP = {a:false, b:false};
 
-          } else if (UNIT_PAIRS.indexOf(line) > -1) {
+          } else if (line.match(UNIT_PAIRS)) {
             // Handle unit
             const LocationA = inP.a ? currentAdiv.find("p:last") : currentAdiv;
             const LocationB = inP.b ? currentBdiv.find("p:last") : currentBdiv;
 
-            if (line == UNIT_PAIRS[0]) {
-              inUnit = true;
-              const unit = "<span class='unit manual'><span class='tb'></span></span>";
-              LocationA.append(unit);
-              LocationB.append(unit);
-            } else {
+            if (line == "</ub>") {
               // Create a new tb:last
               const tb = "<span class='tb'></span>";
               LocationA.append(tb);
               LocationB.append(tb);
               inUnit = false;
+            } else {
+              inUnit = true;
+              const customClassName = /class=["|'](.*?)["|']/g.exec(line);
+              const unit = "<span class='unit manual "+ (customClassName != null ? customClassName[1] : "") + "'><span class='tb'></span></span>";
+              LocationA.append(unit);
+              LocationB.append(unit);
             }
 
           } else {
@@ -202,7 +203,6 @@ function parseText(data, callback) {
     }
 
   } // End of for loop
-
 
   // Append content
   $(contentToBeAppend).append($('#overlay'));
