@@ -23,7 +23,7 @@ const CONTENT_WIDTH = 800, MARGIN_TOP = 100, MARGIN_RIGHT = 200, MARGIN_LEFT = 2
 let myTimeouts = [], phaseLive=false;
 
 // Animation Debug
-const debug = true;
+const debug = false;
 
 // Visualization Section
 function getMatchingUnit(span, target) {
@@ -82,7 +82,6 @@ function animate(bspan, aspan, predefinedAnchor) {
   $('#anchor').addClass("shared");
 
   cloneContentToAfterB(context.after.b.spans, context);
-  console.log(aspan[0].offsetLeft);
   repositionOverlay(aspan[0].offsetTop, aspan[0].offsetLeft);
   if (context.before.indent < -5 && context.space > 0 && aspan[0].offsetTop == context.anchor.offsetTop) {
     // If there is enough space overall but not enough space before
