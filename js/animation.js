@@ -49,6 +49,20 @@ function phase2(thisDom, target) {
   animate(bspan, $(thisDom), target);
 }
 
+function checkCustomClassNames(aspan) {
+  // if there is any custom class names defined for aspan, pass it to overlay
+  // only for unit level
+  const allClasses = aspan[0].classList;
+  let customClassNames = "";
+  const parserClassNames = ['tb', 'unit', 'active', 'manual', 'toB'];
+
+  for (var i = 0; i < allClasses.length; i++) {
+    if (parserClassNames.indexOf(allClasses[i]) < 0 ) customClassNames += " " + allClasses[i];
+  }
+
+  $('#overlay')[0].className = customClassNames;
+  // TODO: add this to getTextWidth as well & clear class on mouse out
+}
 
 function animate(bspan, aspan, predefinedAnchor) {
   // !! Jquery offset() is different from native javascript offset values
@@ -61,6 +75,8 @@ function animate(bspan, aspan, predefinedAnchor) {
   // console.log(aspan, bspan);
   let context = basicAnalyze(aspan, bspan, predefinedAnchor);
   debug && console.log(context);
+
+  checkCustomClassNames(aspan);
 
   if (context.sharedSpans == undefined) {
     if (bspan.children().length > 0) {
@@ -126,6 +142,8 @@ function cloneContentToAfterB(children, context){
 function clearOverlay() {
   //console.log("clear overlay")
   $('#overlay').css("opacity","0");
+  $('#overlay')[0].className = "";
+
   $('#beforeAnchorA').css("opacity","0");
   $('#overlay span').text("");
   clearTimeouts(myTimeouts);
