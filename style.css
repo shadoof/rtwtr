@@ -1,17 +1,17 @@
 @font-face {
     font-family: 'Garamond';
-    src: url('/fonts/Garamond.ttf');
+    src: url('fonts/Garamond.ttf');
 }
 
 @font-face {
     font-family: 'Garamond';
-    src: url('/fonts/Garamond Bold.ttf');
+    src: url('fonts/Garamond Bold.ttf');
     font-weight: bold;
 }
 
 @font-face {
     font-family: 'Garamond';
-    src: url('/fonts/Garamond Italic.ttf');
+    src: url('fonts/Garamond Italic.ttf');
     font-style: italic;
 }
 
