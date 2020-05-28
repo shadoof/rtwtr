@@ -1,4 +1,5 @@
-# rt(w||w)tr : reading through (writing or word-diff) through reading ...
+# rt(w||w)tr
+# reading through (writing or word-diff) through reading ...
 
 # Notes:
 
