@@ -244,9 +244,12 @@ function getAllContent(spans) {
     if (spans[i].innerText == undefined) {
       this.dbug && console.log("Error! Can't retrieve innerText.")
     } else {
-      all += spans[i].innerText;
+      // in case the space is missing
+      all += (all[all.length-1] != " " && spans[i].innerText[0] != " " ? " ":"") + spans[i].innerText;
     }
   }
+  // add space at sentence end if missing
+  all = all.replace(/(\S)$/g,"$1 ");
   return all;
 }
 function calculateTextLength(text) {

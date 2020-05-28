@@ -237,7 +237,7 @@ function layoutBeforeB(before, anchor, offsetALeft, offsetATop) {
     for (var j = 0; j < spanWords.length; j++) {
       const word = spanWords[j];
       if (word == "") continue;
-      if (offsetArray[index].text == word) {
+      if (offsetArray[index].text === word) {
         const newSpan = document.createElement('span');
         newSpan.innerText = word + " ";
         $('#beforeAnchorB > span:last').append(newSpan);
@@ -245,17 +245,19 @@ function layoutBeforeB(before, anchor, offsetALeft, offsetATop) {
         if (offsetArray[index].top == offsetATop + MARGIN_TOP) {
           // Offset left might need adjustment
           if (offsetArray[index].left < offsetALeft + MARGIN_LEFT) {
-            console.log("off", word, offsetArray[index].left);
+            // console.log("off", word, offsetArray[index].left);
             // Adjust the whole line for the rest
             const offLeft = 7 + offsetALeft + MARGIN_LEFT - offsetArray[index].left;
             offsetArray = adjustOffLeft(offsetArray, index, offLeft)
           }
-        }
+        } 
         $(newSpan).offset({
           left:offsetArray[index].left,
           top: offsetArray[index].top
         })
         index ++;
+      } else {
+        console.warn("doesn't match", offsetArray[index].text, word)
       }
     } // End of spanWord for loop
   }
