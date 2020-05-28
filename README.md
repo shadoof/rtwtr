@@ -1,4 +1,4 @@
-# rtwtr : reading through writing through reading ...
+# rt(w||w)tr : reading through (writing or word-diff) through reading ...
 
 # Notes:
 
@@ -30,15 +30,13 @@ If no units are marked explicitly, then units are defined by `<tb/>` tags.
 
 `. or ? or ! or <tb/> = "thought" break.` As above. If marked with a tag, then this is on its own line. Used for conventional sentences. By default, defines **units** for sections which have an equal number of sentences/thoughts.
 
-`<pb/> = "paragraph" break.` As above, but on its own line in a source file with no delimiters. Simply renders a new `<p></p>` (or equivalent) in the html.
+`<pb/> = "paragraph" break.` As above, but on its own line in a source file with no delimiters. Renders the typographic _equivalent_ of a new `<p>` html, but _note:_ actual `<p>` cannot occur _within_ **units**. Html `<p>`s may corresppond with units or enclose multiple units but not the other way around.
 
-`<ub></ub> A tag pair that overrides unit definition` That is, the visualization "units" for a screen or section. Needs to be a tag pair so as to be able to enclose (exceptionally) more than one `<cb/>` or `<pb/>` and or `</tb>` and their shared spans.
+`<ub></ub> A tag pair that overrides unit definition` That is, the visualization "units" for a screen or section. Needs to be a tag pair so as to be able to enclose (exceptionally) more than one `<cb/>` or `<pb/>` and or `<tb/>` and their shared spans. Currently opening and closing `ub` tags must be on separate lines of the text files.
 
 `<sb/> = "screen" or "section" break.` On its own line in the source file. Marks generation and separate rendering of a new screen.
 
-# rtwtr git word diff
-
-**git word-diff using "_" delimiter:**
+# git word diff
 
 `git diff --no-index --word-diff=porcelain a_file.txt b_file.txt > ab_worddiff.txt`
 
