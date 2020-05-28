@@ -127,7 +127,7 @@ This inversion of language may be observed very early in the course of history, 
 Such unimaginable explanations that mirror the structure of literate thought are existentially devoid of meaning, and in such a situation texts begin to constitute a kind of paranoid library wall that triply alienates us from our world.
 It is against the threatening lunacy of formal rationalism, of a meaningless existence amid speculative, opaque explanations, that the rise of the new image culture must be seen.
 <ub>
-And yet the latest, digitalized image culture is, precisely, encoded and computed in the terms, precisely, of this very “threatening lunacy.”
+And yet the latest, digitalized image culture is, precisely, encoded and computed in the terms of this very “threatening lunacy.”
 </ub>
 <sb/>
 
@@ -250,7 +250,7 @@ An evolved faculty cannot have a future for an entity that has evolved to have t
 </ub>
 It is simply a fact that the making of language will either critique and exceed the techno- and computational imagination (which means unmasking the ideologies hiding behind a technical progress that has become autonomous of human decisions) or it will serve the production of pretexts for techno- and computational images, allowing a constitutive faculty to operate perversely as the instrument of reductive, scientistic “progress.”
 In any event, as language speaks, the future is unimaginable by definition.
-If language is to serve computation, history in any shared understanding of that term has already come to an end, and we may easily imagine what will follow: the eternal return of digitalized life in a computational configuration that progresses by its own inertia.
+If language is to serve computation, history in any shared understanding of that term has already come to an end, and we may easily imagine what will follow: the eternal return of digitalized life in a configuration of big software architecture that progresses by its own inertia.
 <pb/>
 <ub class="signature">
 &nbsp;-John<br/>
