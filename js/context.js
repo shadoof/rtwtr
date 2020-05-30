@@ -85,7 +85,7 @@ class contextReport {
       if ( which.b.content == "" || which.b.content == undefined) {
         return which.indent >= 0;
       } else {
-        return which.indent >= 10; //tmp: wrapping space
+        return which.indent > 10; //tmp: wrapping space
       }
     }
 
