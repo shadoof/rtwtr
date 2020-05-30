@@ -6,9 +6,11 @@ const OVERLAY_DEFAULT_COLOR = '#410';
 const OVERLAY_ONHOVER_COLOR = '#976';
 
 const TRANSITION_ONHOVER = 800;
-// TRANSITION_SHARED = time over which default color highlights the spans
+// TRANSITION_SHARED = time over which default color highlights the shared spans
 // DELAY_SHARED = delay before the shared spans are enabled
 // TODO: could there be a slight delay (prob 200) before ANY mouseover action is started?
+// (this would allow the reader to start with pointer one shared span in phase and have time
+// to move to a preferred [nearby] shared span)
 const DELAY_SHARED = 1000, TRANSITION_SHARED = 800; // 500s -> 800s
 
 const DELAY_1_2 = 2200; // 1500 automatically enter phase2 after 3 seconds in phase1 on the same element
