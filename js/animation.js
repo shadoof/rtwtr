@@ -6,9 +6,12 @@ const OVERLAY_DEFAULT_COLOR = '#410';
 const OVERLAY_ONHOVER_COLOR = '#976';
 
 const TRANSITION_ONHOVER = 800;
-const DELAY_SHARED = 800, TRANSITION_SHARED = 800; // 500s -> 800s
+// TRANSITION_SHARED = time over which default color highlights the spans
+// DELAY_SHARED = delay before the shared spans are enabled
+// TODO: could there be a slight delay (prob 200) before ANY mouseover action is started?
+const DELAY_SHARED = 1000, TRANSITION_SHARED = 800; // 500s -> 800s
 
-const DELAY_1_2 = 2000; // 1500 automatically enter phase2 after 3 seconds in phase1 on the same element
+const DELAY_1_2 = 2200; // 1500 automatically enter phase2 after 3 seconds in phase1 on the same element
 
 const FADE_OPACITY = 0.1, TRANSITION_FADEOUT = 1000;
 const DELAY_OVERLAY_FADEIN = 1000, TRANSITION_OVERLAY_FADEIN = 800;
