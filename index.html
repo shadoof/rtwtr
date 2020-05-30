@@ -5,7 +5,6 @@
   <meta charset="UTF-8">
   <title>-WRITING &nbsp;/&nbsp; +LANGUAGE</title>
   <script src="js/jquery.min.js"></script>
-
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -33,12 +32,20 @@
   <span id="anchor" class="anchor"></span>
   <span id="afterAnchor"></span>
   <div id="beforeAnchorB"></div>
- </p>
+  </p>
 </div>
 
 <div id="getTextWidth">
 </div>
-
+<script type="text/javascript">
+(function() {
+var link = document.querySelector("link[rel*='icon']") || document.createElement('link');
+link.type = 'image/x-icon';
+link.rel = 'shortcut icon';
+link.href = 'favicon.ico';
+document.getElementsByTagName('head')[0].appendChild(link);
+})();
+</script>
 <script src="js/context.js"></script>
 <script src="js/animation.js"></script>
 <script src="js/parser.js"></script>
