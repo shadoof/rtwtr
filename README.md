@@ -3,8 +3,9 @@
 
 Concept: John Cayley @shadoof  
 Code: Sally Qianxun Chen @cqx931 and John Cayley  
-v1.0: June 1, 2020  
-HTML, CSS, JaveScript, JQuery
+v1.0.1: June 4, 2020  
+HTML, CSS, JaveScript, JQuery  
+Licensing information below
 
 `rt(w||w)tr`\* is a generalizable framework and webapp reading instrument. It produces dynamic visualizations comparing two texts, or versions of a single text, where the texts are similarly structured and, most effectively, when they share phrases or sequences of natural language in their customary tokenized orthographies.
 
@@ -19,11 +20,11 @@ Launch the webapp on a server. Move your pointer over any sentence. Sequences th
 
 The section number in the upper left is also a drop-down menu giving access to any section, with previous and next buttons enclosing it.
 
-### About this release
+### About the code in the 1.x releases
 
 Note: This initial version is limited in that the `units` of the `a` file are expected to be longer or roughly the same length as their corresponding `b` file `units`. A later version of the engine will allow corresponding `units` of any length for either file.
 
-The v1.0 release was produced with word-diff'd texts prepared by John Cayley for the following publication in the inaugural issue of The Digital Review:
+The v1.0.x releases were produced with word-diff'd texts prepared by John Cayley for the following publication in the inaugural issue of The Digital Review:
 
 ```
  The Future of
@@ -35,4 +36,11 @@ Cayley, John, and Sally Qianxun Chen. ‘The Future of / -Writing / -Vilém Flus
 
 
 \* The full name for the webapp may be shortened to `rtwtr` particularly for path-naming purposes.
+
+## Licenses
+The code for this project, by Sally Qianxun Chen with John Cayley is licensed under GNU GPL-3.0 the terms of which are set out in the LICENSE file.
+
+With respect to some of its sources, the ***TDRv1.0.x releases*** of this project, that is, 'The Future of / -Writing / -Vilém Flusser / +Language / +John Cayley' are licensed as follows:
+
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a><br />Versions of the work, TDRv1.0.x, are licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.
 
