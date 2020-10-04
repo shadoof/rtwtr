@@ -205,7 +205,9 @@ function parseText(data, callback) {
   } // End of for loop
 
   // Append content
+  $(contentToBeAppend).append($('#overlayContentBefore'));
   $(contentToBeAppend).append($('#overlay'));
+  $(contentToBeAppend).append($('#overlayContentAfter'));
   $('body').append(contentToBeAppend);
   initTester();
   removeEmptyElements('.tb')
@@ -230,7 +232,6 @@ function parseText(data, callback) {
 
 // End of Parsing Section
 
-
-readTextFile("data/ab_worddiff.txt", function(data){
+readTextFile("data/tests/ab.txt", function(data){
   parseText(data, postParsing);
 });

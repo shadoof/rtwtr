@@ -113,10 +113,10 @@ p {
 }
 /* End of Menu Style */
 
-.page, .adiv, .bdiv, #overlay{
+.page, .adiv, .bdiv, [id^="overlay"]{
   width:100%;
 }
-.adiv, .bdiv, #overlay{
+.adiv, .bdiv, [id^="overlay"]{
   position:absolute;
   top: 0;
   left: 0;
@@ -143,10 +143,11 @@ p {
 }
 .adiv .unit {
   opacity: 1;
+
 }
+
 #overlay {
   opacity:0;
-  color:
 }
 #beforeAnchorA {
   opacity: 0;

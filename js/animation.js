@@ -22,7 +22,7 @@ const DELAY_DEFAULT_B = 2000, TRANSITION_DEFAULT_B = 800;
 // Typography
 const TEXT_SIZE = 24, LINE_HEIGHT = 27;
 // Layout
-const CONTENT_WIDTH = 800, MARGIN_TOP = 100, MARGIN_RIGHT = 200, MARGIN_LEFT = 200;
+const CONTENT_WIDTH = 800, MARGIN_TOP = 200, MARGIN_RIGHT = 200, MARGIN_LEFT = 200;
 
 // Animation Control
 let myTimeouts = [], phaseLive=false;
@@ -40,7 +40,7 @@ function getMatchingUnit(span, target) {
 }
 
 function clearTimeouts(timeouts) {
-  for (var i = 0; i < timeouts.length; i++) {
+  for (let i = 0; i < timeouts.length; i++) {
     clearTimeout(timeouts[i]);
   }
 }
@@ -61,7 +61,7 @@ function checkCustomClassNames(aspan) {
   let customClassNames = "";
   const parserClassNames = ['tb', 'unit', 'active', 'manual', 'toB'];
 
-  for (var i = 0; i < allClasses.length; i++) {
+  for (let i = 0; i < allClasses.length; i++) {
     if (parserClassNames.indexOf(allClasses[i]) < 0 ) customClassNames += " " + allClasses[i];
   }
 
@@ -111,31 +111,113 @@ function animate(bspan, aspan, predefinedAnchor) {
     cloneContentToBeforeAnchorA(context.before.b.spans);
     $('#beforeAnchorA').css("opacity","1");
   } else {
+    // not enough space for b
+    // get tbs after the active one
     cloneContentToBeforeAnchorA(context.before.a.spans); // fake before a to get the right spacing
     layoutBeforeB(context.before, hoverAnchor, aspan[0].offsetLeft, aspan[0].offsetTop);
   }
 
   displayOverlay();
+
+  // Adjust section before and after accordingly
+  // TODO: how to go beyond this paragraph
+
+  // Content Before
+  if (context.before.indent < -5)
+    animateSurroundings("overlayContentBefore", aspan, context);
+
+  // Content After
+  if (context.after.indent < -5) {
+    animateSurroundings("overlayContentAfter", aspan, context);
+
+    // Alternative method: horizontal move
+    // $('.active + .unit').css({
+    //   paddingLeft: - context.after.indent + "px",
+    //   transition:'padding 2s ease'
+    // })
+  }
+
 }
+
+function fromIndentToVerticalSpace(indent){
+  const lines = Math.ceil(-indent / CONTENT_WIDTH)
+  const verticalSpaceNeeded = lines * LINE_HEIGHT;
+  return verticalSpaceNeeded;
+}
+
+function animateSurroundings(type, aspan, context){
+  const fadeOutAsOverlay = {
+  opacity:0,
+  transition:'opacity ' + TRANSITION_OVERLAY_FADEIN/1000 + 's ease'
+  };
+
+  let units, verticalSpaceNeeded, newTop;
+  if (type == "overlayContentBefore") {
+    units = aspan.parent().find('.unit');
+    verticalSpaceNeeded = - fromIndentToVerticalSpace(context.before.indent);
+    // if verticalSpaceNeeded is more than one line
+    // && there is <p> before current <p>
+    let currentPIndex = aspan.parent().index();
+    if (- verticalSpaceNeeded > LINE_HEIGHT && currentPIndex > 0) {
+      debug && console.log("fadeOut paragraph before")
+      aspan.parent().parent().children().each(function() {
+        if (currentPIndex > 0){
+          $(this).children().css(fadeOutAsOverlay);
+          currentPIndex--;
+        }
+      })
+    }
+    newTop =  aspan.parent()[0].offsetTop + verticalSpaceNeeded;
+
+  } else {
+    units = $('.active ~ .unit');
+    verticalSpaceNeeded = fromIndentToVerticalSpace(context.after.indent);
+    // if verticalSpaceNeeded is more than one line
+    // && there is <p> after current <p>
+    if(verticalSpaceNeeded > LINE_HEIGHT && aspan.parent().nextAll().length > 0) {
+      debug && console.log("fadeOut paragraph after")
+      aspan.parent().nextAll().children().css(fadeOutAsOverlay);
+    }
+    newTop = (units.length > 0 ? units[0].offsetTop : 0) + verticalSpaceNeeded;
+  }
+
+  for (let i = 0; i < units.length; i++) {
+    const unit = units[i];
+    // loop all units before active, hide & show duplicates in a new div
+    if(type == "overlayContentBefore" && $(unit).hasClass('active')) break;
+    const span = $(unit).clone(); // keep inline style
+    span.attr("id", "");
+    $('#'+type).append(span);
+    $(unit).css(fadeOutAsOverlay);
+  }
+
+  $('#'+type).css({
+    top: newTop + "px",
+    opacity: 1,
+    transition: 'all ' + TRANSITION_OVERLAY_FADEIN/1000 + 's ease'
+  });
+}
+
 function cloneContentToBeforeAnchorA(children) {
-  for (var i = 0; i < children.length; i++) {
+  for (let i = 0; i < children.length; i++) {
     const span = children.eq(i).clone(); // keep inline style
     span.attr("id", "");
     $('#beforeAnchorA').append(span);
   }
 }
+
 function cloneContentToAfterB(children, context){
-  for (var i = 0; i < children.length; i++) {
+  for (let i = 0; i < children.length; i++) {
     const span = children.eq(i).clone();
     span.attr("id", "");
     $('#afterAnchor').append(span);
   }
 
-  // If not enought space for b after
+  // If not enought space for b after : no longer needed
   if (context && context.after.indent < 0) {
-      $('#overlay p').css({
-        "margin-right": context.after.indent < -50 ? "-100px" : "-50px" // tmp
-      })
+      // $('#overlay p').css({
+      //   "margin-right": context.after.indent < -50 ? "-100px" : "-50px" // tmp
+      // })
   } else {
     // console.log((!context || context.after.content == undefined));
     $('#overlay p').css({
@@ -151,6 +233,9 @@ function clearOverlay() {
 
   $('#beforeAnchorA').css("opacity","0");
   $('#overlay span').text("");
+
+  $('#overlayContentBefore').html("");
+  $('#overlayContentAfter').html("");
   clearTimeouts(myTimeouts);
 }
 
@@ -200,14 +285,14 @@ function layoutBeforeB(before, anchor, offsetALeft, offsetATop) {
   offsetArray = [];
 
   // TMP: allow extra space to margin left
-  const extraSpace = before.indent < 0 ? 50 : 0;
+  // const extraSpace = before.indent < 0 ? 50 : 0;
 
-  for (var i = 0; i < reverseWords.length; i++) {
+  for (let i = 0; i < reverseWords.length; i++) {
      const word = reverseWords[i];
      if (word == "") continue; // Skip empty ones
      const textL = calculateTextLength(word + " ")
      cursor.x -= textL;
-     if (cursor.x < MARGIN_LEFT - extraSpace) {
+     if (cursor.x < MARGIN_LEFT) {
        //console.log("new line")
        cursor.y -= LINE_HEIGHT
        cursor.x += CONTENT_WIDTH
@@ -231,7 +316,7 @@ function layoutBeforeB(before, anchor, offsetALeft, offsetATop) {
 
   let index = 0;
 
-  for (var i = 0; i < before.b.spans.length; i++) {
+  for (let i = 0; i < before.b.spans.length; i++) {
     const currentSpan = before.b.spans[i];
     const wrapperSpan = document.createElement('span');
     $('#beforeAnchorB').append(wrapperSpan);
@@ -239,7 +324,7 @@ function layoutBeforeB(before, anchor, offsetALeft, offsetATop) {
       wrapperSpan.classList.add("shared");
     }
     const spanWords = currentSpan.innerText.split(" ");
-    for (var j = 0; j < spanWords.length; j++) {
+    for (let j = 0; j < spanWords.length; j++) {
       const word = spanWords[j];
       if (word == "") continue;
       if (offsetArray[index].text === word) {
@@ -255,7 +340,7 @@ function layoutBeforeB(before, anchor, offsetALeft, offsetATop) {
             const offLeft = 7 + offsetALeft + MARGIN_LEFT - offsetArray[index].left;
             offsetArray = adjustOffLeft(offsetArray, index, offLeft)
           }
-        } 
+        }
         $(newSpan).offset({
           left:offsetArray[index].left,
           top: offsetArray[index].top
@@ -270,7 +355,7 @@ function layoutBeforeB(before, anchor, offsetALeft, offsetATop) {
 
 function adjustOffLeft(array, index, offLeft) {
   const thisLine = array[index].top;
-  for (var i = index; i < array.length; i++) {
+  for (let i = index; i < array.length; i++) {
     if (array[i].top == thisLine) {
       array[i].left += offLeft;
     }
@@ -284,7 +369,7 @@ function handleMultiLineAnchor(anchor) {
     // Multi line anchor, split to spans;
     const anchorWords = anchor.innerText.split(" ");
     $(anchor).empty();
-    for (var i = 0; i < anchorWords.length; i++) {
+    for (let i = 0; i < anchorWords.length; i++) {
       const word = anchorWords[i];
       if (word == "") continue; // Skip empty ones
       const newSpan = document.createElement('span');
@@ -318,7 +403,7 @@ function getIndent(total, unit, anchor) {
 }
 
 function basicAnalyze(aspan, bspan, predefinedAnchor) {
-  const dbug = 0;
+  const dbug = 1;
   const ref = {
     x:aspan.width()/2,
     y:aspan.height()/2 + aspan[0].offsetTop - TEXT_SIZE
@@ -402,7 +487,7 @@ function postParsing() {
     $('.adiv > p .unit span').css("color", DEFAULT_COLOR);
     // clear settimeout
     clearTimeouts(myTimeouts);
-    $('#overlay').css({
+    $('[id^=overlay]').css({
       opacity:0,
       // "z-index":1
     });
