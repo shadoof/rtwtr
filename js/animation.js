@@ -151,7 +151,8 @@ function animateSurroundings(type, aspan, context){
   transition:'opacity ' + TRANSITION_OVERLAY_FADEIN/1000 + 's ease'
   };
 
-  let units, verticalSpaceNeeded, newTop;
+  let units, verticalSpaceNeeded, origTop=0, origLeft=0;
+
   if (type == "overlayContentBefore") {
     units = aspan.parent().find('.unit');
     verticalSpaceNeeded = - fromIndentToVerticalSpace(context.before.indent);
@@ -162,12 +163,12 @@ function animateSurroundings(type, aspan, context){
       debug && console.log("fadeOut paragraph before")
       aspan.parent().parent().children().each(function() {
         if (currentPIndex > 0){
-          $(this).children().css(fadeOutAsOverlay);
+          $(this).children().css("opacity", 0);
           currentPIndex--;
         }
       })
     }
-    newTop =  aspan.parent()[0].offsetTop + verticalSpaceNeeded;
+    origTop = aspan.parent()[0].offsetTop;
 
   } else {
     units = $('.active ~ .unit');
@@ -176,9 +177,12 @@ function animateSurroundings(type, aspan, context){
     // && there is <p> after current <p>
     if(verticalSpaceNeeded > LINE_HEIGHT && aspan.parent().nextAll().length > 0) {
       debug && console.log("fadeOut paragraph after")
-      aspan.parent().nextAll().children().css(fadeOutAsOverlay);
+      aspan.parent().nextAll().children().css("opacity", 0);
     }
-    newTop = (units.length > 0 ? units[0].offsetTop : 0) + verticalSpaceNeeded;
+    if (units.length > 0) {
+      origTop = units[0].offsetTop;
+      origLeft = units[0].offsetLeft;
+    }
   }
 
   for (let i = 0; i < units.length; i++) {
@@ -191,11 +195,16 @@ function animateSurroundings(type, aspan, context){
     $(unit).css(fadeOutAsOverlay);
   }
 
+  //place overlay at their orig Location before append
   $('#'+type).css({
-    top: newTop + "px",
-    opacity: 1,
-    transition: 'all ' + TRANSITION_OVERLAY_FADEIN/1000 + 's ease'
+    top: origTop + "px",
+    textIndent: origLeft,
+    opacity:1
   });
+
+  $('#'+type).animate({
+    top: origTop + verticalSpaceNeeded + "px"
+  }, 1000);
 }
 
 function cloneContentToBeforeAnchorA(children) {
@@ -487,11 +496,9 @@ function postParsing() {
     $('.adiv > p .unit span').css("color", DEFAULT_COLOR);
     // clear settimeout
     clearTimeouts(myTimeouts);
-    $('[id^=overlay]').css({
+    $('[id^=overlay').css({
       opacity:0,
-      // "z-index":1
     });
-
   })
   // End of User Interaction
 
