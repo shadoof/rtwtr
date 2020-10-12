@@ -232,6 +232,6 @@ function parseText(data, callback) {
 
 // End of Parsing Section
 
-readTextFile("data/tests/ab.txt", function(data){
+readTextFile("data/tests/avia_bvia.txt", function(data){
   parseText(data, postParsing);
 });

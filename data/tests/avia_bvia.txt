@@ -1,0 +1,135 @@
+diff --git a/a_via1.txt b/b_via1.txt
+index ad1505c..3824978 100644
+--- a/a_via1.txt
++++ b/b_via1.txt
+@@ -1,42 +1,42 @@
+-Along
++At the midpoint in
+  the journey of our life
+-half way
+~
+ I found myself 
+-again
++astray
+  in a dark wood
+~
+-wherein
++For
+  the straight 
+-road no longer lay
++path had vanished.
+~
+ <pb/>
+~
+ 
+~
+ [ as if it was a paragraph and one ‘thought’ (tb) ]
+~
+ <pb/>
+~
+ <sb/>
+~
+ 
+~
+-Along
++At the midpoint in
+  the journey of our 
+-life half way<br/>
++life<br/>
+~
+ I found myself 
+-again
++astray
+  in a dark wood<br/>
+~
+-wherein
++For
+  the straight 
+-road no longer lay<br/>
++path had vanished.<br/>
+~
+ <pb/>
+~
+ 
+~
+ [ set in lines but still one ‘thought’ (tb) ]
+~
+ <pb/>
+~
+ <sb/>
+~
+ 
+~
+-Along
++At the midpoint in
+  the journey of our 
+-life half way<br/>
++life<br/>
+~
+ <tb/>
+~
+ I found myself 
+-again
++astray
+  in a dark wood<br/>
+~
+ <tb/>
+~
+-wherein
++For
+  the straight 
+-road no longer lay<br/>
++path had vanished.<br/>
+~
+ <tb/>
+~
+ <pb/>
+~
+ 
+~
+ [ set in lines and each line is a ‘thought’ (tb) ]<br/>
+~
+ [ 
+-are tb tags not working
++or does the full stop produce an extra ‘empty’ and unmatched thought here
+  ]
+~
+ <pb/>
+~
+ <sb/>
+~
+ 
+~
+ <ub>
+~
+-Along
++At the midpoint in
+  the journey of our 
+-life half way<br/>
++life<br/>
+~
+ <ub/>
+~
+ <ub>
+~
+ I found myself 
+-again
++astray
+  in a dark wood<br/>
+~
+ <ub/>
+~
+ <ub>
+~
+-wherein
++For
+  the straight 
+-road no longer lay<br/>
++path had vanished.<br/>
+~
+ <ub/>
+~
+ 
+~
+ <br/>[ set in lines and each line is a ‘unit’ (ub tag pairs) ]<br/>
+~
