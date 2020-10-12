@@ -1,0 +1,44 @@
+At the midpoint in the journey of our life
+I found myself astray in a dark wood
+For the straight path had vanished.
+<pb/>
+
+[ as if it was a paragraph and one ‘thought’ (tb) ]
+<pb/>
+<sb/>
+
+At the midpoint in the journey of our life<br/>
+I found myself astray in a dark wood<br/>
+For the straight path had vanished.<br/>
+<pb/>
+
+[ set in lines but still one ‘thought’ (tb) ]
+<pb/>
+<sb/>
+
+At the midpoint in the journey of our life<br/>
+<tb/>
+I found myself astray in a dark wood<br/>
+<tb/>
+For the straight path had vanished.<br/>
+<tb/>
+<pb/>
+
+[ set in lines and each line is a ‘thought’ (tb) ]<br/>
+[ or does the full stop produce an extra ‘empty’ and unmatched thought here ]
+<pb/>
+<sb/>
+
+<ub>
+At the midpoint in the journey of our life<br/>
+<ub/>
+<ub>
+I found myself astray in a dark wood<br/>
+<ub/>
+<ub>
+For the straight path had vanished.<br/>
+<ub/>
+
+<br/>[ set in lines and each line is a ‘unit’ (ub tag pairs) ]<br/>
+[ the pb tag above does not work - why not ]
+<pb/>

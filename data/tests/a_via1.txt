@@ -1,0 +1,44 @@
+Along the journey of our life half way
+I found myself again in a dark wood
+wherein the straight road no longer lay
+<pb/>
+
+[ as if it was a paragraph and one ‘thought’ (tb) ]
+<pb/>
+<sb/>
+
+Along the journey of our life half way<br/>
+I found myself again in a dark wood<br/>
+wherein the straight road no longer lay<br/>
+<pb/>
+
+[ set in lines but still one ‘thought’ (tb) ]
+<pb/>
+<sb/>
+
+Along the journey of our life half way<br/>
+<tb/>
+I found myself again in a dark wood<br/>
+<tb/>
+wherein the straight road no longer lay<br/>
+<tb/>
+<pb/>
+
+[ set in lines and each line is a ‘thought’ (tb) ]<br/>
+[ are tb tags not working ]
+<pb/>
+<sb/>
+
+<ub>
+Along the journey of our life half way<br/>
+<ub/>
+<ub>
+I found myself again in a dark wood<br/>
+<ub/>
+<ub>
+wherein the straight road no longer lay<br/>
+<ub/>
+
+<br/>[ set in lines and each line is a ‘unit’ (ub tag pairs) ]<br/>
+[ the pb tag above does not work - why not ]
+<pb/>
