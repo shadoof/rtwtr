@@ -1,6 +1,6 @@
 // Parser: Definitions
 const CLAUSE_BREAKS = [", ", "; ", ": ", "</cb> "];
-const THOUGHT_BREAKS = /[!|.|.?][”|"]?$/g;
+const THOUGHT_BREAKS = /^(?!$)([!|.|.?][”|"]?)?(<tb\/>)?$/g;
 const PARAGRAPH_BREAK = /<pb\/>/g;
 const SECTION_BREAK = "<sb/>";
 const UNIT_PAIRS = /<ub|\/ub>/g;
