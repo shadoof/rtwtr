@@ -37,7 +37,7 @@ function removeGitDiffSyntags(content) {
 }
 
 function removeBreaks(content) {
-  return content.replace(/(<ub> |<\/ub> |<sb\/> |<pb\/>)/g,"");
+  return content.replace(/(<ub> |<\/ub> |<sb\/> |<pb\/>|<tb\/>)/g,"");
 }
 
 function removeEmptyElements(selector) {
