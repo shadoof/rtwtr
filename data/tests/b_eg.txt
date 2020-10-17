@@ -1,0 +1,9 @@
+In this table<cb/> is a short example of text marked up for <i>rtwtr</i> followed by more detailed explanation of <i>rtwtr</i> markup conventions.
+<ub>
+The unit above is one sentence and so is this one; it will match the corresponding multi-sentence unit in the a_file simply due to its full-stop.
+</ub>
+And this sentence is on its own.<pb/>
+Its thought was divided and it will even get its own paragraph in the rendered visualization.
+There are five units in both texts.
+<pb/>
+<sb/>

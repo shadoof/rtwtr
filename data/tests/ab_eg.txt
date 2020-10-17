@@ -1,0 +1,55 @@
+diff --git a/a_eg.txt b/b_eg.txt
+index 580b514..75449b6 100644
+--- a/a_eg.txt
++++ b/b_eg.txt
+@@ -1,8 +1,9 @@
+-Here<cb/>
++In this table<cb/>
+  is a 
+-brief
++short
+  example of text marked up for <i>rtwtr</i> followed by 
++more detailed explanation of <i>rtwtr</i>
+  markup 
+-conventions and details.
++conventions.
+~
+ <ub>
+~
+ The unit above is
+-defined by the full-stop sentence-level punctuation. But this unit has more than
+  one sentence 
+-in it. Nonetheless,
++and so is this one;
+  it will match the corresponding 
+-single-sentence
++multi-sentence
+  unit in the 
+-b_file.
++a_file simply due to its full-stop.
+~
+ </ub>
+~
+ And this sentence 
+-has been<tb/>
++is on its own.<pb/>
+~
++Its thought was
+  divided 
+-into two units by so-called thought-break tags,
++and it will even get its own paragraph in
+  the 
+-final one here, redundant.<tb/>
++rendered visualization.
+~
+ There are five 
+-units, count ’em,
++units
+  in 
+-this section.
++both texts.
+~
+ <pb/>
+~
+ <sb/>
+~

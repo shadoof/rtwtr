@@ -1,0 +1,8 @@
+Here<cb/> is a brief example of text marked up for <i>rtwtr</i> followed by markup conventions and details.
+<ub>
+The unit above is defined by the full-stop sentence-level punctuation. But this unit has more than one sentence in it. Nonetheless, it will match the corresponding single-sentence unit in the b_file.
+</ub>
+And this sentence has been<tb/> divided into two units by so-called thought-break tags, the final one here, redundant.<tb/>
+There are five units, count ’em, in this section.
+<pb/>
+<sb/>
