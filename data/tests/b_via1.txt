@@ -53,7 +53,7 @@ I found myself astray in a dark wood<br/>
 <ub>
 For the straight path had vanished.<br/>
 </ub>
-<verse/>
+</verse>
 <br/>[ verse with units ]
 
 <sb/>
@@ -62,6 +62,6 @@ For the straight path had vanished.<br/>
 At the midpoint in the journey of our life<br/>
 I found myself astray in a dark wood<br/>
 For the straight path had vanished.<br/>
-<verse/>
+</verse>
 <pb/>
 [ verse without units]

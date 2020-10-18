@@ -53,7 +53,7 @@ I found myself again in a dark wood<br/>
 <ub>
 wherein the straight road no longer lay<br/>
 </ub>
-<verse/>
+</verse>
 <br/>[ verse with units]
 
 <sb/>
@@ -62,6 +62,6 @@ wherein the straight road no longer lay<br/>
 Along the journey of our life half way<br/>
 I found myself again in a dark wood<br/>
 wherein the straight road no longer lay<br/>
-<verse/>
+</verse>
 <pb/>
 [ verse without units]

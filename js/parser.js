@@ -4,7 +4,7 @@ const THOUGHT_BREAKS = /^(?!$)([!|.|.?][”|"]?)?(<tb\/>)?$/g;
 const PARAGRAPH_BREAK = /<pb\/>/g;
 const SECTION_BREAK = "<sb/>";
 const UNIT_PAIRS = /<ub>|<\/ub>/g;
-const VERSE_PAIRS = /<verse|\/verse>/g;
+const VERSE_PAIRS = /<verse>|<\/verse>/g;
 const DEFAULT_PATH = ".tb:last";
 
 // Tools
@@ -161,9 +161,11 @@ function parseText(data, callback) {
 
           } else if (line.match(VERSE_PAIRS)) {
             if (line == "</verse>") {
+
               inVerse = false;
             } else {
               inVerse = true;
+              console.log(i+6, line, "Verse Begin")
               //add verse class to the current p
             }
           } else {
@@ -202,6 +204,7 @@ function parseText(data, callback) {
     }
     if (line.match(PARAGRAPH_BREAK)) {
         // Handle paragraph breaks
+        console.log(i+6, line, inVerse);
         let unitHTML = "<p class='" + (inVerse? "verse": "")+"'>";
             unitHTML += inUnit ? "": "<span class='tb'></span>"
             unitHTML += "</p>";
