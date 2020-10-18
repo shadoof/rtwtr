@@ -63,8 +63,5 @@ Along the journey of our life half way<br/>
 I found myself again in a dark wood<br/>
 wherein the straight road no longer lay<br/>
 <verse/>
-<br/>[ verse without units]
-same
-same
-same
-same
+<pb/>
+[ verse without units]

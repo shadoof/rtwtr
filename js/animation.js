@@ -28,7 +28,7 @@ const CONTENT_WIDTH = 800, MARGIN_TOP = 200, MARGIN_RIGHT = 200, MARGIN_LEFT = 2
 let myTimeouts = [], phaseLive=false;
 
 // Animation Debug
-const debug = true;
+const debug = false;
 
 // Visualization Section
 function getMatchingUnit(span, target) {
@@ -110,14 +110,11 @@ function animate(bspan, aspan, predefinedAnchor) {
   // Fill the overlay layer
   $('#anchor').text(context.anchor.content);
   $('#anchor').addClass("shared");
+
   cloneContentToAfter("A", context.after.a.spans, context);
   cloneContentToAfter("B", context.after.b.spans, context);
-  repositionWithIndent("overlay", aspan[0].offsetTop, inVerse ? 0 : aspan[0].offsetLeft);
 
-  if (context.after.a.spans[0]) {
-    repositionWithIndent("afterAnchorB", 0, context.after.a.spans[0].offsetLeft);
-  }
-
+  // All Layout/Reposition should be placed after content cloning
   if (context.before.indent < -5 && context.space > 0 && aspan[0].offsetTop == context.anchor.offsetTop) {
     // If there is enough space overall but not enough space before
     // && anchor is in the first line
@@ -128,9 +125,11 @@ function animate(bspan, aspan, predefinedAnchor) {
     // not enough space for b
     // get tbs after the active one
     cloneContentToBeforeAnchorA(context.before.a.spans); // fake before a to get the right spacing
-    layoutBeforeB(context.before, hoverAnchor, aspan[0].offsetLeft, aspan[0].offsetTop, inVerse);
+    layoutBeforeB(context, hoverAnchor, aspan[0].offsetLeft, aspan[0].offsetTop, inVerse);
   }
 
+  repositionWithIndent("overlay", aspan[0].offsetTop, inVerse ? 0 : aspan[0].offsetLeft);
+  repositionWithIndent("afterAnchorB", $('#afterAnchorA')[0].offsetTop, $('#afterAnchorA')[0].offsetLeft);
   displayOverlay();
 
   // Adjust section before and after accordingly
@@ -303,12 +302,11 @@ function displayOverlay() {
 
 }
 
-function layoutBeforeB(before, anchor, offsetALeft, offsetATop, inVerse) {
-  const content = before.b.content;
+function layoutBeforeB(context, anchor, offsetALeft, offsetATop, inVerse) {
+  const content = context.before.b.content;
   const words = content.split(" ");
   const reverseWords = words.reverse();
   let cursor = handleMultiLineAnchor(anchor);
-  console.log(cursor);
   // clear previous layout
 
   $('#beforeAnchorB').empty();
@@ -320,15 +318,23 @@ function layoutBeforeB(before, anchor, offsetALeft, offsetATop, inVerse) {
      const textL = calculateTextLength(word + " ")
      cursor.x -= textL;
      // line break above
-     if (cursor.x < MARGIN_LEFT) {
+     if (!inVerse && cursor.x < MARGIN_LEFT) {
        cursor.y -= LINE_HEIGHT
        cursor.x += CONTENT_WIDTH
        // Right align
        if (cursor.x + textL > CONTENT_WIDTH + MARGIN_LEFT) {
          cursor.x = CONTENT_WIDTH + MARGIN_LEFT - textL;
        }
+     } else if(inVerse && word.includes("\n")) {
+       // TODO: handle line breaks within units
+       // @John: do we need this use case for verses?
+       // Multi-line center alignment before anchor could be tricky
+       const lastSpanInB = context.after.b.spans[context.after.b.spans.length-1];
+       const rightEdge = MARGIN_LEFT + lastSpanInB.offsetLeft + calculateTextLength(lastSpanInB.textContent);
+       cursor.y -= LINE_HEIGHT;
+       cursor.x = rightEdge - textL;
+       //console.log("[BEFORE ANCHOR B]LINE BREAK:", word, cursor.x)
      }
-     console.log(word, textL, cursor);
      offsetArray.push({
        text:word,
        left: cursor.x,
@@ -342,8 +348,8 @@ function layoutBeforeB(before, anchor, offsetALeft, offsetATop, inVerse) {
 
   let index = 0;
 
-  for (let i = 0; i < before.b.spans.length; i++) {
-    const currentSpan = before.b.spans[i];
+  for (let i = 0; i < context.before.b.spans.length; i++) {
+    const currentSpan = context.before.b.spans[i];
     const wrapperSpan = document.createElement('span');
     $('#beforeAnchorB').append(wrapperSpan);
     if (currentSpan.classList.contains("shared")) {

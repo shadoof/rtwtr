@@ -63,8 +63,5 @@ At the midpoint in the journey of our life<br/>
 I found myself astray in a dark wood<br/>
 For the straight path had vanished.<br/>
 <verse/>
-<br/>[ verse without units]
-same
-same
-same
-same
+<pb/>
+[ verse without units]
