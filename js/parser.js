@@ -34,7 +34,7 @@ function readTextFile(file, callback)
 
 // Parsing Section
 function removeGitDiffSyntags(content) {
-  return content.replace(/(^-|^\+|^[ \t]|_)/g,"");
+  return content.replace(/(^-|^\+|^[ \t])/g,"");
 }
 
 function removeBreaks(content) {
