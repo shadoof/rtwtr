@@ -225,7 +225,6 @@ function parseText(data, callback) {
   initTester();
   removeEmptyElements('.tb')
 
-
   wrapAllDiretChildrenToP();
   // TODO: post parsing wrapping is problematic here for finding the corresponding place to add "verse" class
   // Batch add class unit for tb
@@ -233,7 +232,7 @@ function parseText(data, callback) {
 
   $('.bdiv .unit').each(function() {
     // Go over all the units in b,
-    // and if it's empty or there is no .shared span in b, add .toB class to corresponding aunit
+    // and if it's empty or there is no .shared span in b, add .toB class to corresponding a unit
     if (this.innerHTML == "" || $(this).find(".shared").length == 0)  {
       const aspan = getMatchingUnit(this, 'a');
       aspan.addClass('toB');

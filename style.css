@@ -148,12 +148,19 @@ p {
 .verse {
   text-align: center;
 }
+#beforeAnchorB {
+  text-align: left !important;
+}
 #overlay {
   opacity:0;
 }
-#beforeAnchorA {
+#beforeAnchorA, #afterAnchorA{
   opacity: 0;
 }
+#afterAnchorB {
+  position:absolute;
+}
+
 #beforeAnchorB span{
   white-space: nowrap;
 }

@@ -39,12 +39,11 @@ I found myself astray in a dark wood<br/>
 For the straight path had vanished.<br/>
 </ub>
 
-<br/>[ set in lines and each line is a ‘unit’ (ub tag pairs) ]<br/>
-[ the pb tag above does not work - why not ]
-<pb/>
+<br/>[ set in lines and each line is a ‘unit’ (ub tag pairs) ]
 
 <sb/>
 <verse>
+<pb/>
 <ub>
 At the midpoint in the journey of our life<br/>
 </ub>
@@ -65,3 +64,7 @@ I found myself astray in a dark wood<br/>
 For the straight path had vanished.<br/>
 <verse/>
 <br/>[ verse without units]
+same
+same
+same
+same

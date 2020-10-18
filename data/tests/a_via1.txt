@@ -39,12 +39,11 @@ I found myself again in a dark wood<br/>
 wherein the straight road no longer lay<br/>
 </ub>
 
-<br/>[ set in lines and each line is a ‘unit’ (ub tag pairs) ]<br/>
-[ the pb tag above does not work - why not ]
-<pb/>
+<br/>[ set in lines and each line is a ‘unit’]
 
 <sb/>
 <verse>
+<pb/>
 <ub>
 Along the journey of our life half way<br/>
 </ub>
@@ -65,3 +64,7 @@ I found myself again in a dark wood<br/>
 wherein the straight road no longer lay<br/>
 <verse/>
 <br/>[ verse without units]
+same
+same
+same
+same
