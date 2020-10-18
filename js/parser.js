@@ -3,7 +3,8 @@ const CLAUSE_BREAKS = [", ", "; ", ": ", "</cb> "];
 const THOUGHT_BREAKS = /^(?!$)([!|.|.?][”|"]?)?(<tb\/>)?$/g;
 const PARAGRAPH_BREAK = /<pb\/>/g;
 const SECTION_BREAK = "<sb/>";
-const UNIT_PAIRS = /<ub|\/ub>/g;
+const UNIT_PAIRS = /<ub>|<\/ub>/g;
+const VERSE_PAIRS = /<verse|\/verse>/g;
 const DEFAULT_PATH = ".tb:last";
 
 // Tools
@@ -70,7 +71,7 @@ function wrapDirectChildrenToP(parent) {
   if (p.children.length > 1) parent.append(p);
 }
 
-function wrapAllDirentChildrenToP() {
+function wrapAllDiretChildrenToP() {
   $('.page').each(function() {
     wrapDirectChildrenToP($(this).find('.adiv'));
     wrapDirectChildrenToP($(this).find('.bdiv'));
@@ -94,7 +95,7 @@ function parseText(data, callback) {
   $(contentToBeAppend).attr("id", "content");
 
   let currentPage = 1, currentNo = 0;
-  let match = false, inUnit = false, inP = {a:false, b:false};
+  let match = false, inUnit = false, inVerse = false, inP = {a:false, b:false};
 
   createNewPage(currentPage, contentToBeAppend);
   $('.menu li').addClass("current");
@@ -130,7 +131,7 @@ function parseText(data, callback) {
           match = false;
           if (line == SECTION_BREAK) {
             // Handle section breaks
-            if( i != lines.length -1) {
+            if (i != lines.length - 1) {
               // Ignore last section break
               currentPage ++;
               createNewPage(currentPage, contentToBeAppend);
@@ -148,14 +149,23 @@ function parseText(data, callback) {
               LocationA.append(tb);
               LocationB.append(tb);
               inUnit = false;
-            } else {
+            } else if (line == "<ub>"){
               inUnit = true;
               const customClassName = /class=["|'](.*?)["|']/g.exec(line);
-              const unit = "<span class='unit manual "+ (customClassName != null ? customClassName[1] : "") + "'><span class='tb'></span></span>";
+              let unit = "<span class='unit manual ";
+               unit += customClassName != null ? customClassName[1] : "";
+               unit += "'><span class='tb'></span></span>";
               LocationA.append(unit);
               LocationB.append(unit);
             }
 
+          } else if (line.match(VERSE_PAIRS)) {
+            if (line == "</verse>") {
+              inVerse = false;
+            } else {
+              inVerse = true;
+              //add verse class to the current p
+            }
           } else {
             newSpan.classList += " shared";
             newSpan.id = "a" + currentNo;
@@ -183,6 +193,7 @@ function parseText(data, callback) {
         //console.log("[Warning] Unparsable line", line);
     } // End of Switch
 
+
     if (line.match(THOUGHT_BREAKS)) {
       // Handle THOUGHT_BREAKS
       const tb = "<span class='tb'></span>";
@@ -191,15 +202,17 @@ function parseText(data, callback) {
     }
     if (line.match(PARAGRAPH_BREAK)) {
         // Handle paragraph breaks
-        const unitHTML = "<p>"+ (inUnit ? "": "<span class='tb'></span>") +"</p>";
-      if(type == " " || type == "-") {
-        currentAdiv.append(unitHTML);
-        inP.a = true;
-      }
-      if(type == " " || type == "+") {
-        currentBdiv.append(unitHTML);
-        inP.b = true;
-      }
+        let unitHTML = "<p class='" + (inVerse? "verse": "")+"'>";
+            unitHTML += inUnit ? "": "<span class='tb'></span>"
+            unitHTML += "</p>";
+        if (type == " " || type == "-") {
+          currentAdiv.append(unitHTML);
+          inP.a = true;
+        }
+        if (type == " " || type == "+") {
+          currentBdiv.append(unitHTML);
+          inP.b = true;
+        }
     }
 
   } // End of for loop
@@ -212,7 +225,9 @@ function parseText(data, callback) {
   initTester();
   removeEmptyElements('.tb')
 
-  wrapAllDirentChildrenToP();
+
+  wrapAllDiretChildrenToP();
+  // TODO: post parsing wrapping is problematic here for finding the corresponding place to add "verse" class
   // Batch add class unit for tb
   $('.page p > span:not(unit)').addClass("unit");
 

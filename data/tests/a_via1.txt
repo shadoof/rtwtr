@@ -31,14 +31,37 @@ wherein the straight road no longer lay<br/>
 
 <ub>
 Along the journey of our life half way<br/>
-<ub/>
+</ub>
 <ub>
 I found myself again in a dark wood<br/>
-<ub/>
+</ub>
 <ub>
 wherein the straight road no longer lay<br/>
-<ub/>
+</ub>
 
 <br/>[ set in lines and each line is a ‘unit’ (ub tag pairs) ]<br/>
 [ the pb tag above does not work - why not ]
 <pb/>
+
+<sb/>
+<verse>
+<ub>
+Along the journey of our life half way<br/>
+</ub>
+<ub>
+I found myself again in a dark wood<br/>
+</ub>
+<ub>
+wherein the straight road no longer lay<br/>
+</ub>
+<verse/>
+<br/>[ verse with units]
+
+<sb/>
+<verse>
+<pb/>
+Along the journey of our life half way<br/>
+I found myself again in a dark wood<br/>
+wherein the straight road no longer lay<br/>
+<verse/>
+<br/>[ verse without units]
