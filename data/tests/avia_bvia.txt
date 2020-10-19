@@ -1,27 +1,27 @@
 diff --git a/a_via1.txt b/b_via1.txt
-index ad1505c..3824978 100644
+index 2732781..31c695f 100644
 --- a/a_via1.txt
 +++ b/b_via1.txt
-@@ -1,42 +1,42 @@
+@@ -1,67 +1,67 @@
 -Along
 +At the midpoint in
   the journey of our life
 -half way
 ~
- I found myself 
+ I found myself
 -again
 +astray
   in a dark wood
 ~
 -wherein
 +For
-  the straight 
+  the straight
 -road no longer lay
 +path had vanished.
 ~
  <pb/>
 ~
- 
+
 ~
  [ as if it was a paragraph and one ‘thought’ (tb) ]
 ~
@@ -29,28 +29,28 @@ index ad1505c..3824978 100644
 ~
  <sb/>
 ~
- 
+
 ~
 -Along
 +At the midpoint in
-  the journey of our 
+  the journey of our
 -life half way<br/>
 +life<br/>
 ~
- I found myself 
+ I found myself
 -again
 +astray
   in a dark wood<br/>
 ~
 -wherein
 +For
-  the straight 
+  the straight
 -road no longer lay<br/>
 +path had vanished.<br/>
 ~
  <pb/>
 ~
- 
+
 ~
  [ set in lines but still one ‘thought’ (tb) ]
 ~
@@ -58,17 +58,17 @@ index ad1505c..3824978 100644
 ~
  <sb/>
 ~
- 
+
 ~
 -Along
 +At the midpoint in
-  the journey of our 
+  the journey of our
 -life half way<br/>
 +life<br/>
 ~
  <tb/>
 ~
- I found myself 
+ I found myself
 -again
 +astray
   in a dark wood<br/>
@@ -77,7 +77,7 @@ index ad1505c..3824978 100644
 ~
 -wherein
 +For
-  the straight 
+  the straight
 -road no longer lay<br/>
 +path had vanished.<br/>
 ~
@@ -85,11 +85,11 @@ index ad1505c..3824978 100644
 ~
  <pb/>
 ~
- 
+
 ~
  [ set in lines and each line is a ‘thought’ (tb) ]<br/>
 ~
- [ 
+ [
 -are tb tags not working
 +or does the full stop produce an extra ‘empty’ and unmatched thought here
   ]
@@ -98,38 +98,114 @@ index ad1505c..3824978 100644
 ~
  <sb/>
 ~
- 
+
 ~
  <ub>
 ~
 -Along
 +At the midpoint in
-  the journey of our 
+  the journey of our
 -life half way<br/>
 +life<br/>
 ~
- <ub/>
+ </ub>
 ~
  <ub>
 ~
- I found myself 
+ I found myself
 -again
 +astray
   in a dark wood<br/>
 ~
- <ub/>
+ </ub>
 ~
  <ub>
 ~
 -wherein
 +For
-  the straight 
+  the straight
 -road no longer lay<br/>
 +path had vanished.<br/>
 ~
- <ub/>
+ </ub>
 ~
- 
+
 ~
- <br/>[ set in lines and each line is a ‘unit’ (ub tag pairs) ]<br/>
+ <br/>[ set in lines and each line is a
+-‘unit’]
++‘unit’ (ub tag pairs) ]
+~
+
+~
+ <sb/>
+~
+ <verse>
+~
+ <pb/>
+~
+ <ub>
+~
+-Along
++At the midpoint in
+  the journey of our
+-life half way<br/>
++life<br/>
+~
+ </ub>
+~
+ <ub>
+~
+ I found myself
+-again
++astray
+  in a dark wood<br/>
+~
+ </ub>
+~
+ <ub>
+~
+-wherein
++For
+  the straight
+-road no longer lay<br/>
++path had vanished.<br/>
+~
+ </ub>
+~
+ </verse>
+~
+ <br/>[ verse with
+-units]
++units ]
+~
+
+~
+ <sb/>
+~
+ <verse>
+~
+ <pb/>
+~
+-Along
++At the midpoint in
+  the journey of our
+-life half way<br/>
++life<br/>
+~
+ I found myself
+-again
++astray
+  in a dark wood<br/>
+~
+-wherein
++For
+  the straight
+-road no longer lay<br/>
++path had vanished.<br/>
+~
+ </verse>
+~
+ <pb/>
+~
+ [ verse without units]
 ~

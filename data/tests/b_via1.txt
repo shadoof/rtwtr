@@ -31,14 +31,37 @@ For the straight path had vanished.<br/>
 
 <ub>
 At the midpoint in the journey of our life<br/>
-<ub/>
+</ub>
 <ub>
 I found myself astray in a dark wood<br/>
-<ub/>
+</ub>
 <ub>
 For the straight path had vanished.<br/>
-<ub/>
+</ub>
 
-<br/>[ set in lines and each line is a ‘unit’ (ub tag pairs) ]<br/>
-[ the pb tag above does not work - why not ]
+<br/>[ set in lines and each line is a ‘unit’ (ub tag pairs) ]
+
+<sb/>
+<verse>
 <pb/>
+<ub>
+At the midpoint in the journey of our life<br/>
+</ub>
+<ub>
+I found myself astray in a dark wood<br/>
+</ub>
+<ub>
+For the straight path had vanished.<br/>
+</ub>
+</verse>
+<br/>[ verse with units ]
+
+<sb/>
+<verse>
+<pb/>
+At the midpoint in the journey of our life<br/>
+I found myself astray in a dark wood<br/>
+For the straight path had vanished.<br/>
+</verse>
+<pb/>
+[ verse without units]
