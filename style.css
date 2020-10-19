@@ -146,8 +146,11 @@ p {
 
 }
 .verse {
-  text-align: center;
+  margin:auto;
+  width:fit-content;
+  width:-moz-fit-content;
 }
+
 #beforeAnchorB {
   text-align: left !important;
 }

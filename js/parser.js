@@ -86,6 +86,7 @@ function createNewPage(index, wrapper) {
   $('.menu select').append("<option value='" + index +"'>"+ index + "</option>");
 }
 
+
 function parseText(data, callback) {
   const lines = data.split("\n");
   // Skip the top section
@@ -225,6 +226,7 @@ function parseText(data, callback) {
   $(contentToBeAppend).append($('#overlay'));
   $(contentToBeAppend).append($('#overlayContentAfter'));
   $('body').append(contentToBeAppend);
+
   initTester();
   removeEmptyElements('.tb')
 
@@ -249,6 +251,6 @@ function parseText(data, callback) {
 
 // End of Parsing Section
 
-readTextFile("data/tests/ab_eg.txt", function(data){
+readTextFile("data/tests/avia_bvia.txt", function(data){
   parseText(data, postParsing);
 });

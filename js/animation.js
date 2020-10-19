@@ -85,7 +85,6 @@ function animate(bspan, aspan, predefinedAnchor) {
 
   checkCustomClassNames(aspan);
   if( $(bspan).parent().hasClass("verse")){
-    $('#overlay')[0].className = "verse";
     inVerse = true;
   }
 
@@ -128,7 +127,7 @@ function animate(bspan, aspan, predefinedAnchor) {
     layoutBeforeB(context, hoverAnchor, aspan[0].offsetLeft, aspan[0].offsetTop, inVerse);
   }
 
-  repositionWithIndent("overlay", aspan[0].offsetTop, inVerse ? 0 : aspan[0].offsetLeft);
+  repositionWithIndent("overlay", aspan[0].offsetTop, aspan[0].offsetLeft);
   repositionWithIndent("afterAnchorB", $('#afterAnchorA')[0].offsetTop, $('#afterAnchorA')[0].offsetLeft);
   displayOverlay();
 
