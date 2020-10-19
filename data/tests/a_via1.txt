@@ -1,16 +1,18 @@
+<verse>
 Along the journey of our life half way
 I found myself again in a dark wood
 wherein the straight road no longer lay
-<pb/>
+</verse>
 
 [ as if it was a paragraph and one ‘thought’ (tb) ]
 <pb/>
 <sb/>
 
+<verse>
 Along the journey of our life half way<br/>
 I found myself again in a dark wood<br/>
 wherein the straight road no longer lay<br/>
-<pb/>
+</verse>
 
 [ set in lines but still one ‘thought’ (tb) ]
 <pb/>
