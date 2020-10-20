@@ -127,8 +127,20 @@ function animate(bspan, aspan, predefinedAnchor) {
     layoutBeforeB(context, hoverAnchor, aspan[0].offsetLeft, aspan[0].offsetTop, inVerse);
   }
 
-  repositionWithIndent("overlay", aspan[0].offsetTop, aspan[0].offsetLeft);
-  repositionWithIndent("afterAnchorB", $('#afterAnchorA')[0].offsetTop, $('#afterAnchorA')[0].offsetLeft);
+  if(inVerse) {
+    reposition("overlay", aspan[0].offsetTop, aspan[0].offsetLeft);
+    let adjustLeftAlign = 0;
+    if( $('#beforeAnchorB span span').length > 0)
+    adjustLeftAlign = $('#beforeAnchorB span span')[0].style.left;
+    $('#afterAnchorB')[0].style.left = adjustLeftAlign;
+    repositionWithIndent("afterAnchorB", $('#afterAnchorA')[0].offsetTop, $('#afterAnchorA')[0].offsetLeft - parsePxToNumber(adjustLeftAlign));
+
+  } else {
+    repositionWithIndent("overlay", aspan[0].offsetTop, aspan[0].offsetLeft);
+    repositionWithIndent("afterAnchorB", $('#afterAnchorA')[0].offsetTop, $('#afterAnchorA')[0].offsetLeft);
+  }
+
+
   displayOverlay();
 
   // Adjust section before and after accordingly
@@ -155,6 +167,11 @@ function fromIndentToVerticalSpace(indent){
   const lines = Math.ceil(-indent / CONTENT_WIDTH)
   const verticalSpaceNeeded = lines * LINE_HEIGHT;
   return verticalSpaceNeeded;
+}
+
+function parsePxToNumber(string) {
+  string = string + "";
+  return Number(string.replace("px",""));
 }
 
 function animateSurroundings(type, aspan, context){
@@ -301,22 +318,33 @@ function displayOverlay() {
 
 }
 
+function getCurrentLineWidth(idx, array) {
+  let w = calculateTextLength(array[idx].replace("\n",""));
+  for (var i = idx + 1; i < array.length; i++) {
+    const word = array[i];
+    if (word.includes("\n")) break;
+    if (word == "") continue;
+    w += calculateTextLength(word + " ");
+  }
+  return w;
+}
+
 function layoutBeforeB(context, anchor, offsetALeft, offsetATop, inVerse) {
   const content = context.before.b.content;
-  const words = content.split(" ");
+  const words =  content.split(" ");
   const reverseWords = words.reverse();
+
   let cursor = handleMultiLineAnchor(anchor);
   // clear previous layout
-
   $('#beforeAnchorB').empty();
   offsetArray = [];
 
   for (let i = 0; i < reverseWords.length; i++) {
      const word = reverseWords[i];
      if (word == "") continue; // Skip empty ones
-     const textL = calculateTextLength(word + " ")
+     const textL = calculateTextLength(word.includes("\n") ? word.replace("\n", "") : word + " ")
      cursor.x -= textL;
-     // line break above
+     // Prose: line break above
      if (!inVerse && cursor.x < MARGIN_LEFT) {
        cursor.y -= LINE_HEIGHT
        cursor.x += CONTENT_WIDTH
@@ -325,26 +353,22 @@ function layoutBeforeB(context, anchor, offsetALeft, offsetATop, inVerse) {
          cursor.x = CONTENT_WIDTH + MARGIN_LEFT - textL;
        }
      } else if(inVerse && word.includes("\n")) {
-       // TODO: handle line breaks within units
-       // @John: do we need this use case for verses?
-       // Multi-line center alignment before anchor could be tricky
-       const lastSpanInB = context.after.b.spans[context.after.b.spans.length-1];
-       const rightEdge = MARGIN_LEFT + lastSpanInB.offsetLeft + calculateTextLength(lastSpanInB.textContent);
-       cursor.y -= LINE_HEIGHT;
-       cursor.x = rightEdge - textL;
-       //console.log("[BEFORE ANCHOR B]LINE BREAK:", word, cursor.x)
-     }
+         // As for now, only text before anchor could match with the new left alignment for anchor line in b unit
+         // text after the anchor still inherit the left alignment of the original a unit
+         const currentLineW = getCurrentLineWidth(i, reverseWords)
+         cursor.y -= LINE_HEIGHT
+         cursor.x += currentLineW;
+       }
+
      offsetArray.push({
        text:word,
        left: cursor.x,
        top: cursor.y
      });
-
-     // console.log(cursor,  offsetALeft+MARGIN_LEFT, offsetATop)
+     // console.log(cursor, word, textL)
   }
 
   offsetArray.reverse();
-
   let index = 0;
 
   for (let i = 0; i < context.before.b.spans.length; i++) {

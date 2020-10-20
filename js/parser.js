@@ -166,7 +166,7 @@ function parseText(data, callback) {
               inVerse = false;
             } else {
               inVerse = true;
-              console.log(i+6, line, "Verse Begin")
+              // console.log(i+6, line, "Verse Begin")
               //add verse class to the current p
             }
           } else {
@@ -205,7 +205,7 @@ function parseText(data, callback) {
     }
     if (line.match(PARAGRAPH_BREAK)) {
         // Handle paragraph breaks
-        console.log(i+6, line, inVerse);
+        //console.log(i+6, line, inVerse);
         let unitHTML = "<p class='" + (inVerse? "verse": "")+"'>";
             unitHTML += inUnit ? "": "<span class='tb'></span>"
             unitHTML += "</p>";
