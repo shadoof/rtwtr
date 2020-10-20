@@ -127,8 +127,20 @@ function animate(bspan, aspan, predefinedAnchor) {
     layoutBeforeB(context, hoverAnchor, aspan[0].offsetLeft, aspan[0].offsetTop, inVerse);
   }
 
-  inVerse ? reposition("overlay", aspan[0].offsetTop, aspan[0].offsetLeft): repositionWithIndent("overlay", aspan[0].offsetTop, aspan[0].offsetLeft);
-  repositionWithIndent("afterAnchorB", $('#afterAnchorA')[0].offsetTop, $('#afterAnchorA')[0].offsetLeft);
+  if(inVerse) {
+    reposition("overlay", aspan[0].offsetTop, aspan[0].offsetLeft);
+    let adjustLeftAlign = 0;
+    if( $('#beforeAnchorB span span').length > 0)
+    adjustLeftAlign = $('#beforeAnchorB span span')[0].style.left;
+    $('#afterAnchorB')[0].style.left = adjustLeftAlign;
+    repositionWithIndent("afterAnchorB", $('#afterAnchorA')[0].offsetTop, $('#afterAnchorA')[0].offsetLeft - parsePxToNumber(adjustLeftAlign));
+
+  } else {
+    repositionWithIndent("overlay", aspan[0].offsetTop, aspan[0].offsetLeft);
+    repositionWithIndent("afterAnchorB", $('#afterAnchorA')[0].offsetTop, $('#afterAnchorA')[0].offsetLeft);
+  }
+
+
   displayOverlay();
 
   // Adjust section before and after accordingly
@@ -155,6 +167,11 @@ function fromIndentToVerticalSpace(indent){
   const lines = Math.ceil(-indent / CONTENT_WIDTH)
   const verticalSpaceNeeded = lines * LINE_HEIGHT;
   return verticalSpaceNeeded;
+}
+
+function parsePxToNumber(string) {
+  string = string + "";
+  return Number(string.replace("px",""));
 }
 
 function animateSurroundings(type, aspan, context){
