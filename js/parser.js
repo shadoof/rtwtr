@@ -15,20 +15,20 @@ function wordCount(str) {
 
 function readTextFile(file, callback)
 {
-    var rawFile = new XMLHttpRequest();
-    rawFile.open("GET", file, true);
-    rawFile.onreadystatechange = function ()
+  var rawFile = new XMLHttpRequest();
+  rawFile.open("GET", file, true);
+  rawFile.onreadystatechange = function ()
+  {
+    if(rawFile.readyState === 4)
     {
-        if(rawFile.readyState === 4)
-        {
-            if(rawFile.status === 200 || rawFile.status == 0)
-            {
-                var allText = rawFile.responseText;
-                callback(allText)
-            }
-        }
+      if(rawFile.status === 200 || rawFile.status == 0)
+      {
+        var allText = rawFile.responseText;
+        callback(allText)
+      }
     }
-    rawFile.send(null);
+  }
+  rawFile.send(null);
 }
 // End of Tools
 
@@ -43,7 +43,7 @@ function removeBreaks(content) {
 
 function removeEmptyElements(selector) {
   $(selector).each(function() {
-     if( $(this)[0].innerHTML == "")  $(this)[0].remove();
+    if( $(this)[0].innerHTML == "")  $(this)[0].remove();
   });
 }
 
@@ -104,9 +104,9 @@ function parseText(data, callback) {
   for (var i = 0; i < lines.length; i++) {
 
     const line = lines[i].substr(1),
-          type = lines[i][0];
+      type = lines[i][0];
     let content = lines[i],
-        newSpan =  document.createElement("span");
+      newSpan =  document.createElement("span");
     // Clean up syntags
     content = removeGitDiffSyntags(content);
     content = removeBreaks(content);
@@ -118,81 +118,81 @@ function parseText(data, callback) {
     newSpan.innerHTML = content;
 
     const currentAdiv = $(contentToBeAppend).find('#page' + currentPage +' .adiv'),
-          currentBdiv =  $(contentToBeAppend).find('#page' + currentPage +' .bdiv');
+      currentBdiv =  $(contentToBeAppend).find('#page' + currentPage +' .bdiv');
 
     switch(type) {
-      case "-":
-         newSpan.id = "a" + currentNo;
-         match = true;
-         newSpan.classList += " hide";
-         content != "" && currentAdiv.find(DEFAULT_PATH).append(newSpan);
-        break;
-      case " ":
-          if (match == true) currentNo++;
-          match = false;
-          if (line == SECTION_BREAK) {
-            // Handle section breaks
-            if (i != lines.length - 1) {
-              // Ignore last section break
-              currentPage ++;
-              createNewPage(currentPage, contentToBeAppend);
-            }
-            inP = {a:false, b:false};
+    case "-":
+      newSpan.id = "a" + currentNo;
+      match = true;
+      newSpan.classList += " hide";
+      content != "" && currentAdiv.find(DEFAULT_PATH).append(newSpan);
+      break;
+    case " ":
+      if (match == true) currentNo++;
+      match = false;
+      if (line == SECTION_BREAK) {
+        // Handle section breaks
+        if (i != lines.length - 1) {
+          // Ignore last section break
+          currentPage ++;
+          createNewPage(currentPage, contentToBeAppend);
+        }
+        inP = {a:false, b:false};
 
-          } else if (line.match(UNIT_PAIRS)) {
-            // Handle unit
-            const LocationA = inP.a ? currentAdiv.find("p:last") : currentAdiv;
-            const LocationB = inP.b ? currentBdiv.find("p:last") : currentBdiv;
+      } else if (line.match(UNIT_PAIRS)) {
+        // Handle unit
+        const LocationA = inP.a ? currentAdiv.find("p:last") : currentAdiv;
+        const LocationB = inP.b ? currentBdiv.find("p:last") : currentBdiv;
 
-            if (line == "</ub>") {
-              // Create a new tb:last
-              const tb = "<span class='tb'></span>";
-              LocationA.append(tb);
-              LocationB.append(tb);
-              inUnit = false;
-            } else if (line == "<ub>"){
-              inUnit = true;
-              const customClassName = /class=["|'](.*?)["|']/g.exec(line);
-              let unit = "<span class='unit manual ";
-               unit += customClassName != null ? customClassName[1] : "";
-               unit += "'><span class='tb'></span></span>";
-              LocationA.append(unit);
-              LocationB.append(unit);
-            }
+        if (line == "</ub>") {
+          // Create a new tb:last
+          const tb = "<span class='tb'></span>";
+          LocationA.append(tb);
+          LocationB.append(tb);
+          inUnit = false;
+        } else if (line == "<ub>"){
+          inUnit = true;
+          const customClassName = /class=["|'](.*?)["|']/g.exec(line);
+          let unit = "<span class='unit manual ";
+          unit += customClassName != null ? customClassName[1] : "";
+          unit += "'><span class='tb'></span></span>";
+          LocationA.append(unit);
+          LocationB.append(unit);
+        }
 
-          } else if (line.match(VERSE_PAIRS)) {
-            if (line == "</verse>") {
+      } else if (line.match(VERSE_PAIRS)) {
+        if (line == "</verse>") {
 
-              inVerse = false;
-            } else {
-              inVerse = true;
-              // console.log(i+6, line, "Verse Begin")
-              //add verse class to the current p
-            }
-          } else {
-            newSpan.classList += " shared";
-            newSpan.id = "a" + currentNo;
-            if (content != "") {
-              currentAdiv.find(DEFAULT_PATH).append(newSpan);
-              const clone = newSpan.cloneNode(true);
-              clone.id = "b" + currentNo;
-              currentBdiv.find(DEFAULT_PATH).append(clone);
-            }
-            currentNo ++;
-          }
-        break;
-      case "+":
-          newSpan.id = "b" + currentNo;
-          match = false;
-          currentNo++;
-          content != "" && currentBdiv.find(DEFAULT_PATH).append(newSpan);
-        break;
-      case "~":
-        // new line : no visual representation in the html
-        if (match == true) currentNo++;
-        match = false;
-        break;
-      default :
+          inVerse = false;
+        } else {
+          inVerse = true;
+          // console.log(i+6, line, "Verse Begin")
+          //add verse class to the current p
+        }
+      } else {
+        newSpan.classList += " shared";
+        newSpan.id = "a" + currentNo;
+        if (content != "") {
+          currentAdiv.find(DEFAULT_PATH).append(newSpan);
+          const clone = newSpan.cloneNode(true);
+          clone.id = "b" + currentNo;
+          currentBdiv.find(DEFAULT_PATH).append(clone);
+        }
+        currentNo ++;
+      }
+      break;
+    case "+":
+      newSpan.id = "b" + currentNo;
+      match = false;
+      currentNo++;
+      content != "" && currentBdiv.find(DEFAULT_PATH).append(newSpan);
+      break;
+    case "~":
+      // new line : no visual representation in the html
+      if (match == true) currentNo++;
+      match = false;
+      break;
+    default :
         //console.log("[Warning] Unparsable line", line);
     } // End of Switch
 
@@ -204,19 +204,19 @@ function parseText(data, callback) {
       if(type == " " || type == "+") currentBdiv.find(".tb:last").parent().append(tb);
     }
     if (line.match(PARAGRAPH_BREAK)) {
-        // Handle paragraph breaks
-        //console.log(i+6, line, inVerse);
-        let unitHTML = "<p class='" + (inVerse? "verse": "")+"'>";
-            unitHTML += inUnit ? "": "<span class='tb'></span>"
-            unitHTML += "</p>";
-        if (type == " " || type == "-") {
-          currentAdiv.append(unitHTML);
-          inP.a = true;
-        }
-        if (type == " " || type == "+") {
-          currentBdiv.append(unitHTML);
-          inP.b = true;
-        }
+      // Handle paragraph breaks
+      //console.log(i+6, line, inVerse);
+      let unitHTML = "<p class='" + (inVerse? "verse": "")+"'>";
+      unitHTML += inUnit ? "": "<span class='tb'></span>"
+      unitHTML += "</p>";
+      if (type == " " || type == "-") {
+        currentAdiv.append(unitHTML);
+        inP.a = true;
+      }
+      if (type == " " || type == "+") {
+        currentBdiv.append(unitHTML);
+        inP.b = true;
+      }
     }
 
   } // End of for loop
