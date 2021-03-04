@@ -260,14 +260,14 @@ function parseDiff(diffs, callback) {
   console.log(diffs);
   var lines = []; // 0 = type, 1 = line
   for (let i = 0; i < diffs.length; i++) {
-    let lineObj = {}
     let type = " ";
     if (diffs[i].added == true) type = "+";
     if (diffs[i].removed == true) type = "-"; // was getting +/-/~/space
     let linesToAdd = diffs[i].value.split("\n");
     for (let j = 0; j < linesToAdd.length; j++) {
+      let lineObj = {};
       lineObj.type = type;
-      lineObj.text = linesToAdd[j];
+      lineObj.text = linesToAdd[j].trim(); // TODO why
       lines.push(lineObj);
     }
   }
@@ -284,7 +284,7 @@ function parseDiff(diffs, callback) {
 
   for (var i = 0; i < lines.length; i++) {
 
-    const line = lines[i].value; 
+    const line = lines[i].text;
     const type = lines[i].type;
 
     let content = line,
@@ -435,7 +435,7 @@ function parseDiff(diffs, callback) {
 
 readTextFile("data/a_via_test.txt", (data) => {afile = data;
   readTextFile("data/b_via_test.txt", (data) => {bfile = data;
-    parseDiff(Diff.diffWordsWithSpace(afile,bfile), postParsing);
+    parseDiff(Diff.diffWords(afile,bfile), postParsing);
   });
 });
 
