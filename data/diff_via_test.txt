@@ -1,0 +1,42 @@
+diff --git a/a_via_test.txt b/b_via_test.txt
+index 36016f2..5c92c99 100644
+--- a/a_via_test.txt
++++ b/b_via_test.txt
+@@ -1,13 +1,13 @@
+ <verse>
+~
+ <pb/>
+~
+ <ub>
+~
+-Along
++At the midpoint in
+  the journey of our 
+-life half way<br/>
++life<br/>
+~
+ </ub>
+~
+ <ub>
+~
+ I found myself 
+-again
++astray
+  in a dark wood<br/>
+~
+ </ub>
+~
+ <ub>
+~
+-wherein
++For
+  the straight 
+-road no longer lay<br/>
++path had vanished.<br/>
+~
+ </ub>
+~
+ <br/>
+~
+ <br/>[ verse with units]
+~

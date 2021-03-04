@@ -24,7 +24,7 @@ function readTextFile(file, callback)
       if(rawFile.status === 200 || rawFile.status == 0)
       {
         var allText = rawFile.responseText;
-        callback(allText)
+        callback(allText);
       }
     }
   }
@@ -249,8 +249,202 @@ function parseText(data, callback) {
   callback();
 }
 
+function parseDiff(diffs, callback) {
+  // const lines = data.split("\n"); // use diffs
+  // Skip the top section
+  // lines.splice(0, 5);
+
+  // pre-processing to align with Sally's
+  // line-by-line approach
+
+  console.log(diffs);
+  var lines = []; // 0 = type, 1 = line
+  for (let i = 0; i < diffs.length; i++) {
+    let lineObj = {}
+    let type = " ";
+    if (diffs[i].added == true) type = "+";
+    if (diffs[i].removed == true) type = "-"; // was getting +/-/~/space
+    let linesToAdd = diffs[i].value.split("\n");
+    for (let j = 0; j < linesToAdd.length; j++) {
+      lineObj.type = type;
+      lineObj.text = linesToAdd[j];
+      lines.push(lineObj);
+    }
+  }
+  console.log(lines);
+
+  let contentToBeAppend = document.createElement('div');
+  $(contentToBeAppend).attr("id", "content");
+
+  let currentPage = 1, currentNo = 0;
+  let match = false, inUnit = false, inVerse = false, inP = {a:false, b:false};
+
+  createNewPage(currentPage, contentToBeAppend);
+  $('.menu li').addClass("current");
+
+  for (var i = 0; i < lines.length; i++) {
+
+    const line = lines[i].value; 
+    const type = lines[i].type;
+
+    let content = line,
+      newSpan =  document.createElement("span");
+    // Clean up syntags
+    content = removeGitDiffSyntags(content);
+    content = removeBreaks(content);
+    // Fix space after sentence end
+    content = content.replace(/(\S)$/g,"$1 ");
+
+    // Ignore empty lines
+    if (line == " " || line == "") continue;
+    newSpan.innerHTML = content;
+
+    const currentAdiv = $(contentToBeAppend).find('#page' + currentPage +' .adiv'),
+      currentBdiv =  $(contentToBeAppend).find('#page' + currentPage +' .bdiv');
+
+    switch(type) {
+    case "-":
+      newSpan.id = "a" + currentNo;
+      match = true;
+      newSpan.classList += " hide";
+      content != "" && currentAdiv.find(DEFAULT_PATH).append(newSpan);
+      break;
+    case " ":
+      if (match == true) currentNo++;
+      match = false;
+      if (line == SECTION_BREAK) {
+        // Handle section breaks
+        if (i != lines.length - 1) {
+          // Ignore last section break
+          currentPage ++;
+          createNewPage(currentPage, contentToBeAppend);
+        }
+        inP = {a:false, b:false};
+
+      } else if (line.match(UNIT_PAIRS)) {
+        // Handle unit
+        const LocationA = inP.a ? currentAdiv.find("p:last") : currentAdiv;
+        const LocationB = inP.b ? currentBdiv.find("p:last") : currentBdiv;
+
+        if (line == "</ub>") {
+          // Create a new tb:last
+          const tb = "<span class='tb'></span>";
+          LocationA.append(tb);
+          LocationB.append(tb);
+          inUnit = false;
+        } else if (line == "<ub>"){
+          inUnit = true;
+          const customClassName = /class=["|'](.*?)["|']/g.exec(line);
+          let unit = "<span class='unit manual ";
+          unit += customClassName != null ? customClassName[1] : "";
+          unit += "'><span class='tb'></span></span>";
+          LocationA.append(unit);
+          LocationB.append(unit);
+        }
+
+      } else if (line.match(VERSE_PAIRS)) {
+        if (line == "</verse>") {
+
+          inVerse = false;
+        } else {
+          inVerse = true;
+          // console.log(i+6, line, "Verse Begin")
+          //add verse class to the current p
+        }
+      } else {
+        newSpan.classList += " shared";
+        newSpan.id = "a" + currentNo;
+        if (content != "") {
+          currentAdiv.find(DEFAULT_PATH).append(newSpan);
+          const clone = newSpan.cloneNode(true);
+          clone.id = "b" + currentNo;
+          currentBdiv.find(DEFAULT_PATH).append(clone);
+        }
+        currentNo ++;
+      }
+      break;
+    case "+":
+      newSpan.id = "b" + currentNo;
+      match = false;
+      currentNo++;
+      content != "" && currentBdiv.find(DEFAULT_PATH).append(newSpan);
+      break;
+    case "~": // TODO not needed
+      // new line : no visual representation in the html
+      if (match == true) currentNo++;
+      match = false;
+      break;
+    default :
+        //console.log("[Warning] Unparsable line", line);
+    } // End of Switch
+
+
+    if (line.match(THOUGHT_BREAKS)) {
+      // Handle THOUGHT_BREAKS
+      const tb = "<span class='tb'></span>";
+      if(type == " " || type == "-") currentAdiv.find(".tb:last").parent().append(tb);
+      if(type == " " || type == "+") currentBdiv.find(".tb:last").parent().append(tb);
+    }
+    if (line.match(PARAGRAPH_BREAK)) {
+      // Handle paragraph breaks
+      //console.log(i+6, line, inVerse);
+      let unitHTML = "<p class='" + (inVerse? "verse": "")+"'>";
+      unitHTML += inUnit ? "": "<span class='tb'></span>"
+      unitHTML += "</p>";
+      if (type == " " || type == "-") {
+        currentAdiv.append(unitHTML);
+        inP.a = true;
+      }
+      if (type == " " || type == "+") {
+        currentBdiv.append(unitHTML);
+        inP.b = true;
+      }
+    }
+
+  } // End of for loop
+
+  // Append content
+  $(contentToBeAppend).append($('#overlayContentBefore'));
+  $(contentToBeAppend).append($('#overlay'));
+  $(contentToBeAppend).append($('#overlayContentAfter'));
+  $('body').append(contentToBeAppend);
+
+  initTester();
+  removeEmptyElements('.tb')
+
+  wrapAllDiretChildrenToP();
+  // TODO: post parsing wrapping is problematic here for finding the corresponding place to add "verse" class
+  // Batch add class unit for tb
+  $('.page p > span:not(unit)').addClass("unit");
+
+  $('.bdiv .unit').each(function() {
+    // Go over all the units in b,
+    // and if it's empty or there is no .shared span in b, add .toB class to corresponding a unit
+    if (this.innerHTML == "" || $(this).find(".shared").length == 0)  {
+      const aspan = getMatchingUnit(this, 'a');
+      aspan.addClass('toB');
+    }
+  })
+  // Set current page
+  $('#page1').addClass('current')
+
+  callback();
+}
+
 // End of Parsing Section
 
-readTextFile("data/tests/ab_via.txt", function(data){
-  parseText(data, postParsing);
+readTextFile("data/a_via_test.txt", (data) => {afile = data;
+  readTextFile("data/b_via_test.txt", (data) => {bfile = data;
+    parseDiff(Diff.diffWordsWithSpace(afile,bfile), postParsing);
+  });
 });
+
+// function doDiff(afile, bfile, callback) {
+//   console.log(Diff.diffWordsWithSpace(afile,bfile));
+//   parseDiff(Diff.diffWordsWithSpace(afile,bfile), () => console.log("Now postParsing"));
+//   callback();
+// }
+
+// readTextFile("data/diff_via_test.txt", function(data){
+//   parseText(data, postParsing);
+// });

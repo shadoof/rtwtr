@@ -1,0 +1,18 @@
+<verse>
+<pb/>
+<ub>
+At the midpoint in the journey of our life
+<br/>
+</ub>
+<ub>
+I found myself astray in a dark wood
+<br/>
+</ub>
+<ub>
+For the straight path had vanished.
+<br/>
+</ub>
+<br/>
+<br/>
+[verse with units]
+</verse>
