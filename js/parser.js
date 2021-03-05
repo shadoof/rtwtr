@@ -258,7 +258,7 @@ function parseDiff(diffs, callback) {
   // line-by-line approach
 
   console.log(diffs);
-  var lines = []; // 0 = type, 1 = line
+  var lines = [];
   for (let i = 0; i < diffs.length; i++) {
     let type = " ";
     if (diffs[i].added == true) type = "+";
@@ -267,7 +267,7 @@ function parseDiff(diffs, callback) {
     for (let j = 0; j < linesToAdd.length; j++) {
       let lineObj = {};
       lineObj.type = type;
-      lineObj.text = linesToAdd[j].trim(); // TODO why
+      lineObj.text = linesToAdd[j].trim(); // TODO needed?
       lines.push(lineObj);
     }
   }
@@ -292,7 +292,7 @@ function parseDiff(diffs, callback) {
     // Clean up syntags
     content = removeGitDiffSyntags(content);
     content = removeBreaks(content);
-    // Fix space after sentence end
+    // Fix space after sentence end TODO needed?
     content = content.replace(/(\S)$/g,"$1 ");
 
     // Ignore empty lines
