@@ -433,9 +433,9 @@ function parseDiff(diffs, callback) {
 
 // End of Parsing Section
 
-readTextFile("data/a_file.txt", (data) => {afile = data;
-  readTextFile("data/b_file.txt", (data) => {bfile = data;
-    parseDiff(Diff.diffWords(afile,bfile), postParsing);
+readTextFile("data/a_via_test.txt", (data) => {afile = data;
+  readTextFile("data/b_via_test.txt", (data) => {bfile = data;
+    parseDiff(Diff.diffWordsWithSpace(afile,bfile), postParsing);
   });
 });
 
