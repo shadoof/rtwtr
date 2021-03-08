@@ -249,30 +249,11 @@ function parseText(data, callback) {
   callback();
 }
 
-function parseDiff(diffs, callback) {
+function parseDiff(lines, callback) {
   // const lines = data.split("\n"); // use diffs
   // Skip the top section
   // lines.splice(0, 5);
-
-  // pre-processing to align with Sally's
-  // line-by-line approach
-
-  console.log(diffs);
-  var lines = [];
-  for (let i = 0; i < diffs.length; i++) {
-    let type = " ";
-    if (diffs[i].added == true) type = "+";
-    if (diffs[i].removed == true) type = "-"; // was getting +/-/~/space
-    let linesToAdd = diffs[i].value.split("\n");
-    for (let j = 0; j < linesToAdd.length; j++) {
-      let lineObj = {};
-      lineObj.type = type;
-      lineObj.text = linesToAdd[j].trim(); // TODO needed?
-      lines.push(lineObj);
-    }
-  }
-  console.log(lines);
-
+ 
   let contentToBeAppend = document.createElement('div');
   $(contentToBeAppend).attr("id", "content");
 
@@ -290,13 +271,15 @@ function parseDiff(diffs, callback) {
     let content = line,
       newSpan =  document.createElement("span");
     // Clean up syntags
-    content = removeGitDiffSyntags(content);
+    // not needed: content = removeGitDiffSyntags(content);
     content = removeBreaks(content);
-    // Fix space after sentence end TODO needed?
+    // Fix space after sentence end:
+    // The following is needed in some form
+    // due to diffWords handling of adds or removes at the end of lines:
     content = content.replace(/(\S)$/g,"$1 ");
 
     // Ignore empty lines
-    if (line == " " || line == "") continue;
+    if (line == "") continue; // actually keep spaces parsed by js diff: || line == " " 
     newSpan.innerHTML = content;
 
     const currentAdiv = $(contentToBeAppend).find('#page' + currentPage +' .adiv'),
@@ -369,11 +352,11 @@ function parseDiff(diffs, callback) {
       currentNo++;
       content != "" && currentBdiv.find(DEFAULT_PATH).append(newSpan);
       break;
-    case "~": // TODO not needed
+    // not needed case "~": 
       // new line : no visual representation in the html
-      if (match == true) currentNo++;
-      match = false;
-      break;
+      // if (match == true) currentNo++;
+      // match = false;
+      // break;
     default :
         //console.log("[Warning] Unparsable line", line);
     } // End of Switch
@@ -433,17 +416,61 @@ function parseDiff(diffs, callback) {
 
 // End of Parsing Section
 
-readTextFile("data/a_via_test.txt", (data) => {afile = data;
-  readTextFile("data/b_via_test.txt", (data) => {bfile = data;
-    parseDiff(Diff.diffWordsWithSpace(afile,bfile), postParsing);
+var atext = 1;
+
+readTextFile(`data/a_file.txt`, (data) => {afile = data;
+  readTextFile(`data/b_file.txt`, (data) => {bfile = data;  
+    parseDiff(tagFriendlyWordDiff(afile,bfile), postParsing);
   });
 });
 
-// function doDiff(afile, bfile, callback) {
-//   console.log(Diff.diffWordsWithSpace(afile,bfile));
-//   parseDiff(Diff.diffWordsWithSpace(afile,bfile), () => console.log("Now postParsing"));
-//   callback();
+// function goNext() {
+//   atext += 1;
+//   console.log(`atext: ${atext}`);
+//   readTextFile(`data/via${atext}.txt`, (data) => {afile = data;
+//     readTextFile(`data/via${atext + 1}.txt`, (data) => {bfile = data;
+//       parseDiff(tagFriendlyWordDiff(afile,bfile), postParsing);
+//     });
+//   });
 // }
+
+tagFriendlyWordDiff = (a, b) => {
+  let diffs = Diff.diffWordsWithSpace(a, b);
+  let lines = [];
+  let misplacedOpenTag = false;
+  for (let i = 0; i < diffs.length; i++) {
+    let type = " ";
+    if (diffs[i].added == true) type = "+";
+    if (diffs[i].removed == true) type = "-";
+    let span = diffs[i].value;
+    if (misplacedOpenTag) {
+      let tagCloseIndex = span.indexOf(">");
+      if (tagCloseIndex != -1) {
+        span = "<" + span;
+        misplacedOpenTag = false;
+      }
+    }
+    misplacedOpenTag = span.indexOf("<") == span.length - 1;
+    if (misplacedOpenTag) span = span.slice(0, span.length - 1);
+    let punctPlusLinefeed = /[!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~]\n/;
+    let badPattern = span.search(punctPlusLinefeed);
+    while (badPattern != -1) {
+      let tagOnLine = span.slice(0, badPattern + 1);
+      pushLineObj(lines, tagOnLine, type);
+      span = span.slice(badPattern + 2);
+      badPattern = span.search(punctPlusLinefeed);
+    }
+    pushLineObj(lines, span, type);
+  }
+  return lines;
+}
+
+function pushLineObj(arr, text, type) {
+  let lineObj = {};
+  lineObj.type = type;
+  lineObj.text = text;
+  arr.push(lineObj);
+}
 
 // readTextFile("data/diff_via_test.txt", function(data){
 //   parseText(data, postParsing);

@@ -168,6 +168,14 @@ p {
   white-space: nowrap;
 }
 
+/* TODO: may be temporary, for VIA progression */
+div#vianext {
+	cursor: pointer;
+	position: fixed;
+	bottom: 80px;
+	right: 80px;
+}
+
 /* Animation related CSS */
 .active .shared{
   cursor: pointer;
