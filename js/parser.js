@@ -1,6 +1,6 @@
 // Parser: Definitions
 const CLAUSE_BREAKS = [", ", "; ", ": ", "</cb> "];
-const THOUGHT_BREAKS = /^(?!$)([!|.|.?][”|"]?)?(<tb\/>)?$/g;
+const THOUGHT_BREAKS = /([!.?][”"]?)|(<tb\/>)+$/g;
 const PARAGRAPH_BREAK = /<pb\/>/g;
 const SECTION_BREAK = "<sb/>";
 const UNIT_PAIRS = /<ub>|<\/ub>/g;
@@ -68,7 +68,7 @@ function wrapDirectChildrenToP(parent) {
 
   }
 
-  if (p.children.length > 1) parent.append(p);
+  if (p.children.length > 0) parent.append(p);
 }
 
 function wrapAllDiretChildrenToP() {
@@ -199,9 +199,12 @@ function parseText(data, callback) {
 
     if (line.match(THOUGHT_BREAKS)) {
       // Handle THOUGHT_BREAKS
+      console.log("TB", line);
       const tb = "<span class='tb'></span>";
       if(type == " " || type == "-") currentAdiv.find(".tb:last").parent().append(tb);
       if(type == " " || type == "+") currentBdiv.find(".tb:last").parent().append(tb);
+    } else {
+      console.log(line);
     }
     if (line.match(PARAGRAPH_BREAK)) {
       // Handle paragraph breaks
@@ -253,7 +256,7 @@ function parseDiff(lines, callback) {
   // const lines = data.split("\n"); // use diffs
   // Skip the top section
   // lines.splice(0, 5);
- 
+
   let contentToBeAppend = document.createElement('div');
   $(contentToBeAppend).attr("id", "content");
 
@@ -279,7 +282,7 @@ function parseDiff(lines, callback) {
     content = content.replace(/(\S)$/g,"$1 ");
 
     // Ignore empty lines
-    if (line == "") continue; // actually keep spaces parsed by js diff: || line == " " 
+    if (line == "") continue; // actually keep spaces parsed by js diff: || line == " "
     newSpan.innerHTML = content;
 
     const currentAdiv = $(contentToBeAppend).find('#page' + currentPage +' .adiv'),
@@ -352,7 +355,7 @@ function parseDiff(lines, callback) {
       currentNo++;
       content != "" && currentBdiv.find(DEFAULT_PATH).append(newSpan);
       break;
-    // not needed case "~": 
+    // not needed case "~":
       // new line : no visual representation in the html
       // if (match == true) currentNo++;
       // match = false;
@@ -363,6 +366,7 @@ function parseDiff(lines, callback) {
 
 
     if (line.match(THOUGHT_BREAKS)) {
+        console.log("TB", line);
       // Handle THOUGHT_BREAKS
       const tb = "<span class='tb'></span>";
       if(type == " " || type == "-") currentAdiv.find(".tb:last").parent().append(tb);
@@ -419,7 +423,7 @@ function parseDiff(lines, callback) {
 var atext = 1;
 
 readTextFile(`data/a_file.txt`, (data) => {afile = data;
-  readTextFile(`data/b_file.txt`, (data) => {bfile = data;  
+  readTextFile(`data/b_file.txt`, (data) => {bfile = data;
     parseDiff(tagFriendlyWordDiff(afile,bfile), postParsing);
   });
 });
@@ -472,6 +476,6 @@ function pushLineObj(arr, text, type) {
   arr.push(lineObj);
 }
 
-// readTextFile("data/diff_via_test.txt", function(data){
+// readTextFile("data/tests/diff_eg.txt", function(data){
 //   parseText(data, postParsing);
 // });
