@@ -418,8 +418,8 @@ function parseDiff(lines, callback) {
 
 var atext = 1;
 
-readTextFile(`data/a_file.txt`, (data) => {afile = data;
-  readTextFile(`data/b_file.txt`, (data) => {bfile = data;  
+readTextFile(`data/via1.txt`, (data) => {afile = data;
+  readTextFile(`data/via2.txt`, (data) => {bfile = data;  
     parseDiff(tagFriendlyWordDiff(afile,bfile), postParsing);
   });
 });
@@ -437,11 +437,10 @@ readTextFile(`data/a_file.txt`, (data) => {afile = data;
 tagFriendlyWordDiff = (a, b) => {
   let diffs = Diff.diffWordsWithSpace(a, b);
   let lines = [];
-  let misplacedOpenTag = false;
+  let misplacedOpenTag = false, oneSpace = false;
+  let type = " ", lastType = " ";
   for (let i = 0; i < diffs.length; i++) {
-    let type = " ";
-    if (diffs[i].added == true) type = "+";
-    if (diffs[i].removed == true) type = "-";
+    type = getType(diffs[i]);
     let span = diffs[i].value;
     if (misplacedOpenTag) {
       let tagCloseIndex = span.indexOf(">");
@@ -460,9 +459,17 @@ tagFriendlyWordDiff = (a, b) => {
       span = span.slice(badPattern + 2);
       badPattern = span.search(punctPlusLinefeed);
     }
-    pushLineObj(lines, span, type);
+    if (span != "") pushLineObj(lines, span, type);
   }
+  console.log(lines);
   return lines;
+}
+
+function getType(diffsObj) {
+  let type = " ";
+  if (diffsObj.added == true) type = "+";
+  else if (diffsObj.removed == true) type = "-";
+  return type;
 }
 
 function pushLineObj(arr, text, type) {
