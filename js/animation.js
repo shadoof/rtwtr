@@ -134,25 +134,22 @@ function animate(bspan, aspan, predefinedAnchor) {
     adjustLeftAlign = $('#beforeAnchorB span span')[0].style.left;
     $('#afterAnchorB')[0].style.left = adjustLeftAlign;
     repositionWithIndent("afterAnchorB", $('#afterAnchorA')[0].offsetTop, $('#afterAnchorA')[0].offsetLeft - parsePxToNumber(adjustLeftAlign));
-
   } else {
     repositionWithIndent("overlay", aspan[0].offsetTop, aspan[0].offsetLeft);
     repositionWithIndent("afterAnchorB", $('#afterAnchorA')[0].offsetTop, $('#afterAnchorA')[0].offsetLeft);
   }
-
-
   displayOverlay();
-
   // Adjust section before and after accordingly
   // TODO: how to go beyond this paragraph?
+  if (!inVerse) {
+    // Content Before
+    if (context.before.indent < -5)
+      animateSurroundings("overlayContentBefore", aspan, context);
 
-  // Content Before
-  if (context.before.indent < -5)
-    animateSurroundings("overlayContentBefore", aspan, context);
-
-  // Content After
-  if (context.after.indent < -5) {
-    animateSurroundings("overlayContentAfter", aspan, context);
+    // Content After
+    if (context.after.indent < -5) {
+      animateSurroundings("overlayContentAfter", aspan, context);
+  }
 
     // Alternative method: horizontal move
     // $('.active + .unit').css({
@@ -175,6 +172,7 @@ function parsePxToNumber(string) {
 }
 
 function animateSurroundings(type, aspan, context){
+
   const fadeOutAsOverlay = {
   opacity:0,
   transition:'opacity ' + TRANSITION_OVERLAY_FADEIN/1000 + 's ease'
