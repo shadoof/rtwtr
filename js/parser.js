@@ -1,4 +1,6 @@
 // Parser: Definitions
+const PUNCTUATION = /[.,;:]/; // no &lt; or &gt; 
+const PUNCTUATIONLF = /[“”‘’!"#$%&'()*+,-–—./:;<=>?@[\]^_{|}~`]\n/;
 const CLAUSE_BREAKS = [", ", "; ", ": ", "</cb> "];
 const THOUGHT_BREAKS = /([!.?][”"]?)|(<tb\/>)+$/g;
 const PARAGRAPH_BREAK = /<pb\/>/g;
@@ -87,176 +89,10 @@ function createNewPage(index, wrapper) {
 }
 
 
-function parseText(data, callback) {
-  const lines = data.split("\n");
-  // Skip the top section
-  lines.splice(0, 5);
-
-  let contentToBeAppend = document.createElement('div');
-  $(contentToBeAppend).attr("id", "content");
-
-  let currentPage = 1, currentNo = 0;
-  let match = false, inUnit = false, inVerse = false, inP = {a:false, b:false};
-
-  createNewPage(currentPage, contentToBeAppend);
-  $('.menu li').addClass("current");
-
-  for (var i = 0; i < lines.length; i++) {
-
-    const line = lines[i].substr(1),
-      type = lines[i][0];
-    let content = lines[i],
-      newSpan =  document.createElement("span");
-    // Clean up syntags
-    content = removeGitDiffSyntags(content);
-    content = removeBreaks(content);
-    // Fix space after sentence end
-    content = content.replace(/(\S)$/g,"$1 ");
-
-    // Ignore empty lines
-    if (line == " " || line == "") continue;
-    newSpan.innerHTML = content;
-
-    const currentAdiv = $(contentToBeAppend).find('#page' + currentPage +' .adiv'),
-      currentBdiv =  $(contentToBeAppend).find('#page' + currentPage +' .bdiv');
-
-    switch(type) {
-    case "-":
-      newSpan.id = "a" + currentNo;
-      match = true;
-      newSpan.classList += " hide";
-      content != "" && currentAdiv.find(DEFAULT_PATH).append(newSpan);
-      break;
-    case " ":
-      if (match == true) currentNo++;
-      match = false;
-      if (line == SECTION_BREAK) {
-        // Handle section breaks
-        if (i != lines.length - 1) {
-          // Ignore last section break
-          currentPage ++;
-          createNewPage(currentPage, contentToBeAppend);
-        }
-        inP = {a:false, b:false};
-
-      } else if (line.match(UNIT_PAIRS)) {
-        // Handle unit
-        const LocationA = inP.a ? currentAdiv.find("p:last") : currentAdiv;
-        const LocationB = inP.b ? currentBdiv.find("p:last") : currentBdiv;
-
-        if (line == "</ub>") {
-          // Create a new tb:last
-          const tb = "<span class='tb'></span>";
-          LocationA.append(tb);
-          LocationB.append(tb);
-          inUnit = false;
-        } else if (line == "<ub>"){
-          inUnit = true;
-          const customClassName = /class=["|'](.*?)["|']/g.exec(line);
-          let unit = "<span class='unit manual ";
-          unit += customClassName != null ? customClassName[1] : "";
-          unit += "'><span class='tb'></span></span>";
-          LocationA.append(unit);
-          LocationB.append(unit);
-        }
-
-      } else if (line.match(VERSE_PAIRS)) {
-        if (line == "</verse>") {
-
-          inVerse = false;
-        } else {
-          inVerse = true;
-          // console.log(i+6, line, "Verse Begin")
-          //add verse class to the current p
-        }
-      } else {
-        newSpan.classList += " shared";
-        newSpan.id = "a" + currentNo;
-        if (content != "") {
-          currentAdiv.find(DEFAULT_PATH).append(newSpan);
-          const clone = newSpan.cloneNode(true);
-          clone.id = "b" + currentNo;
-          currentBdiv.find(DEFAULT_PATH).append(clone);
-        }
-        currentNo ++;
-      }
-      break;
-    case "+":
-      newSpan.id = "b" + currentNo;
-      match = false;
-      currentNo++;
-      content != "" && currentBdiv.find(DEFAULT_PATH).append(newSpan);
-      break;
-    case "~":
-      // new line : no visual representation in the html
-      if (match == true) currentNo++;
-      match = false;
-      break;
-    default :
-        //console.log("[Warning] Unparsable line", line);
-    } // End of Switch
-
-
-    if (line.match(THOUGHT_BREAKS)) {
-      // Handle THOUGHT_BREAKS
-      console.log("TB", line);
-      const tb = "<span class='tb'></span>";
-      if(type == " " || type == "-") currentAdiv.find(".tb:last").parent().append(tb);
-      if(type == " " || type == "+") currentBdiv.find(".tb:last").parent().append(tb);
-    } else {
-      console.log(line);
-    }
-    if (line.match(PARAGRAPH_BREAK)) {
-      // Handle paragraph breaks
-      //console.log(i+6, line, inVerse);
-      let unitHTML = "<p class='" + (inVerse? "verse": "")+"'>";
-      unitHTML += inUnit ? "": "<span class='tb'></span>"
-      unitHTML += "</p>";
-      if (type == " " || type == "-") {
-        currentAdiv.append(unitHTML);
-        inP.a = true;
-      }
-      if (type == " " || type == "+") {
-        currentBdiv.append(unitHTML);
-        inP.b = true;
-      }
-    }
-
-  } // End of for loop
-
-  // Append content
-  $(contentToBeAppend).append($('#overlayContentBefore'));
-  $(contentToBeAppend).append($('#overlay'));
-  $(contentToBeAppend).append($('#overlayContentAfter'));
-  $('body').append(contentToBeAppend);
-
-  initTester();
-  removeEmptyElements('.tb')
-
-  wrapAllDiretChildrenToP();
-  // TODO: post parsing wrapping is problematic here for finding the corresponding place to add "verse" class
-  // Batch add class unit for tb
-  $('.page p > span:not(unit)').addClass("unit");
-
-  $('.bdiv .unit').each(function() {
-    // Go over all the units in b,
-    // and if it's empty or there is no .shared span in b, add .toB class to corresponding a unit
-    if (this.innerHTML == "" || $(this).find(".shared").length == 0)  {
-      const aspan = getMatchingUnit(this, 'a');
-      aspan.addClass('toB');
-    }
-  })
-  // Set current page
-  $('#page1').addClass('current')
-
-  callback();
-}
-
 function parseDiff(lines, callback) {
-  // const lines = data.split("\n"); // use diffs
-  // Skip the top section
-  // lines.splice(0, 5);
 
+  console.log(lines); // DEBUGGING
+  
   let contentToBeAppend = document.createElement('div');
   $(contentToBeAppend).attr("id", "content");
 
@@ -268,7 +104,7 @@ function parseDiff(lines, callback) {
 
   for (var i = 0; i < lines.length; i++) {
 
-    const line = lines[i].text;
+    const line = lines[i].value;
     const type = lines[i].type;
 
     let content = line,
@@ -279,7 +115,9 @@ function parseDiff(lines, callback) {
     // Fix space after sentence end:
     // The following is needed in some form
     // due to diffWords handling of adds or removes at the end of lines:
-    content = content.replace(/(\S)$/g,"$1 ");
+    // content = content.replace(/(\S)$/g,"$1 ");
+    // DEBUGGING - fix is, see below, to add a space to
+    // the content (innerHTML) of all THOUGHT-BREAKS:
 
     // Ignore empty lines
     if (line == "") continue; // actually keep spaces parsed by js diff: || line == " "
@@ -366,8 +204,9 @@ function parseDiff(lines, callback) {
 
 
     if (line.match(THOUGHT_BREAKS)) {
-        console.log("TB", line);
+      console.log("TB", line);
       // Handle THOUGHT_BREAKS
+      newSpan.innerText += " "; // DEBUGGING: simplest way?
       const tb = "<span class='tb'></span>";
       if(type == " " || type == "-") currentAdiv.find(".tb:last").parent().append(tb);
       if(type == " " || type == "+") currentBdiv.find(".tb:last").parent().append(tb);
@@ -438,14 +277,25 @@ readTextFile(`data/a_file.txt`, (data) => {afile = data;
 //   });
 // }
 
-tagFriendlyWordDiff = (a, b) => {
+function tagFriendlyWordDiff(a, b) {
   let diffs = Diff.diffWordsWithSpace(a, b);
   let lines = [];
-  let misplacedOpenTag = false, oneSpace = false;
-  let type = " ", lastType = " ";
+  let misplacedOpenTag = false;
+  let type = " ";
   for (let i = 0; i < diffs.length; i++) {
     type = getType(diffs[i]);
     let span = diffs[i].value;
+    let l = lines.length;
+    // sharedHyphen handling >
+    if (type == " " && span.indexOf("-") == 0) {
+      let spcIndex = span.indexOf(" ");
+      let suffix = span.substr(0,spcIndex);
+      span = span.substr(spcIndex + 1);
+      lines[l-1].value += suffix;
+      lines[l-2].value += suffix;
+    }
+    // < end sharedHyphen handling
+    // misplacedOpenTag handling >
     if (misplacedOpenTag) {
       let tagCloseIndex = span.indexOf(">");
       if (tagCloseIndex != -1) {
@@ -455,17 +305,16 @@ tagFriendlyWordDiff = (a, b) => {
     }
     misplacedOpenTag = span.indexOf("<") == span.length - 1;
     if (misplacedOpenTag) span = span.slice(0, span.length - 1);
-    let punctPlusLinefeed = /[!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~]\n/;
-    let badPattern = span.search(punctPlusLinefeed);
+    // < end misplacedOpenTag handling
+    let badPattern = span.search(PUNCTUATIONLF);
     while (badPattern != -1) {
       let tagOnLine = span.slice(0, badPattern + 1);
       pushLineObj(lines, tagOnLine, type);
       span = span.slice(badPattern + 2);
-      badPattern = span.search(punctPlusLinefeed);
+      badPattern = span.search(PUNCTUATIONLF);
     }
     if (span != "") pushLineObj(lines, span, type);
   }
-  console.log(lines);
   return lines;
 }
 
@@ -476,10 +325,10 @@ function getType(diffsObj) {
   return type;
 }
 
-function pushLineObj(arr, text, type) {
+function pushLineObj(arr, value, type) {
   let lineObj = {};
   lineObj.type = type;
-  lineObj.text = text;
+  lineObj.value = value;
   arr.push(lineObj);
 }
 
