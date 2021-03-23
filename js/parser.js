@@ -84,14 +84,14 @@ function createNewPage(index, wrapper) {
   const page = $('#template .page').clone()[0];
   page.id = "page" + index;
   $(wrapper).append(page);
-  // Populate menu
-  $('.menu select').append("<option value='" + index +"'>"+ index + "</option>");
+  // Populate menu - not needed for viajsdiff fork
+  // $('.menu select').append("<option value='" + index +"'>"+ index + "</option>");
 }
 
 
 function parseDiff(lines, callback) {
 
-  console.log(lines); // DEBUGGING
+  // console.log(lines); // DEBUGGING
   
   let contentToBeAppend = document.createElement('div');
   $(contentToBeAppend).attr("id", "content");
@@ -100,7 +100,7 @@ function parseDiff(lines, callback) {
   let match = false, inUnit = false, inVerse = false, inP = {a:false, b:false};
 
   createNewPage(currentPage, contentToBeAppend);
-  $('.menu li').addClass("current");
+  // $('.menu li').addClass("current");
 
   for (var i = 0; i < lines.length; i++) {
 
@@ -259,23 +259,24 @@ function parseDiff(lines, callback) {
 
 // End of Parsing Section
 
-var atext = 1;
+// master branch reads in a file of porcelain diffs
+//
+// readTextFile("data/tests/diff_eg.txt", function(data){
+//   parseText(data, postParsing);
+// });
 
-readTextFile(`data/a_file.txt`, (data) => {afile = data;
-  readTextFile(`data/b_file.txt`, (data) => {bfile = data;
-    parseDiff(tagFriendlyWordDiff(afile,bfile), postParsing);
+const textName = "via";
+var currenta = 1, currentb = 2, numOfTexts = 5;
+// starts here:
+readab(textName, currenta, currentb);
+
+function readab(textName, a, b) {
+  readTextFile(`data/${textName}${a}.txt`, (data) => {afile = data;
+    readTextFile(`data/${textName}${b}.txt`, (data) => {bfile = data;
+      parseDiff(tagFriendlyWordDiff(afile,bfile), postParsing);
+    });
   });
-});
-
-// function goNext() {
-//   atext += 1;
-//   console.log(`atext: ${atext}`);
-//   readTextFile(`data/via${atext}.txt`, (data) => {afile = data;
-//     readTextFile(`data/via${atext + 1}.txt`, (data) => {bfile = data;
-//       parseDiff(tagFriendlyWordDiff(afile,bfile), postParsing);
-//     });
-//   });
-// }
+}
 
 function tagFriendlyWordDiff(a, b) {
   let diffs = Diff.diffWordsWithSpace(a, b);
@@ -331,7 +332,3 @@ function pushLineObj(arr, value, type) {
   lineObj.value = value;
   arr.push(lineObj);
 }
-
-// readTextFile("data/tests/diff_eg.txt", function(data){
-//   parseText(data, postParsing);
-// });

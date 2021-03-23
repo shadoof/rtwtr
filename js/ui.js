@@ -1,24 +1,32 @@
 
-// Menu - page control
-$(document).on('click','.menu .select-items div',function(){
-  $('.page, .menu li').removeClass('current');
-  $('#page'+ this.innerText).addClass('current')
-})
+// Menu - page control - not used in viajs branch
+// $(document).on('click','.menu .select-items div',function(){
+//   $('.page, .menu li').removeClass('current');
+//   $('#page'+ this.innerText).addClass('current')
+// })
 
 $(document).on('click','.menu .button',function(){
-  const currentIdx = parseInt($('.menu .select-selected')[0].innerText);
-  const totalPageL = $('.menu select option').length;
+  // const currentIdx = parseInt($('.menu .select-selected')[0].innerText);
+  // const totalPageL = $('.menu select option').length;
   let newIdx = 1;
 
   if( this.innerText == ">>") { // next page
-    newIdx = currentIdx < totalPageL ? currentIdx + 1 : 1;
+    // newIdx = currentIdx < totalPageL ? currentIdx + 1 : 1;
+    currenta = currenta < numOfTexts ? currenta + 1 : 1;
+    currentb = currentb < numOfTexts ? currentb + 1 : 1;
   } else { // previous page
-    newIdx = currentIdx > 1 ? currentIdx - 1 : totalPageL;
+    // newIdx = currentIdx > 1 ? currentIdx - 1 : totalPageL;
+    currenta = currenta > 1 ? currenta - 1 : numOfTexts;
+    currentb = currentb > 1 ? currentb - 1 : numOfTexts;
   }
-  $('.page, .menu li').removeClass('current');
-  $('#page'+ newIdx).addClass('current');
+  // TODO this doesn't seem to do what I want
+  $('#page1').remove();
 
-  // update select
+  readab(textName, currenta, currentb);
+  // $('.page, .menu li').removeClass('current');
+  // $('#page'+ newIdx).addClass('current');
+
+  // TODO: is any of this needed? update select
   $('.select-selected')[0].innerText = newIdx;
   $('.select-items div').removeClass('same-as-selected');
   $('.select-items div').removeClass('hide');
@@ -47,24 +55,24 @@ function postMenuPopulation() {
       c = document.createElement("DIV");
       c.innerHTML = selElmnt.options[j].innerHTML;
       c.addEventListener("click", function(e) {
-          /* When an item is clicked, update the original select box,
-          and the selected item: */
-          var y, i, k, s, h;
-          s = this.parentNode.parentNode.getElementsByTagName("select")[0];
-          h = this.parentNode.previousSibling;
-          for (i = 0; i < s.length; i++) {
-            if (s.options[i].innerHTML == this.innerHTML) {
-              s.selectedIndex = i;
-              h.innerHTML = this.innerHTML;
-              y = this.parentNode.getElementsByClassName("same-as-selected");
-              for (k = 0; k < y.length; k++) {
-                y[k].removeAttribute("class");
-              }
-              this.setAttribute("class", (i== 0 ? "hide ": "")+ "same-as-selected");
-              break;
+        /* When an item is clicked, update the original select box,
+        and the selected item: */
+        var y, i, k, s, h;
+        s = this.parentNode.parentNode.getElementsByTagName("select")[0];
+        h = this.parentNode.previousSibling;
+        for (i = 0; i < s.length; i++) {
+          if (s.options[i].innerHTML == this.innerHTML) {
+            s.selectedIndex = i;
+            h.innerHTML = this.innerHTML;
+            y = this.parentNode.getElementsByClassName("same-as-selected");
+            for (k = 0; k < y.length; k++) {
+              y[k].removeAttribute("class");
             }
+            this.setAttribute("class", (i== 0 ? "hide ": "")+ "same-as-selected");
+            break;
           }
-          h.click();
+        }
+        h.click();
       });
       if (j == 0) {
         c.setAttribute("class", "same-as-selected hide");

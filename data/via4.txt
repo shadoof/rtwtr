@@ -1,13 +1,9 @@
 <verse>
 <pb/>
 <ub>
-Half way along the the road we have to go,
-<br/>
-I found myself obscured in a great forest,
-<br/>
-Bewildered, and I knew I had lost the way.
-<br/>
-<br/>
+Half way along the the road we have to go,<br/>
+I found myself obscured in a great forest,<br/>
+Bewildered, and I knew I had lost the way.<br/>
 <br/>
 <br/>
 — Sisson, 1980
