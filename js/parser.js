@@ -268,14 +268,26 @@ function parseDiff(lines, callback) {
 //   parseText(data, postParsing);
 // });
 
-const textName = "via";
-var currenta = 1, currentb = 2, numOfTexts = 5;
+const textName = "via", numOfTexts = 5;
+const aname = "a_file", bname = "b_file";
+var currenta = 1, currentb = 2;
 // starts here:
-readab(textName, currenta, currentb);
+readabseries(textName, currenta, currentb);
+// readab(aname, bname)
 
-function readab(textName, a, b) {
-  readTextFile(`data/${textName}${a}.txt`, (data) => {afile = data;
-    readTextFile(`data/${textName}${b}.txt`, (data) => {bfile = data;
+// just for testing non-VIA texts while on the viajsdiff branch
+function readab(aname, bname) {
+  readTextFile(`data/${aname}.txt`, (data) => {afile = data; // ${textName}${a}
+    readTextFile(`data/${bname}.txt`, (data) => {bfile = data; // ${textName}${b}
+      parseDiff(tagFriendlyWordDiff(afile,bfile), postParsing);
+    });
+  });
+}
+
+function readabseries(fname, anum, bnum) {
+  if (bnum === undefined) bnum = anum + 1;
+  readTextFile(`data/${fname}${anum}.txt`, (data) => {afile = data;
+    readTextFile(`data/${fname}${bnum}.txt`, (data) => {bfile = data;
       parseDiff(tagFriendlyWordDiff(afile,bfile), postParsing);
     });
   });

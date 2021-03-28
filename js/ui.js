@@ -22,7 +22,7 @@ $(document).on('click','.menu .button',function(){
   // TODO this doesn't seem to do what I want
   $('#page1').remove();
 
-  readab(textName, currenta, currentb);
+  readabseries(textName, currenta, currentb);
   // $('.page, .menu li').removeClass('current');
   // $('#page'+ newIdx).addClass('current');
 
