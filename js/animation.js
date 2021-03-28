@@ -133,7 +133,10 @@ function animate(bspan, aspan, predefinedAnchor) {
     if( $('#beforeAnchorB span span').length > 0)
     adjustLeftAlign = $('#beforeAnchorB span span')[0].style.left;
     $('#afterAnchorB')[0].style.left = adjustLeftAlign;
-    repositionWithIndent("afterAnchorB", $('#afterAnchorA')[0].offsetTop, $('#afterAnchorA')[0].offsetLeft - parsePxToNumber(adjustLeftAlign));
+    
+    const offset = $('#afterAnchorA')[0].offsetLeft == 0 ? 0 : $('#afterAnchorA')[0].offsetLeft - parsePxToNumber(adjustLeftAlign)
+    console.log($('#afterAnchorA')[0].offsetLeft, adjustLeftAlign,  offset);
+    repositionWithIndent("afterAnchorB", $('#afterAnchorA')[0].offsetTop, offset);
   } else {
     repositionWithIndent("overlay", aspan[0].offsetTop, aspan[0].offsetLeft);
     repositionWithIndent("afterAnchorB", $('#afterAnchorA')[0].offsetTop, $('#afterAnchorA')[0].offsetLeft);
