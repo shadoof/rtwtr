@@ -1,5 +1,5 @@
 // Parser: Definitions
-const PUNCTUATION = /[.,;:]/; // no &lt; or &gt; 
+const PUNCTUATION = /[.,;:]/; // no &lt; or &gt;
 const PUNCTUATIONLF = /[“”‘’!"#$%&'()*+,-–—./:;<=>?@[\]^_{|}~`]\n/;
 const CLAUSE_BREAKS = [", ", "; ", ": ", "</cb> "];
 const THOUGHT_BREAKS = /([!.?][”"]?)|(<tb\/>)+$/g;
@@ -92,9 +92,12 @@ function createNewPage(index, wrapper) {
 function parseDiff(lines, callback) {
 
   // console.log(lines); // DEBUGGING
-  
-  let contentToBeAppend = document.createElement('div');
-  $(contentToBeAppend).attr("id", "content");
+  // if there is no div #content, create one
+  let contentToBeAppend = $('#content')[0];
+  if (contentToBeAppend == undefined) {
+    contentToBeAppend = document.createElement('div');
+    $(contentToBeAppend).attr("id", "content");
+  }
 
   let currentPage = 1, currentNo = 0;
   let match = false, inUnit = false, inVerse = false, inP = {a:false, b:false};

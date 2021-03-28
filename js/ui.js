@@ -26,11 +26,11 @@ $(document).on('click','.menu .button',function(){
   // $('.page, .menu li').removeClass('current');
   // $('#page'+ newIdx).addClass('current');
 
-  // TODO: is any of this needed? update select
-  $('.select-selected')[0].innerText = newIdx;
-  $('.select-items div').removeClass('same-as-selected');
-  $('.select-items div').removeClass('hide');
-  $('.select-items div:nth(' + (newIdx-1) +')').addClass('same-as-selected');
+  // Update Selected not needed
+  // $('.select-selected')[0].innerText = newIdx;
+  // $('.select-items div').removeClass('same-as-selected');
+  // $('.select-items div').removeClass('hide');
+  // $('.select-items div:nth(' + (newIdx-1) +')').addClass('same-as-selected');
 })
 
 
