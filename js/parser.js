@@ -269,8 +269,8 @@ function parseDiff(lines, callback) {
 // });
 
 const textName = "via", numOfTexts = 5;
-const aname = "a_file", bname = "b_file";
-var currenta = 1, currentb = 2;
+const aname = "a_1", bname = "b_1";
+var currenta = 2, currentb = 3;
 // starts here:
 readabseries(textName, currenta, currentb);
 // readab(aname, bname)
@@ -294,43 +294,76 @@ function readabseries(fname, anum, bnum) {
 }
 
 function tagFriendlyWordDiff(a, b) {
+  console.log(Diff.diffWordsWithSpace(a, b)); // DEBUGGING
   let diffs = Diff.diffWordsWithSpace(a, b);
-  let lines = [];
+  diffs.forEach((diff) => {
+    // remove newlines and carriage returns
+    diff.value = diff.value.replaceAll(/[\n\r]/g, "");
+    // remove whitespace between tags
+    diff.value = diff.value.replaceAll(/>\s</g, "><");
+  });
+  // misplaced opening tag
   let misplacedOpenTag = false;
-  let type = " ";
   for (let i = 0; i < diffs.length; i++) {
-    type = getType(diffs[i]);
-    let span = diffs[i].value;
-    let l = lines.length;
-    // sharedHyphen handling >
-    if (type == " " && span.indexOf("-") == 0) {
-      let spcIndex = span.indexOf(" ");
-      let suffix = span.substr(0,spcIndex);
-      span = span.substr(spcIndex + 1);
-      lines[l-1].value += suffix;
-      lines[l-2].value += suffix;
-    }
-    // < end sharedHyphen handling
-    // misplacedOpenTag handling >
     if (misplacedOpenTag) {
-      let tagCloseIndex = span.indexOf(">");
+      let tagCloseIndex = diffs[i].value.indexOf(">");
       if (tagCloseIndex != -1) {
-        span = "<" + span;
+        diffs[i].value = "<" + diffs[i].value;
         misplacedOpenTag = false;
       }
     }
-    misplacedOpenTag = span.indexOf("<") == span.length - 1;
-    if (misplacedOpenTag) span = span.slice(0, span.length - 1);
-    // < end misplacedOpenTag handling
-    let badPattern = span.search(PUNCTUATIONLF);
-    while (badPattern != -1) {
-      let tagOnLine = span.slice(0, badPattern + 1);
-      pushLineObj(lines, tagOnLine, type);
-      span = span.slice(badPattern + 2);
-      badPattern = span.search(PUNCTUATIONLF);
-    }
-    if (span != "") pushLineObj(lines, span, type);
+    misplacedOpenTag = diffs[i].value.indexOf("<") == diffs[i].value.length - 1;
+    if (misplacedOpenTag) diffs[i].value = diffs[i].value.slice(0, diffs[i].value.length - 1);
   }
+  // fix tag closings
+  for (let i = 0; i < diffs.length; i++) {
+    let closeTag = diffs[i].value.lastIndexOf(">");
+    let lineEnd = diffs[i].value.length - 1;
+    if (closeTag != -1 && closeTag < lineEnd) {
+      let newValue = diffs[i].value.substr(closeTag + 1);
+      diffs[i].value = diffs[i].value.substr(0, closeTag + 1);;
+      let newDiff = {...diffs[i]};
+      newDiff.value = newValue;
+      diffs.splice(++i, 0, newDiff);
+    }
+  }
+  // fix tag openings
+  for (let i = 0; i < diffs.length; i++) {
+    let openTag = diffs[i].value.indexOf("<");
+    if (openTag > 0) {
+      let newValue = diffs[i].value.substr(openTag);
+      let newDiff = {...diffs[i]};
+      diffs[i].value = diffs[i].value.substr(0,openTag);
+      newDiff.value = newValue;
+      diffs.splice(++i, 0, newDiff);
+    }
+  }
+  // put tags on separate lines
+  for (let i = 0; i < diffs.length; i++) {
+    let intertag = "><";
+    if (diffs[i].value.indexOf(intertag) > 0) {
+      let tags = diffs[i].value.split(intertag);
+      tags.forEach((tag, t) => {
+        if (tag[0] != "<") tag = "<" + tag;
+        if (tag[tag.length - 1] != ">") tag += ">";
+        tags[t] = tag;
+      });
+      for (let j = 0; j < tags.length; j++) {
+        if (j == 0) diffs[i].value = tags[0]
+        else {
+          newDiff = {...diffs[i]};
+          newDiff.value = tags[j];
+          diffs.splice(++i, 0, newDiff);
+        }
+      }
+    }
+  }
+  let lines = [];
+  diffs.forEach((diff) => {
+    // remove any remaining empty values
+    if (diff.value != "") pushLineObj(lines, diff.value, getType(diff));
+  });
+  console.log(lines); // DEBUGGING
   return lines;
 }
 
