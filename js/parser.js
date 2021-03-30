@@ -111,7 +111,7 @@ function parseDiff(lines, callback) {
     const type = lines[i].type;
 
     let content = line,
-      newSpan =  document.createElement("span");
+    newSpan =  document.createElement("span");
     // Clean up syntags
     // not needed: content = removeGitDiffSyntags(content);
     content = removeBreaks(content);
@@ -209,7 +209,9 @@ function parseDiff(lines, callback) {
     if (line.match(THOUGHT_BREAKS)) {
       console.log("TB", line);
       // Handle THOUGHT_BREAKS
-      newSpan.innerText += " "; // DEBUGGING: simplest way?
+      // treatment of \n & \r had once require adding a space after sentences
+      // in 'ordinary' text but tagFriendlyWordDiff handles this better
+      // newSpan.innerText += " ";
       const tb = "<span class='tb'></span>";
       if(type == " " || type == "-") currentAdiv.find(".tb:last").parent().append(tb);
       if(type == " " || type == "+") currentBdiv.find(".tb:last").parent().append(tb);
@@ -269,7 +271,7 @@ function parseDiff(lines, callback) {
 // });
 
 const textName = "via", numOfTexts = 5;
-const aname = "a_1", bname = "b_1";
+const aname = "a_2", bname = "b_2";
 var currenta = 2, currentb = 3;
 // starts here:
 readabseries(textName, currenta, currentb);
@@ -297,9 +299,9 @@ function tagFriendlyWordDiff(a, b) {
   console.log(Diff.diffWordsWithSpace(a, b)); // DEBUGGING
   let diffs = Diff.diffWordsWithSpace(a, b);
   diffs.forEach((diff) => {
-    // remove newlines and carriage returns
-    diff.value = diff.value.replaceAll(/[\n\r]/g, "");
-    // remove whitespace between tags
+    // replace newline / carriage return with one space (= html)
+    diff.value = diff.value.replaceAll(/[\n\r]/g, " ");
+    // but remove all whitespace between tags
     diff.value = diff.value.replaceAll(/>\s</g, "><");
   });
   // misplaced opening tag
