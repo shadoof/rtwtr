@@ -133,7 +133,7 @@ function animate(bspan, aspan, predefinedAnchor) {
     if( $('#beforeAnchorB span span').length > 0)
     adjustLeftAlign = $('#beforeAnchorB span span')[0].style.left;
     $('#afterAnchorB')[0].style.left = adjustLeftAlign;
-    
+
     const offset = $('#afterAnchorA')[0].offsetLeft == 0 ? 0 : $('#afterAnchorA')[0].offsetLeft - parsePxToNumber(adjustLeftAlign)
     console.log($('#afterAnchorA')[0].offsetLeft, adjustLeftAlign,  offset);
     repositionWithIndent("afterAnchorB", $('#afterAnchorA')[0].offsetTop, offset);
@@ -325,9 +325,14 @@ function getCurrentLineWidth(idx, array) {
     const word = array[i];
     if (word.includes("\n")) break;
     if (word == "") continue;
-    w += calculateTextLength(word + " ");
+    w += calculateTextLength(word + getSpace(array, i));
   }
   return w;
+}
+
+function getSpace(reverseArray, i){
+  const noSpace = i-1 >= 0 && reverseArray[i-1].length <= 2 && reverseArray[i-1].match(PUNCTUATION) !== null;
+  return noSpace ? "": " ";
 }
 
 function layoutBeforeB(context, anchor, offsetALeft, offsetATop, inVerse) {
@@ -342,8 +347,9 @@ function layoutBeforeB(context, anchor, offsetALeft, offsetATop, inVerse) {
 
   for (let i = 0; i < reverseWords.length; i++) {
      const word = reverseWords[i];
+
      if (word == "") continue; // Skip empty ones
-     const textL = calculateTextLength(word.includes("\n") ? word.replace("\n", "") : word + " ")
+     const textL = calculateTextLength(word.includes("\n") ? word.replace("\n", "") : word + getSpace(reverseWords, i))
      cursor.x -= textL;
      // Prose: line break above
      if (!inVerse && cursor.x < MARGIN_LEFT) {
@@ -385,7 +391,7 @@ function layoutBeforeB(context, anchor, offsetALeft, offsetATop, inVerse) {
       if (word == "") continue;
       if (offsetArray[index].text === word) {
         const newSpan = document.createElement('span');
-        newSpan.innerText = word + " ";
+        newSpan.innerText = word;
         $('#beforeAnchorB > span:last').append(newSpan);
 
         if (!inVerse && offsetArray[index].top == offsetATop + MARGIN_TOP) {
@@ -394,6 +400,7 @@ function layoutBeforeB(context, anchor, offsetALeft, offsetATop, inVerse) {
             // console.log("off", word, offsetArray[index].left);
             // Adjust the whole line for the rest
             const offLeft = 7 + offsetALeft + MARGIN_LEFT - offsetArray[index].left;
+
             offsetArray = adjustOffLeft(offsetArray, index, offLeft)
           }
         }
