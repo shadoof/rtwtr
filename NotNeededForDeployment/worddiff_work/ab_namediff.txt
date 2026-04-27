@@ -1,0 +1,16 @@
+diff --git a/b_name.txt b/a_name.txt
+index ca90898..4f13289 100644
+--- a/b_name.txt
++++ b/a_name.txt
+@@ -1 +1 @@
+-Vilém
++John
+  
+-F
++Cay
+ l
+-uss
+ e
+-r
++y
+~
