@@ -1,0 +1,75 @@
+body {
+  background-color: white;
+}
+
+div {
+  position: absolute;
+	margin-left: 200px;
+	margin-right: 200px;
+	margin-top: 100px;
+}
+
+.adiv {
+  top: 0;
+  right: 0;
+  z-index: 2;
+  color: #89a;
+}
+
+.bdiv {
+  top: 500;
+  margin-top: 0;
+  z-index: 1;
+  color: #a89;
+}
+
+h1 {
+  font: 24px/27px Garamond, Georgia, "Times New Roman", Times, serif;
+}
+
+.b_file {
+  top: 0;
+  right: 0;
+}
+
+span {
+  font: 24px/27px Garamond, Georgia, "Times New Roman", Times, serif;
+  cursor: default;
+}
+
+.text {
+  /*opacity: 0;*/
+  transition: opacity 2s ease-in-out;
+}
+
+.text.a {
+  opacity: 1;
+  /*color: rgba(0,0,127,255);*/
+}
+
+.text.b {
+  opacity: 0.1;
+  /*color: rgba(0,0,0,0);*/
+}
+
+/*.text.a:hover {
+  color: rgba(0,0,0,0);
+}*/
+
+/*.text.b:hover {
+  color: rgba(0,0,0,255);
+}*/
+
+/*.text.alwaysOn {
+  color: rgba(0,0,0,255);
+}
+
+#readable {
+  color: rgba(0,0,0,255);
+}
+
+#invisible {
+  color: rgba(0,0,0,0);
+}*/
+
+
