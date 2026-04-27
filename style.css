@@ -113,10 +113,10 @@ p {
 }
 /* End of Menu Style */
 
-.page, .adiv, .bdiv, [id^="overlay"]{
+.page, .adiv, .bdiv, #overlay{
   width:100%;
 }
-.adiv, .bdiv, [id^="overlay"]{
+.adiv, .bdiv, #overlay{
   position:absolute;
   top: 0;
   left: 0;
@@ -143,27 +143,14 @@ p {
 }
 .adiv .unit {
   opacity: 1;
-
-}
-.verse {
-  margin:auto;
-  width:fit-content;
-  width:-moz-fit-content;
-}
-
-#beforeAnchorB {
-  text-align: left !important;
 }
 #overlay {
   opacity:0;
+  color:
 }
-#beforeAnchorA, #afterAnchorA{
+#beforeAnchorA {
   opacity: 0;
 }
-#afterAnchorB {
-  position:absolute;
-}
-
 #beforeAnchorB span{
   white-space: nowrap;
 }

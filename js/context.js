@@ -11,7 +11,7 @@ class contextReport {
     this.sharedSpans = this.verifySharedSpans(aspan, bspan);
     if (this.sharedSpans == null) return;
     this.space = this.spaceDifference(aspan, bspan);
-    this.dbug = 1;
+    this.dbug = 0;
     this.ref = ref;
     this.anchor = {};
     this.before = {
@@ -43,8 +43,7 @@ class contextReport {
     this.anchor.id = predefinedAnchor ? predefinedAnchor.attr("id") : this.getAnchorFromMinDistanceToRef().id;
     this.updateFullReport(aspan, bspan, this.anchor.id);
     const whichSharedSpan = this.whichSS(this.anchor)
-    // no longer adjust anchor
-    // this.adjustAnchorIfNotFit(whichSharedSpan,aspan, bspan);
+    this.adjustAnchorIfNotFit(whichSharedSpan,aspan, bspan);
   }
   whichSS(span){
     for (var i = 0; i < this.sharedSpans.length; i++) {
@@ -124,9 +123,8 @@ class contextReport {
             // fix
             this.dbug && console.log("Todo")
           } else {
-            // move the rest of the text down
-            this.dbug && console.log("Not enough space for b, move the rest of <a>.")
-
+            // move a
+            this.dbug && console.log("Not enough space for b, no solution found.")
           }
           break;
         }
